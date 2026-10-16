@@ -3,12 +3,12 @@ model: mlx-community/Qwen2.5-1.5B-Instruct-4bit
 train: true
 fine_tune_type: lora
 batch_size: 1
-iters: 20
-max_seq_length: 512
-num_layers: 4
+iters: 8
+max_seq_length: 256
+num_layers: 2
 steps_per_report: 1
-steps_per_eval: 5
-save_every: 5
+steps_per_eval: 4
+save_every: 2
 grad_checkpoint: true
 mask_prompt: true
 seed: 17

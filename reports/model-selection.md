@@ -1,47 +1,44 @@
-# Model selection status
+# Model selection and verification
 
-Research checked: 2026-10-17. No model has been downloaded or loaded.
+Updated: 2026-10-17.
 
-## Provisional choice
+## Selected local model
 
-- **Primary candidate:** `Qwen/Qwen2.5-1.5B-Instruct` (Transformers source) with the MLX community conversion `mlx-community/Qwen2.5-1.5B-Instruct-4bit` for local inference and a potential QLoRA experiment.
-- **Fallback candidate:** `Qwen/Qwen3.5-2B`, only if model architecture loading, inference, and training are verified in the exact installed MLX-LM release. At present this is not a dependable fallback for the MLX training objective.
-- **Status:** provisional, with runtime compatibility confirmed. The project-local MLX stack and CLI install, but model inference and training still need a local weight load.
+- **Repository:** `mlx-community/Qwen2.5-1.5B-Instruct-4bit`
+- **Pinned revision:** `8b403126fc14f14cfc99bb4cfa72ecbc129ea677`
+- **Base:** `Qwen/Qwen2.5-1.5B-Instruct`, Qwen2 architecture, approximately 1.54B parameters, Apache-2.0, 28 layers and 32,768-token context per its model card.
+- **MLX conversion:** Apache-2.0 card tag; 4-bit safetensors. The single `model.safetensors` file is exactly 868,628,559 bytes (approximately 0.81 GiB); the whole local directory is approximately 839 MiB.
+- **Local inference:** Verified on this MacBook Air M5, 16 GiB, macOS 27, Python 3.15 through `src.assistant.local_model.answer_locally()`.
+- **Training compatibility:** MLX 0.32.4 / MLX-LM 0.32.2 with Python 3.15 and Metal. The installed LoRA CLI lists Qwen2-compatible pathways and, in this exact environment, an 8-iteration QLoRA run on the quantized model completed, saved adapters and resumed adapter weights.
 
-## Candidate evidence
+The 4-bit base plus LoRA was a runtime/format choice, not a model-quality endorsement. The model produced materially unsafe/wrong answers on four of six intentionally adversarial held-out safety prompts. The smoke adapter did not repair those failures and remains disabled in the app.
 
-| Repository | Architecture / size | License | Quantization | Context | MLX status | Decision |
-|---|---|---|---|---|---|---|
-| `Qwen/Qwen2.5-1.5B-Instruct` | Qwen2 causal LM, 1.54B params, 28 layers | Apache-2.0 | upstream BF16/FP16 safetensors; not a quantized repo | 32,768 per model card | Current MLX-LM LoRA guidance lists Qwen2 family; exact release and runtime smoke test still required | Preferred trainable candidate |
-| `mlx-community/Qwen2.5-1.5B-Instruct-4bit` | Qwen2, same 1.54B base | Apache-2.0 tag | 4-bit MLX | inherited base context 32,768 | Card documents MLX loading; local CLI supports QLoRA for quantized models, but the weights have not been tested | Preferred local inference and pilot candidate after model load |
-| `Qwen/Qwen3.5-2B` | Hybrid Gated DeltaNet + attention vision-language model, 2B params | Apache-2.0 | upstream safetensors | 262,144 stated by card | Not listed among documented LoRA families in current MLX-LM LoRA guide. A recent MLX-LM issue reports a slow Python-loop backward path for Gated DeltaNet training. | Do not choose for initial training |
+## Alternatives
 
-Hugging Face API metadata reports the selected 4-bit `model.safetensors` at 868,628,559 bytes (about 0.81 GiB), revision `8b403126fc14f14cfc99bb4cfa72ecbc129ea677`. No model was downloaded, and no memory benchmark is claimed.
+| Candidate | Evidence | Decision |
+|---|---|---|
+| `Qwen/Qwen2.5-1.5B-Instruct` | Apache-2.0; Qwen2; BF16/FP16 upstream weights; 1.54B parameters; 32,768 context. | Base family selected; use pinned MLX 4-bit conversion locally. |
+| `mlx-community/Qwen2.5-1.5B-Instruct-4bit` | Apache-2.0; Qwen2; 4-bit MLX conversion; model card documents MLX inference. Exact local load, generation, QLoRA, adapter loading and adapter-weight resume were tested. | Primary local artifact. |
+| `Qwen/Qwen3.5-2B` | Apache-2.0; 2B-parameter hybrid Gated DeltaNet/attention model with a much longer advertised context. Installed MLX-LM guide does not list this as a verified LoRA family; an MLX-LM issue reports a slow Gated DeltaNet backward path. | Not selected; no compatible fallback has been verified. |
 
-## Runtime and training compatibility
+## Training experiment
 
-The MLX-LM project declares Python `>=3.11`, MLX `>=0.32.2` on macOS, and Transformers `>=5.7.0`; its classifiers list 3.11–3.13. PyPI has native arm64 CPython 3.15 wheels for MLX 0.32.4 on macOS 26, so the current macOS 27 / Python 3.15 host is supported by an available wheel. The project-local stack installs and MLX imports successfully.
-
-Installed MLX-LM 0.32.2 `lora --help` succeeds and exposes `--batch-size`, `--max-seq-length`, `--num-layers`, `--save-every`, `--resume-adapter-file`, `--grad-checkpoint`, and `--mask-prompt`. Current upstream guidance lists Qwen2 as a supported LoRA family, says quantized weights use QLoRA, and documents the prepared `messages` JSONL chat format. These support a proposed pilot but do not replace loading the actual weights. Adapter-weight resume is documented; optimizer/scheduler-state recovery is not established by the guide.
+- The Trendyol and Heimdall samples were not used for training because the spot reviews could not establish accuracy and safety.
+- A 36-record project-authored defensive dataset was made solely to test the pipeline (24 train / 6 validation / 6 held-out test). Exact questions were kept separate by topic.
+- Config: batch 1, 256-token cap, 2 LoRA layers, 8 iterations, gradient checkpointing, prompt masking, rank 8. MLX reported 0.659M trainable parameters (0.043% of 1.544B). Validation loss moved from 4.548 initially to 4.301 after 8 iterations; the run is too small to infer quality.
+- The adapter loads for inference, but a six-question qualitative review showed no material improvement over base. It is not used by default.
+- Recovery was tested by interrupting a separate pilot after a periodic adapter save and resuming with `--resume-adapter-file`. The framework restored adapter weights and completed; optimizer/scheduler state was not restored.
 
 ## Sources
 
-- [Qwen2.5-1.5B-Instruct model card](https://huggingface.co/Qwen/Qwen2.5-1.5B-Instruct)
-- [MLX Community Qwen2.5 4-bit model card](https://huggingface.co/mlx-community/Qwen2.5-1.5B-Instruct-4bit)
-- [Qwen3.5-2B model card](https://huggingface.co/Qwen/Qwen3.5-2B)
+- [Qwen2.5-1.5B-Instruct card](https://huggingface.co/Qwen/Qwen2.5-1.5B-Instruct)
+- [MLX Community Qwen2.5 4-bit card](https://huggingface.co/mlx-community/Qwen2.5-1.5B-Instruct-4bit)
+- [Qwen3.5-2B card](https://huggingface.co/Qwen/Qwen3.5-2B)
 - [MLX-LM LoRA guide](https://github.com/ml-explore/mlx-lm/blob/main/mlx_lm/LORA.md)
-- [MLX-LM pyproject.toml](https://github.com/ml-explore/mlx-lm/blob/main/pyproject.toml)
+- [MLX-LM version and dependencies](https://github.com/ml-explore/mlx-lm/blob/main/pyproject.toml)
 - [MLX installation requirements](https://github.com/ml-explore/mlx/blob/main/docs/src/install.rst)
-- [MLX-LM Qwen3.5 Gated DeltaNet training performance issue](https://github.com/ml-explore/mlx-lm/issues/1956)
+- [MLX-LM Gated DeltaNet training issue](https://github.com/ml-explore/mlx-lm/issues/1956)
 
-## Updated runtime result
+## Limits
 
-Local install now succeeds with MLX 0.32.4 / MLX-LM 0.32.2 in Python 3.15. The CLI help runs and confirms the intended small-run controls. Hugging Face API metadata identifies the 4-bit Qwen2.5 MLX weight file as 868,628,559 bytes at revision `8b403126fc14f14cfc99bb4cfa72ecbc129ea677`. It has not been fetched or loaded, so actual inference and training remain unverified.
-
-
-## Download and local inference verification (2026-10-17)
-
-- User approved the previously described approximately 0.81 GiB model download. Retrieved the pinned snapshot `mlx-community/Qwen2.5-1.5B-Instruct-4bit@8b403126fc14f14cfc99bb4cfa72ecbc129ea677` into the ignored local `models/` directory.
-- `model.safetensors` is exactly 868,628,559 bytes and matches the snapshot index. The directory is approximately 839 MiB on disk.
-- MLX reports the GPU/Metal device available on Apple M5. `src.assistant.local_model.answer_locally()` successfully loaded the local model and produced a response to a benign attachment-safety question. The app loader uses only the local path; it did not fetch anything.
-- No adapter training has run. A spot review of six training examples found apparent technical errors, inconsistent terminology (including PtT/PtH confusion), and a response written in internal chain-of-thought style (“the user wants to know…”). These findings are enough to reject this sample for adapter training pending a broader factuality/safety review and curation. Keyword counts do not establish dataset quality.
+No useful cybersecurity-specialized adapter has been established. A larger reviewed corpus, expert answer review, and stronger safety evaluation are still required before promoting an adapter. The local language model can be confidently wrong; verify critical guidance.

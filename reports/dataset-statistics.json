@@ -1,56 +1,147 @@
 {
   "inspection_date": "2026-10-17",
-  "status": "bounded_sample_observed_for_instruction_data; other_candidates_card_only",
   "Trendyol/Trendyol-Cybersecurity-Instruction-Tuning-Dataset": {
     "repository_revision": "357544e7576607d88eaeac9b0adb07e9fd8bb2bb",
-    "license": "apache-2.0",
-    "split": "train",
-    "repository_reported_rows": 53201,
+    "license": "Apache-2.0",
     "sample_rows": 1000,
-    "sample_method": "10 evenly spaced blocks via Hugging Face dataset-server rows API",
-    "sample_row_index_range": [0, 53200],
-    "observed_columns": ["system", "user", "assistant", "_provenance"],
-    "missing_values": 0,
-    "exact_duplicate_full_rows": 0,
-    "unique_user_prompts": 998,
-    "conflicting_duplicate_prompt_groups": 2,
-    "assistant_answers_unique": 1000,
-    "source_row_ids_preserved": true,
-    "user_character_lengths": {"min": 52, "median": 120, "max": 419},
-    "assistant_character_lengths": {"min": 503, "median": 2339, "max": 5493},
-    "literal_backslash_n_sequences_in_user_and_assistant_fields": 5647,
-    "normalization": "raw source retained; literal \\n sequences converted to line breaks and counted on prepared records",
-    "discarded_conflicting_prompt_records": 4,
-    "prepared_split_counts": {"train": 796, "valid": 100, "test": 100},
-    "term_scan_hits_across_user_and_assistant_records": {
-      "evasion": 106,
-      "exploit": 508,
-      "credential theft": 9,
-      "ransomware": 33
+    "prepared_splits": {
+      "train": 796,
+      "valid": 100,
+      "test": 100
     },
-    "quality_note": "Keyword scan is a review flag, not a safety verdict. Factual accuracy and response quality require content review; no training has run."
+    "automated_internal_reasoning_flags": 30,
+    "human_spot_review": "Six examples included apparent technical inaccuracies, PtT/PtH terminology confusion, and a response phrased as internal reasoning; excluded from training."
   },
-  "cybersectony/PhishingEmailDetectionv2.0": {
-    "repository_revision": "afba38f4a7ffbe89259ab68ae7c6426f944496cc",
-    "license": null,
-    "repo_metadata_features": [{"name": "content", "dtype": "string"}, {"name": "label", "dtype": "int64"}],
-    "repo_metadata_splits": {"train": 120000, "validation": 20000, "test": 60000},
-    "dataset_card_claims": {"rows": 200000, "email_rows": 22644, "url_rows": 177356, "columns": ["content", "labels"]},
-    "sample_observed": 3,
-    "sample_note": "Viewer examples included URLs and integer labels; email-vs-URL ordering/content and class balance need a stratified sample audit.",
-    "use_status": "do_not_use_until_license_and_card_metadata_conflicts_are_resolved"
+  "AlicanKiraz0/Cybersecurity-Dataset-Heimdall-v1.1": {
+    "repository_revision": "c731f81fa7c263fc94515564a81b29652a885d28",
+    "license": "Apache-2.0",
+    "sample_rows": 500,
+    "schema": [
+      "system",
+      "user",
+      "assistant",
+      "_provenance"
+    ],
+    "exact_duplicate_rows": 0,
+    "automated_internal_reasoning_flags": 0,
+    "human_spot_review": "Twelve evenly spaced examples inspected; answer plausibility and factuality could not be verified consistently. Not selected for training."
+  },
+  "UCI PhiUSIIL Phishing URL (Website)": {
+    "source": "https://archive.ics.uci.edu/dataset/967/phiusiil+phishing+url+dataset",
+    "dataset_id": 967,
+    "license": "CC BY 4.0",
+    "last_updated": "2024-05-12",
+    "download_bytes": 56854345,
+    "sha256": "a236549cd369cd80bd478ff8e1779cbf44c58d5c3f79f7a51a1adbed7d06d1c6",
+    "input_rows": 235795,
+    "source_label_convention": {
+      "1": "legitimate",
+      "0": "phishing"
+    },
+    "usable_unique_urls": 234457,
+    "discarded_duplicate_or_label_conflict_rows": 1338,
+    "malformed_rows": 0,
+    "missing_or_invalid_rows": 0,
+    "conflicting_duplicate_urls": 0,
+    "sensitive_query_values": "redacted; fragments removed",
+    "split_method": "GroupShuffleSplit by approximate registrable domain using a bundled common-suffix list",
+    "split_counts": {
+      "train": 188138,
+      "valid": 26281,
+      "test": 20038
+    },
+    "test_label_counts": {
+      "legitimate": 13434,
+      "phishing": 6604
+    },
+    "domain_overlap": false,
+    "model": "character TF-IDF 3-5 grams, min_df=2, max 250000 features, balanced LogisticRegression",
+    "held_out_test": {
+      "train_rows": 188138,
+      "test_rows": 20038,
+      "features": 250000,
+      "labels": [
+        "legitimate",
+        "phishing"
+      ],
+      "classification_report": {
+        "legitimate": {
+          "precision": 0.9932717190388171,
+          "recall": 1.0,
+          "f1-score": 0.9966245038762566,
+          "support": 13434.0
+        },
+        "phishing": {
+          "precision": 1.0,
+          "recall": 0.9862204724409449,
+          "f1-score": 0.9930624380574826,
+          "support": 6604.0
+        },
+        "accuracy": 0.9954586286056493,
+        "macro avg": {
+          "precision": 0.9966358595194085,
+          "recall": 0.9931102362204725,
+          "f1-score": 0.9948434709668696,
+          "support": 20038.0
+        },
+        "weighted avg": {
+          "precision": 0.9954891842283397,
+          "recall": 0.9954586286056493,
+          "f1-score": 0.9954505402737422,
+          "support": 20038.0
+        }
+      },
+      "confusion_matrix": [
+        [
+          13434,
+          0
+        ],
+        [
+          91,
+          6513
+        ]
+      ]
+    }
   },
   "open-index/hacker-news": {
-    "license_reported_by_card": "ODC-By 1.0; original authors retain rights in content",
-    "size_reported_by_card": "12.4 GB",
-    "observed_local_rows": 0
+    "dataset_card": "https://huggingface.co/datasets/open-index/hacker-news",
+    "license": "ODC-By 1.0 database; post authors retain content rights",
+    "full_archive_reported_size": "about 12.4 GB",
+    "selected_snapshot": "data/2026/2026-08.parquet",
+    "revision": "c54ced5973b95d80cd934b8921f44ec8d87c3cd1",
+    "snapshot_bytes": 103240376,
+    "snapshot_sha256": "43ed18e8568bf47faf44632b634dfa9a2a3a89b77d19e49be3941afa7be0e52f",
+    "input_rows": 265364,
+    "filtered_records": 2581,
+    "record_types": {
+      "story": 235,
+      "comment": 2346
+    },
+    "filter": "security-related terms in title or comment/story text; lexical filter is approximate",
+    "attribution": "preserved HN item ID, author, time, parent, child IDs, score, and HN item link",
+    "status": "local retrieval only; no redistribution"
+  },
+  "cisa_sources": {
+    "kev_feed": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json",
+    "kev_revision": "2026.10.16",
+    "kev_records": 1748,
+    "advisory_feed": "https://www.cisa.gov/cybersecurity-advisories/all.xml",
+    "advisory_feed_items": 30,
+    "retrieval_records_total": 4359,
+    "retrieval_types": {
+      "known_exploited_vulnerability": 1748,
+      "cisa_advisory": 30,
+      "community_discussion": 2581
+    },
+    "retrieval_method": "Local BM25-like lexical matching; source links preserved; app does not fetch user URLs or make live threat-intelligence requests"
+  },
+  "cybersectony/PhishingEmailDetectionv2.0": {
+    "license": null,
+    "use_status": "excluded: license absent and card/schema/split metadata conflict"
   },
   "phreshphish/phreshphish": {
-    "repository_revision": "eabec4b7a66324b79cc8a0ad856d1731dc26fe1a",
-    "license": "cc-by-4.0; anti-phishing research only per card",
-    "rows": 666315,
-    "parquet_size_bytes": 36576373578,
-    "columns": ["sha256", "url", "label", "target", "date", "lang", "lang_score", "html"],
-    "use_status": "candidate_not_downloaded; full dataset is about 36.6 GB and HTML rows are large"
+    "license": "CC BY 4.0, research-use-only per card",
+    "full_parquet_bytes": 36576373578,
+    "status": "not downloaded"
   }
 }

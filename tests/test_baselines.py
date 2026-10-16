@@ -1,4 +1,6 @@
 import unittest
+from unittest.mock import patch
+import socket
 
 from src.message_analysis.analyzer import analyze_message, extract_urls
 from src.url_analysis.analyzer import analyze_url, normalize_url
@@ -30,6 +32,19 @@ class URLAnalysisTests(unittest.TestCase):
         result = analyze_url("https://8.8.8.8/login")
         self.assertIn("ip_literal_host", result["indicators"])
 
+    def test_unicode_domain_is_normalized_to_punycode(self):
+        self.assertIn("xn--", normalize_url("https://раypal.com/login"))
+
+    def test_classifier_signal_is_cautious(self):
+        result = analyze_url("https://login-security-check.example/verify-account")
+        self.assertIn(result["model_signal"], {None,"phishing","legitimate","unavailable"})
+        self.assertIn("not the same as verified safe", result["recommendation"])
+
+    def test_passive_url_check_never_resolves_dns(self):
+        with patch.object(socket, "getaddrinfo", side_effect=AssertionError("DNS resolution attempted")):
+            result = analyze_url("https://example.com/login")
+        self.assertTrue(any("not opened" in item for item in result["limitations"]))
+
     def test_rejects_local_and_private_addresses(self):
         for url in ("http://127.0.0.1", "http://10.0.0.2", "http://[::1]/", "http://169.254.169.254/latest/meta-data/", "http://localhost", "http://admin.local"):
             with self.subTest(url=url), self.assertRaises(ValueError):
@@ -46,10 +61,10 @@ class URLAnalysisTests(unittest.TestCase):
 
 
 class IncidentSearchTests(unittest.TestCase):
-    def test_empty_corpus_is_explicit(self):
-        result = search_incidents("ransomware breach")
+    def test_search_uses_local_cisa_records(self):
+        result = search_incidents("zzxyqqqnotinkev")
         self.assertEqual(result["incidents"], [])
-        self.assertEqual(result["corpus_records"], 0)
+        self.assertGreater(result["corpus_records"], 0)
 
 
 if __name__ == "__main__":

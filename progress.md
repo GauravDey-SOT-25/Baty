@@ -48,3 +48,14 @@ Updated: 2026-10-17 (Asia/Kolkata)
 3. Do not train on the current Trendyol sample: spot review found technical errors and chain-of-thought style content. Curate or select an appropriately reviewed instruction set before adapter training.
 4. Resolve a clearly licensed, documented phishing/URL dataset and evaluate classifiers on genuinely held-out data; do not use the unresolved `cybersectony` candidate.
 5. Build retrieval from selective HN/security advisories, add evidence citation checks, complete UI/API and full evaluation, and document remaining limitations.
+
+## 2026-10-17 completion update
+
+- Downloaded the pinned MLX Qwen2.5-1.5B-Instruct 4-bit model after the user approved it; exact weight size 868,628,559 bytes. Local inference verified.
+- Built a loopback-only local app with message triage, passive URL analysis, local incident retrieval, and a learning assistant. Submitted URLs are never fetched or resolved.
+- Created a local retrieval corpus from CISA KEV/advisories and one pinned August 2026 Hacker News shard; each source retains provenance. HN remains anecdotal.
+- Built a documented URL classifier baseline on the licensed UCI PhiUSIIL dataset with a grouped train/validation/test split. Test accuracy 99.55%, macro F1 99.48%; these are single-dataset results and not production guarantees.
+- Ran an 8-iteration LoRA smoke training on 36 manually written defensive examples and tested resume from a saved adapter. The adapter did not materially improve held-out answers and remains disabled in the app.
+- Replaced generated summaries of retrieved records with deterministic source-field answers. Explicit CVE queries now retain only records naming that CVE, preventing unrelated lexical matches from being presented as its answer. Added deterministic defensive responses for prompt injection, unsafe URL opening, HTTPS trust assumptions, weak message signals, and evidence destruction.
+- Latest verification: `.venv/bin/python -m unittest discover -s tests -q` passed 29 tests. An actual local query for CVE-2026-102764 returned only the matching CISA KEV record and its source link.
+- Known limits: the base model can still produce unsafe or inaccurate free-form answers for other questions. The message heuristic is not a calibrated detector; URL scores are not a safe verdict; retrieval is lexical and snapshot-based. Do not rely on this app for autonomous response or production security decisions. Browser GUI automation could not be verified in this environment.

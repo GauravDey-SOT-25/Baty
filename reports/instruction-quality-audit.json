@@ -1,0 +1,38 @@
+{
+  "data/raw/trendyol-instructions-1000.jsonl": {
+    "file": "data/raw/trendyol-instructions-1000.jsonl",
+    "rows": 1000,
+    "missing_user": 0,
+    "missing_answer": 0,
+    "exact_prompt_answer_duplicates": 0,
+    "assistant_character_lengths": {
+      "min": 503,
+      "median": 2340,
+      "max": 5493
+    },
+    "review_flag_counts": {
+      "internal_reasoning": 30,
+      "placeholder_language": 3,
+      "generic_model_disclaimer": 0
+    },
+    "note": "Automated string flags are triage aids, not factuality or safety labels; human review remains necessary."
+  },
+  "data/raw/heimdall-sample-500.jsonl": {
+    "file": "data/raw/heimdall-sample-500.jsonl",
+    "rows": 500,
+    "missing_user": 0,
+    "missing_answer": 0,
+    "exact_prompt_answer_duplicates": 0,
+    "assistant_character_lengths": {
+      "min": 477,
+      "median": 2538,
+      "max": 3423
+    },
+    "review_flag_counts": {
+      "internal_reasoning": 0,
+      "placeholder_language": 2,
+      "generic_model_disclaimer": 0
+    },
+    "note": "Automated string flags are triage aids, not factuality or safety labels; human review remains necessary."
+  }
+}

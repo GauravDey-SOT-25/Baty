@@ -2,9 +2,12 @@ from __future__ import annotations
 
 import ipaddress
 import re
+from functools import lru_cache
+from pathlib import Path
 from urllib.parse import urlsplit, urlunsplit
 
 MAX_URL_LENGTH = 4096
+MODEL_PATH = Path(__file__).resolve().parents[2] / "models" / "url-classifier.joblib"
 
 
 def normalize_url(raw: str) -> str:
@@ -26,6 +29,11 @@ def normalize_url(raw: str) -> str:
     except ValueError as exc:
         raise ValueError("URL contains an invalid port") from exc
     host = parts.hostname.rstrip(".").lower()
+    try:
+        if ":" not in host:
+            host = host.encode("idna").decode("ascii")
+    except UnicodeError as exc:
+        raise ValueError("Hostname cannot be normalized safely") from exc
     if host == "localhost" or host.endswith(".localhost") or host.endswith(".local"):
         raise ValueError("Local hostnames are not accepted")
     try:
@@ -36,9 +44,13 @@ def normalize_url(raw: str) -> str:
         if "not accepted" in str(exc):
             raise
         # Non-IP hostnames continue to static syntax inspection.
-    if not re.fullmatch(r"[a-z0-9.-]+", host):
+    if ":" not in host and not re.fullmatch(r"[a-z0-9.-]+", host):
         raise ValueError("Hostname contains unsupported characters")
-    return urlunsplit((parts.scheme.lower(), parts.netloc.lower(), parts.path or "/", parts.query, ""))
+    try: port = parts.port
+    except ValueError: port = None
+    authority = f"[{host}]" if ":" in host else host
+    if port is not None: authority += f":{port}"
+    return urlunsplit((parts.scheme.lower(), authority, parts.path or "/", parts.query, ""))
 
 
 def analyze_url(raw: str) -> dict:
@@ -61,10 +73,34 @@ def analyze_url(raw: str) -> dict:
         indicators.append("long_hostname")
     if "@" in parts.path:
         indicators.append("at_sign_in_path")
-    risk = "moderate" if indicators else "unknown"
+    model_signal = None
+    model_source = None
+    if MODEL_PATH.is_file():
+        try:
+            bundle = _load_model(str(MODEL_PATH))
+            predicted = str(bundle["model"].predict(bundle["vectorizer"].transform([_classifier_text(normalized)]))[0])
+            model_signal = predicted
+            model_source = bundle.get("source", "local URL classifier")
+        except Exception:
+            model_signal = "unavailable"
+    risk = "moderate" if indicators or model_signal == "phishing" else "unknown"
+    if model_signal == "phishing":
+        indicators.append("local_classifier_phishing_pattern")
     return {"normalized_url": normalized, "host": host, "risk": risk,
-            "checks": ["URL syntax", "scheme", "hostname character pattern", "static URL indicators"],
+            "model_signal": model_signal, "model_source": model_source,
+            "checks": ["URL syntax", "scheme", "hostname character pattern", "static URL indicators"] + (["local character n-gram classifier"] if model_signal not in (None, "unavailable") else []),
             "indicators": indicators, "recommendation": "Treat as unverified. No threat detected by this local syntax check is not the same as verified safe.",
             "limitations": ["No DNS, registration, certificate, redirect, or reputation check was performed.",
+                            "The local classifier is uncalibrated and trained on a single dated dataset; its signal is not a verdict.",
                             "The URL was not opened, resolved, fetched, or sent to a third party."],
             "assessment_timestamp": None}
+
+
+@lru_cache(maxsize=1)
+def _load_model(path: str):
+    import joblib
+    return joblib.load(path)
+
+def _classifier_text(raw: str) -> str:
+    from src.url_analysis.text import classifier_text
+    return classifier_text(raw)

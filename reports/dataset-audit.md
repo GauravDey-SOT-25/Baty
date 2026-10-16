@@ -1,54 +1,59 @@
-# Dataset audit status
+# Dataset audit
 
-Date: 2026-10-17. This is repository-card discovery, not a sample-level audit. No dataset was downloaded.
+Updated: 2026-10-17. Dataset records are stored locally under ignored `data/raw/` and `data/processed/`; none are committed to Git.
 
-## Trendyol cybersecurity instruction dataset
+## Instruction-tuning candidates
 
-- Hugging Face card exists and declares Apache-2.0.
-- Card reports 53,202 English examples and `system`, `user`, `assistant` columns. The viewer showed 53.2k rows; detailed card claims include 90/5/5 splits, but the viewer displayed a single `train` split. This discrepancy must be resolved by inspecting repository files before relying on card split claims.
-- Card includes its own responsible-use/limitations sections. Samples, duplicates, malformed records, answer quality, and unsafe/inaccurate content have not been examined.
-- Candidate for a small audited subset only after sample inspection.
+### Trendyol cybersecurity instruction dataset
 
-## PhishingEmailDetectionv2.0
+- Apache-2.0; pinned revision `357544e7576607d88eaeac9b0adb07e9fd8bb2bb`.
+- A bounded, evenly spaced 1,000-row sample had no malformed or exact duplicate rows, but 998 unique prompts included two conflicting-answer prompt groups (four records excluded).
+- Automated flagging found internal-reasoning style phrases in 30/1,000 sampled assistant answers and placeholder language in 3. Six manually inspected examples included apparent factual errors, confused PtT/PtH terminology, and one answer written in internal reasoning style. Do not use this sample for fine-tuning.
+- The sample remains in ignored local raw/processed files for provenance. The fixed 796/100/100 split is not used for training.
 
-- Hugging Face card exists; it describes English `content` and `labels`, with labels `legitimate_email`, `phishing_email`, `legitimate_url`, `phishing_url`.
-- Card reports 200,000 records: 22,644 email and 177,356 URL samples.
-- A license declaration was not visible in the reviewed page output. Do not use for training or redistribution until license/terms are established.
-- URL and email rows must be separated. Card-reported balance, dates, duplicates, leakage, missing values, and actual label semantics are not independently confirmed.
+### Heimdall defensive cybersecurity dataset
 
-## Hacker News mirror
+- Apache-2.0; pinned revision `c731f81fa7c263fc94515564a81b29652a885d28`.
+- Retrieved 500 evenly spaced training rows through the Hugging Face datasets-server. Schema: system/user/assistant plus provenance; no missing fields or exact duplicate rows in this sample.
+- Twelve evenly spaced rows were spot checked. The content is long, specialized and answer plausibility could not be consistently verified from the examples alone. Do not use this sample for fine-tuning until broader expert review.
 
-- Card declares ODC-By 1.0; it also says original posts/comments retain the respective authors' rights.
-- Card reports a 12.4 GB archive. No full download will be performed. Future ingestion should use bounded streaming/selective retrieval and retain item IDs, parent IDs, time, score, URL, and provenance where available.
-- Community anecdotes are not authoritative and need corroboration.
+### Project-authored training smoke set
 
-## Pipeline
+- A manually authored set of 36 brief defensive answers was split by topic into 24 train, 6 validation and 6 held-out test examples. It was used only to verify MLX-LM training, adapter saving/loading and recovery. It is not a cybersecurity knowledge benchmark and is far smaller than a production training corpus.
 
-- [`scripts/download_datasets.py`](../scripts/download_datasets.py) streams a bounded sample and requires an explicit license-review acknowledgment.
-- [`scripts/prepare_data.py`](../scripts/prepare_data.py) normalizes instruction records, removes exact duplicates, and writes deterministic train/valid/test splits for at least ten records.
-- [`scripts/audit_data.py`](../scripts/audit_data.py) reports schema, missing cells, labels, and exact duplicate count for local JSONL/CSV.
-- Bounded sample files and statistics were generated later (see findings below). Near-duplicate, time-based, and source-based leakage checks remain to be implemented before any serious evaluation.
+## URL classifier dataset
 
-## Sources
+### UCI PhiUSIIL Phishing URL (Website)
 
-- [Trendyol dataset card](https://huggingface.co/datasets/Trendyol/Trendyol-Cybersecurity-Instruction-Tuning-Dataset)
-- [PhishingEmailDetectionv2.0 card](https://huggingface.co/datasets/cybersectony/PhishingEmailDetectionv2.0)
-- [Hacker News dataset card](https://huggingface.co/datasets/open-index/hacker-news)
+- [UCI dataset 967](https://archive.ics.uci.edu/dataset/967/phiusiil+phishing+url+dataset), CC BY 4.0; last updated 2024-05-12. Dataset reports 235,795 URL/website rows and labels `1=legitimate`, `0=phishing`.
+- Downloaded the official 56,854,345-byte CSV. Only the raw URL and label were used. Webpage-derived features were not used.
+- URL query parameter values are replaced with `REDACTED`; fragments are removed. After this normalization and exact deduplication, 234,457 unique records remained; no malformed/missing rows or duplicate-label conflicts were observed.
+- Splits: 188,138 train / 26,281 validation / 20,038 test. Group split by an approximate registrable-domain function and no group overlap. The suffix list covers common multi-label suffixes; it is not a complete Public Suffix List, so some domain leakage remains possible for unusual suffixes.
+- One internal held-out result is recorded in `url-baseline-results.json`. It is a single-source, dated dataset result and should not be interpreted as expected real-world performance. The data distribution may make this task easier than live, out-of-distribution URLs.
 
-## Bounded sample findings (2026-10-17)
+## Retrieval sources
 
-- Retrieved 1,000 evenly spaced rows from Trendyol revision `357544e7576607d88eaeac9b0adb07e9fd8bb2bb` through the dataset-server API, preserving row indices and revision metadata. This avoided downloading its single 195 MB source file.
-- In the sample, all required fields were populated, with no malformed or exact duplicate full rows. There were 998 unique user prompts; two prompt groups had conflicting assistant answers (four records), so all four were excluded from the prepared split.
-- Many fields contained literal `\\n` sequences where formatted line breaks appear intended. The untouched raw file is preserved. The processed copy converts only these sequences to line breaks and records the count for each record.
-- A keyword scan found occurrences of terms such as `exploit`, `evasion`, `credential theft`, and `ransomware`. These are review flags, not unsafe labels. The corpus itself uses defensive framing, but the technical accuracy of its answers has not been verified.
-- Prepared split counts after duplicate-prompt conflict exclusion: 796 train, 100 validation, 100 test. The test split is held out; it has not been used for training or evaluation.
-- For the phishing dataset, the repository API reports `content`/`label` and 120k/20k/60k train/validation/test rows, while the dataset card claims `content`/`labels` and 22,644 email plus 177,356 URL rows. The repository has no explicit license field. Three viewer samples were URLs with integer labels. It is blocked pending license resolution and schema/distribution audit.
+### CISA Known Exploited Vulnerabilities and advisories
 
-## Alternatives discovered
+- Downloaded the CISA KEV JSON snapshot released 2026-10-16 (1,748 records) and the CISA cybersecurity advisories RSS snapshot (30 entries).
+- Records preserve CVE IDs, dates, actions, titles, publisher links and feed release timestamps. The feed summaries are normalized as text; the app does not fetch links from records.
+- Source pages: [CISA KEV catalog](https://www.cisa.gov/known-exploited-vulnerabilities-catalog) and [CISA cybersecurity advisories](https://www.cisa.gov/cybersecurity-advisories).
 
-- `phreshphish/phreshphish` declares CC BY 4.0 and an anti-phishing-research-only use condition. The HF dataset-server reports 666,315 rows and 36,576,373,578 Parquet bytes, with eight fields including raw HTML. One sampled HTML cell was over 500 KB. It is not suitable to download wholesale on this machine; selective URL/label extraction requires a method that does not transfer full HTML.
-- `alperozyyurt/phishurl-dataset` is tagged `other` with unresolved source licensing; its card explicitly says not to assume an open license.
-- `flwrlabs/fed-phishing-urls` declares Apache-2.0 and reports URL/label/client_id schema, but it derives from another source with no license and from the ealvaradob dataset. It is not selected until source redistribution rights are resolved.
-- `ealvaradob/phishing-dataset` declares Apache-2.0; its URL-only JSON is 73,157,496 bytes and its card documents multiple upstream Kaggle/Mendeley sources. It remains a candidate with source-rights and temporal quality caveats; no content has been downloaded.
+### Hacker News community records
 
-Machine-readable counts and caveats are in [`dataset-statistics.json`](dataset-statistics.json) and [`trendyol-sample-audit.json`](trendyol-sample-audit.json).
+- The dataset card declares ODC-By 1.0 and states original authors retain rights in submitted content. The full archive is reported as about 12.4 GB; it was not downloaded.
+- The HF datasets-server currently returns a `CreateCommitError` for both `default` and `today` rows. To make progress without the full archive, one pinned monthly Parquet shard was downloaded: August 2026, 103,240,376 bytes, with 265,364 rows.
+- A lexical filter selected 2,581 records (235 stories, 2,346 comments). The pipeline retains author, item ID, timestamp, score, parent/child IDs and HN item URL. The outbound story URL is recorded but never fetched.
+- These are community discussions and are marked as unverified. Local retrieval returns short snippets with attribution; no redistribution is intended.
+
+## Excluded candidates
+
+- `cybersectony/PhishingEmailDetectionv2.0`: no license declaration and card/schema/split metadata conflict. Not downloaded.
+- PhreshPhish: CC BY 4.0 with anti-phishing-research-only statement, but the Parquet data is 36.6 GB and contains large HTML. Not downloaded.
+- Other mirrors with unverified upstream rights were not selected.
+
+## Reproducibility
+
+See `scripts/download_phiusiil.py`, `scripts/prepare_url_dataset.py`, `scripts/download_kev.py`, `scripts/download_advisories.py`, `scripts/download_hn_month.py`, `scripts/prepare_kev.py`, `scripts/prepare_advisories.py`, `scripts/prepare_hn.py`, and `scripts/build_retrieval.py`. All externally sourced data remains ignored by Git.
+
+Machine-readable counts and hashes are in `dataset-statistics.json`.

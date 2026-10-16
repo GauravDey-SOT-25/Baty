@@ -9,7 +9,7 @@ def load(path):
     return [json.loads(line) for line in path.read_text(encoding="utf-8").splitlines() if line.strip()]
 
 
-def evaluate(data_dir: Path):
+def evaluate(data_dir: Path, model_output: Path | None = None):
     from sklearn.feature_extraction.text import TfidfVectorizer
     from sklearn.linear_model import LogisticRegression
     from sklearn.metrics import classification_report, confusion_matrix
@@ -25,6 +25,10 @@ def evaluate(data_dir: Path):
     model = LogisticRegression(max_iter=1000, class_weight="balanced")
     model.fit(xtr, y_train)
     predictions = model.predict(vectorizer.transform(x_test))
+    if model_output is not None:
+        import joblib
+        model_output.parent.mkdir(parents=True, exist_ok=True)
+        joblib.dump({"vectorizer": vectorizer, "model": model, "source": "UCI PhiUSIIL", "training_rows": len(train)}, model_output)
     labels = sorted(set(y_train) | set(y_test))
     return {"train_rows": len(train), "test_rows": len(test), "features": xtr.shape[1],
             "labels": labels, "classification_report": classification_report(y_test, predictions, labels=labels, output_dict=True, zero_division=0),
@@ -34,9 +38,10 @@ def evaluate(data_dir: Path):
 def main():
     p = argparse.ArgumentParser()
     p.add_argument("data_dir", type=Path, nargs="?", default=Path("data/processed/phishing"))
-    p.add_argument("--output", type=Path, default=Path("reports/baseline-results.json"))
+    p.add_argument("--output", type=Path, default=Path("reports/url-baseline-results.json"))
+    p.add_argument("--save-model", type=Path, default=Path("models/url-classifier.joblib"))
     a = p.parse_args()
-    result = evaluate(a.data_dir)
+    result = evaluate(a.data_dir, a.save_model)
     a.output.parent.mkdir(parents=True, exist_ok=True)
     a.output.write_text(json.dumps(result, indent=2) + "\n", encoding="utf-8")
     print(json.dumps(result, indent=2))
