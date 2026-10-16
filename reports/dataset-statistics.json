@@ -1,0 +1,56 @@
+{
+  "inspection_date": "2026-10-17",
+  "status": "bounded_sample_observed_for_instruction_data; other_candidates_card_only",
+  "Trendyol/Trendyol-Cybersecurity-Instruction-Tuning-Dataset": {
+    "repository_revision": "357544e7576607d88eaeac9b0adb07e9fd8bb2bb",
+    "license": "apache-2.0",
+    "split": "train",
+    "repository_reported_rows": 53201,
+    "sample_rows": 1000,
+    "sample_method": "10 evenly spaced blocks via Hugging Face dataset-server rows API",
+    "sample_row_index_range": [0, 53200],
+    "observed_columns": ["system", "user", "assistant", "_provenance"],
+    "missing_values": 0,
+    "exact_duplicate_full_rows": 0,
+    "unique_user_prompts": 998,
+    "conflicting_duplicate_prompt_groups": 2,
+    "assistant_answers_unique": 1000,
+    "source_row_ids_preserved": true,
+    "user_character_lengths": {"min": 52, "median": 120, "max": 419},
+    "assistant_character_lengths": {"min": 503, "median": 2339, "max": 5493},
+    "literal_backslash_n_sequences_in_user_and_assistant_fields": 5647,
+    "normalization": "raw source retained; literal \\n sequences converted to line breaks and counted on prepared records",
+    "discarded_conflicting_prompt_records": 4,
+    "prepared_split_counts": {"train": 796, "valid": 100, "test": 100},
+    "term_scan_hits_across_user_and_assistant_records": {
+      "evasion": 106,
+      "exploit": 508,
+      "credential theft": 9,
+      "ransomware": 33
+    },
+    "quality_note": "Keyword scan is a review flag, not a safety verdict. Factual accuracy and response quality require content review; no training has run."
+  },
+  "cybersectony/PhishingEmailDetectionv2.0": {
+    "repository_revision": "afba38f4a7ffbe89259ab68ae7c6426f944496cc",
+    "license": null,
+    "repo_metadata_features": [{"name": "content", "dtype": "string"}, {"name": "label", "dtype": "int64"}],
+    "repo_metadata_splits": {"train": 120000, "validation": 20000, "test": 60000},
+    "dataset_card_claims": {"rows": 200000, "email_rows": 22644, "url_rows": 177356, "columns": ["content", "labels"]},
+    "sample_observed": 3,
+    "sample_note": "Viewer examples included URLs and integer labels; email-vs-URL ordering/content and class balance need a stratified sample audit.",
+    "use_status": "do_not_use_until_license_and_card_metadata_conflicts_are_resolved"
+  },
+  "open-index/hacker-news": {
+    "license_reported_by_card": "ODC-By 1.0; original authors retain rights in content",
+    "size_reported_by_card": "12.4 GB",
+    "observed_local_rows": 0
+  },
+  "phreshphish/phreshphish": {
+    "repository_revision": "eabec4b7a66324b79cc8a0ad856d1731dc26fe1a",
+    "license": "cc-by-4.0; anti-phishing research only per card",
+    "rows": 666315,
+    "parquet_size_bytes": 36576373578,
+    "columns": ["sha256", "url", "label", "target", "date", "lang", "lang_score", "html"],
+    "use_status": "candidate_not_downloaded; full dataset is about 36.6 GB and HTML rows are large"
+  }
+}

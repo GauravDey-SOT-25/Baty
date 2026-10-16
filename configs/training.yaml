@@ -1,0 +1,14 @@
+# Provisional only. Do not run until runtime, dataset, and memory pilot checks pass.
+model: mlx-community/Qwen2.5-1.5B-Instruct-4bit
+train: true
+fine_tune_type: lora
+batch_size: 1
+iters: 20
+max_seq_length: 512
+num_layers: 4
+steps_per_report: 1
+steps_per_eval: 5
+save_every: 5
+grad_checkpoint: true
+mask_prompt: true
+seed: 17

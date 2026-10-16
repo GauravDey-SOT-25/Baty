@@ -1,0 +1,16 @@
+{
+  "dataset_id": "Trendyol/Trendyol-Cybersecurity-Instruction-Tuning-Dataset",
+  "revision": "357544e7576607d88eaeac9b0adb07e9fd8bb2bb",
+  "rows_observed": 1000,
+  "rows_missing_required_fields": 0,
+  "malformed_records": 0,
+  "exact_duplicate_records": 0,
+  "unique_user_prompts": 998,
+  "prompt_groups_with_conflicting_answers": 2,
+  "discarded_records_for_conflicts": 4,
+  "normalization_applied_in_processed_copy": "literal backslash-n sequences changed to line breaks; count recorded per example; raw JSONL preserved unchanged",
+  "prepared_split_counts": {"train": 796, "valid": 100, "test": 100},
+  "content_review": "automated flag counts only; no human factual accuracy review completed",
+  "keyword_review_flags": {"evasion": 106, "exploit": 508, "credential theft": 9, "ransomware": 33},
+  "note": "Keyword hits are not unsafe-example labels and are not used to discard examples. Training remains gated on model-download approval and a tiny MLX forward/backward pilot."
+}
