@@ -7,8 +7,8 @@ Updated: 2026-10-17 (Asia/Kolkata)
 - Phase 1 inspection is complete; see `reports/environment.md`.
 - A local-only web app and deterministic data tools are implemented.
 - Project-local MLX-LM/Datasets/scikit-learn dependencies are installed and the LoRA CLI help has been verified.
-- A 1,000-row Apache-2.0 Trendyol sample was retrieved with row provenance, audited, and split. No model weights or training checkpoints have been downloaded.
-- Model download is the next gated action: pinned model weights are 868,628,559 bytes (about 0.81 GiB). The user's brief requests approval before large downloads, so no download was started.
+- A 1,000-row Apache-2.0 Trendyol sample was retrieved with row provenance, audited, and split. The approved pinned 4-bit model is now downloaded locally and one generation was verified. No training checkpoints exist.
+- The model download is complete after user approval. Training remains blocked on content review: spot checks found factual errors and chain-of-thought style output in the Trendyol sample.
 
 ## Completed
 
@@ -30,20 +30,21 @@ Updated: 2026-10-17 (Asia/Kolkata)
 ## Model and training state
 
 - Candidate base: `mlx-community/Qwen2.5-1.5B-Instruct-4bit`, repo revision `8b403126fc14f14cfc99bb4cfa72ecbc129ea677`, weight file 868,628,559 bytes.
-- Runtime verified by package import and CLI help only. Model load, inference, forward/backward, adapter save/load, and recovery are not yet verified.
+- MLX Metal GPU is available. Local model load and one generation through the app loader succeeded. Forward/backward, adapter save/load, and recovery remain unverified.
 - Training config: `configs/training.yaml`, batch 1, 512 token cap, four LoRA layers, short 20-iteration pilot, periodic adapter saves.
-- No training has run; no adapters or checkpoints exist; no training process is active.
+- No training has run; no adapters or checkpoints exist; no training process is active. The data sample is not approved for training after spot review found factuality and chain-of-thought quality issues.
 
 ## Tests and commands
 
-- `.venv/bin/python -m unittest discover -s tests -v`: 14 tests passed on 2026-10-17: `.venv/bin/python -m unittest discover -s tests -v`.
+- `.venv/bin/python -m unittest discover -s tests -v`: 14 tests passed on 2026-10-17.
 - App smoke check: `GET /api/health` returned 200; message analysis returned evidence; localhost URL was rejected. App runs with `python -m src.api.server` on `127.0.0.1:8765`.
 - Synthetic evaluator smoke check: 24 generated training and 6 generated test examples passed through TF-IDF/logistic regression. These are code-path checks, not model-quality metrics.
 - `mlx_lm.lora --help` succeeded. The installed CLI was not used for training.
 
 ## Next steps
 
-1. User approval is required before downloading the pinned 0.81 GiB model; then run local model load/generation, memory preflight, and a tiny forward/backward/checkpoint restoration pilot.
-2. Perform content review and filtering for the prepared Trendyol subset before using it for any adapter run.
-3. Resolve a clearly licensed, documented phishing/URL dataset and evaluate classifiers on genuinely held-out data; do not use the unresolved `cybersectony` candidate.
-4. Build retrieval from selective HN/security advisories, add evidence citation checks, complete UI/API and full evaluation, and document remaining limitations.
+1. Curate or select an appropriately reviewed instruction set before adapter training; the current sample is unsuitable based on spot review.
+2. Run a tiny forward/backward/adapter save-load pilot on reviewed data, then verify checkpoint recovery.
+3. Do not train on the current Trendyol sample: spot review found technical errors and chain-of-thought style content. Curate or select an appropriately reviewed instruction set before adapter training.
+4. Resolve a clearly licensed, documented phishing/URL dataset and evaluate classifiers on genuinely held-out data; do not use the unresolved `cybersectony` candidate.
+5. Build retrieval from selective HN/security advisories, add evidence citation checks, complete UI/API and full evaluation, and document remaining limitations.

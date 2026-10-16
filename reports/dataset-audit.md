@@ -27,7 +27,7 @@ Date: 2026-10-17. This is repository-card discovery, not a sample-level audit. N
 - [`scripts/download_datasets.py`](../scripts/download_datasets.py) streams a bounded sample and requires an explicit license-review acknowledgment.
 - [`scripts/prepare_data.py`](../scripts/prepare_data.py) normalizes instruction records, removes exact duplicates, and writes deterministic train/valid/test splits for at least ten records.
 - [`scripts/audit_data.py`](../scripts/audit_data.py) reports schema, missing cells, labels, and exact duplicate count for local JSONL/CSV.
-- No data files or statistical results have been generated yet. Near-duplicate, time-based, and source-based leakage checks remain to be implemented before any serious evaluation.
+- Bounded sample files and statistics were generated later (see findings below). Near-duplicate, time-based, and source-based leakage checks remain to be implemented before any serious evaluation.
 
 ## Sources
 

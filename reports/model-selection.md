@@ -37,3 +37,11 @@ Installed MLX-LM 0.32.2 `lora --help` succeeds and exposes `--batch-size`, `--ma
 ## Updated runtime result
 
 Local install now succeeds with MLX 0.32.4 / MLX-LM 0.32.2 in Python 3.15. The CLI help runs and confirms the intended small-run controls. Hugging Face API metadata identifies the 4-bit Qwen2.5 MLX weight file as 868,628,559 bytes at revision `8b403126fc14f14cfc99bb4cfa72ecbc129ea677`. It has not been fetched or loaded, so actual inference and training remain unverified.
+
+
+## Download and local inference verification (2026-10-17)
+
+- User approved the previously described approximately 0.81 GiB model download. Retrieved the pinned snapshot `mlx-community/Qwen2.5-1.5B-Instruct-4bit@8b403126fc14f14cfc99bb4cfa72ecbc129ea677` into the ignored local `models/` directory.
+- `model.safetensors` is exactly 868,628,559 bytes and matches the snapshot index. The directory is approximately 839 MiB on disk.
+- MLX reports the GPU/Metal device available on Apple M5. `src.assistant.local_model.answer_locally()` successfully loaded the local model and produced a response to a benign attachment-safety question. The app loader uses only the local path; it did not fetch anything.
+- No adapter training has run. A spot review of six training examples found apparent technical errors, inconsistent terminology (including PtT/PtH confusion), and a response written in internal chain-of-thought style (“the user wants to know…”). These findings are enough to reject this sample for adapter training pending a broader factuality/safety review and curation. Keyword counts do not establish dataset quality.
