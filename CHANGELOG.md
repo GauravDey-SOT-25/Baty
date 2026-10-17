@@ -1,8 +1,15 @@
 # Changelog
 
+## 2026-10-17 — Vercel hosted-preview preparation
+
+- Added a Vercel static build allowlist for the Baty landing page, Trust Ledger page, and hosted assistant UI; the local model, datasets, adapters, `.env`, research backend, and legacy demo backend are not included.
+- Added a same-origin Node function that forwards only Google-authenticated questions to the fixed protected Modal inference endpoint, keeps Modal credentials in server environment variables, caps input, and avoids storing questions or answers.
+- Added a separate hosted assistant page and a clear unavailable page for the local Parallel research workspace. Hosted landing-page controls that require local APIs now show as unavailable instead of issuing failed requests.
+- Added Vercel setup notes. Deployment remains pending Vercel account authentication, Vercel environment variables, and Firebase Authorized Domains configuration; no public deployment was created.
+
 ## 2026-10-17 — Comfest main homepage and local AI integration
 
-- Made the extracted `Comfest - 26/index.html` the loopback server's `/` homepage and kept the previous Cyber Desk app at `/workspace`.
+- Moved the Comfest homepage to repository-root `index.html` for GitHub Pages and loopback `/` and kept the previous Cyber Desk app at `/workspace`.
 - Embedded the existing local URL analyzer, message analyzer, Qwen assistant, local record search, OCR, and user-maintained trust registry in the Comfest homepage. Linked to the existing provider-backed research workspace separately.
 - Replaced stale blockchain, live-scan, and “coming soon” claims with descriptions of the actual connected tools and their limits. Removed external hero video/font requests so the site styling and hero use local assets and system fonts.
 - Added API route/asset regression coverage. Verification: 113 tests ran (110 passed, 3 optional live tests skipped), Python compilation and `git diff --check` passed; `/`, `/workspace`, Comfest CSS/JS, and the hero asset returned HTTP 200. The homepage parsed with 60 unique IDs and no missing local image assets. No live provider request, model weight/adapter/data change, credential change, or commit was made.

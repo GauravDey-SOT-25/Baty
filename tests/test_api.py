@@ -44,9 +44,9 @@ class APITests(unittest.TestCase):
             page=response.read().decode()
             self.assertIn("Baty | Local Cybersecurity AI", page)
             self.assertIn('id="ai-panel-ask"', page)
-            self.assertIn('src="ai-workspace.js"', page)
+            self.assertIn('src="./Comfest%20-%2026/ai-workspace.js"', page)
             self.assertIn('data-open-tool="url"', page)
-            self.assertIn('href="./blockchain.html">Trust Ledger</a>', page)
+            self.assertIn('href="./Comfest%20-%2026/blockchain.html">Trust Ledger</a>', page)
             self.assertIn('aria-label="Safer choices"', page)
             self.assertIn('<h4>Sponsored by</h4>', page)
             self.assertIn('Hack the Club', page)
@@ -78,12 +78,21 @@ class APITests(unittest.TestCase):
             ("/ai-workspace.css", "text/css", ".ai-workspace-section"),
             ("/ai-workspace.js", "application/javascript", "/api/assistant"),
             ("/assets/hero.webp", "image/webp", ""),
+            ("/Comfest%20-%2026/styles.css", "text/css", "--paper:"),
+            ("/Comfest%20-%2026/ai-workspace.js", "application/javascript", "/api/assistant"),
+            ("/Comfest%20-%2026/blockchain.html", "text/html", "Trust Ledger"),
+            ("/Comfest%20-%2026/assets/hero.webp", "image/webp", ""),
+            ("/frontend/trust.js", "application/javascript", "trust"),
         ):
             with urlopen(f"http://127.0.0.1:{self.port}{path}", timeout=5) as response:
                 self.assertEqual(response.status, 200)
                 self.assertIn(content_type, response.headers["Content-Type"])
                 if marker:
-                    self.assertIn(marker, response.read().decode())
+                    content = response.read()
+                    if content_type.startswith("image/"):
+                        self.assertTrue(content)
+                    else:
+                        self.assertIn(marker.lower(), content.decode().lower())
         with urlopen(f"http://127.0.0.1:{self.port}/firebase-app.js", timeout=5) as response:
             self.assertEqual(response.status, 200)
             self.assertIn("text/javascript", response.headers["Content-Type"])

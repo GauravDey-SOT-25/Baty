@@ -2,7 +2,7 @@
 
 ## Comfest as the application homepage
 
-- Serve the extracted `Comfest - 26/index.html` at `/` because the user identified that folder's index as the main homepage. Keep the previous full Cyber Desk application at `/workspace` so its Parallel research and Firebase account features remain reachable.
+- Serve the Comfest homepage as the repository-root `index.html` so GitHub Pages can load it at the site root. Keep its styles, scripts, images, and secondary pages in `Comfest - 26/`. Keep the previous full Cyber Desk application at `/workspace` so its Parallel research and Firebase account features remain reachable.
 - Connect the Comfest page to existing local API endpoints for passive URL analysis, message analysis, local-model Q&A, local retrieval, OCR, and the user-maintained trust registry. Keep external TLS/reputation requests individually opt-in and web research on its separately disclosed workspace.
 - Keep the Comfest static route restricted to the known app resources and files beneath its `assets/` directory; do not expose the archive's backend sources or embedded credentials through a generic static-file route.
 - Remove remote marketing fonts and video references from the Comfest homepage to keep its first render local and compatible with the loopback server's content-security policy.
@@ -157,3 +157,10 @@
 
 - Keep `PARALLEL_API_KEY` in the Git-ignored, owner-only project `.env` file. Do not expose it in frontend code, tracked configuration, application responses, or logs.
 - After changing the credential, restart the local server because the research provider is cached at startup. Verify configuration through the local status endpoint; do not make a live provider request just to validate that the key is present.
+
+## Vercel hosted preview boundary
+
+- Deploy the Comfest static pages and a single server-side Node function for Firebase-authenticated Modal Q&A. Do not deploy the loopback-only Python server, MLX weights/adapters, local corpus, classifiers, OCR runtime, local trust storage, or Parallel provider key as if they were hosted services.
+- Keep Modal Proxy Token values in Vercel's encrypted server environment and forward only the submitted question and Firebase bearer token to the fixed Modal endpoint. Do not persist hosted questions or answers.
+- Mark unsupported local tools unavailable in the hosted preview. The full research workspace remains local because its provider credential and task persistence are server-side/local-only.
+- Keep deployment configured as a root-level static site plus `/api/modal/assistant`, using a build allowlist so model files, datasets, local secrets, legacy demo backend, and unrelated service code are excluded.

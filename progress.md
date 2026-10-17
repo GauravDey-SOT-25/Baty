@@ -1,5 +1,12 @@
 # Project progress
 
+## 2026-10-17 — Root homepage for GitHub Pages
+
+- Moved the edited Comfest `index.html` to the repository root so GitHub Pages can discover it as the site entry point. Updated its styles, scripts, images, Trust Ledger, assistant, and shared trust-client URLs to resolve from the root page.
+- Updated the local loopback server with allowlisted, traversal-safe routes for encoded `Comfest - 26/` asset paths and pointed `/` at the root homepage. Updated the Vercel build to use the root source page and rewrite its static asset paths for the flattened deployment output.
+- Updated the Trust Ledger and assistant page links to return to the root homepage; removed stale folder-specific homepage references from project documentation.
+- Verification: API route tests passed (17/17); Python compilation, Node syntax check for the Vercel build script, local HTML/CSS reference audits, simulated Vercel path rewriting, and `git diff --check` passed. No commit or push was made; prior uncommitted Vercel work remains intact.
+
 ## 2026-10-17 — Cyber Desk UI refresh
 
 - Reworked the local web UI into a responsive application shell with persistent tool navigation, runtime/account status, clearer typography, accessible focus states, mobile navigation, and consistent input/result styling.
@@ -52,7 +59,7 @@ Updated: 2026-10-17 (Asia/Kolkata)
 
 ## 2026-10-17 — Comfest main site integration
 
-- The extracted `../Comfest - 26/index.html` now serves as the local app homepage. The previous Cyber Desk UI and its full Parallel/Firebase workflows remain available at `/workspace`.
+- Moved the Comfest homepage to repository-root `index.html`; its static resources remain under `Comfest - 26/` and the local server serves it at `/`. The previous Cyber Desk UI and its full Parallel/Firebase workflows remain available at `/workspace`.
 - Embedded the existing local URL check, message analysis, Qwen Q&A, local record search, OCR, and private trust-note tools directly into the Comfest homepage. Provider-backed web research remains explicitly user-triggered in the secondary workspace.
 - Removed external font/video dependencies from the Comfest hero; updated misleading prototype marketing copy and added route/static asset checks. No model/training artifacts or credentials changed and no live providers were contacted.
 - Verification: `.venv/bin/python -m unittest discover -s tests -q` ran 113 tests (110 passed, 3 optional live tests skipped); `.venv/bin/python -m compileall -q src tests scripts` and `git diff --check` passed. Live checks returned HTTP 200 for `/`, `/workspace`, the main CSS/JS, and the local hero image; health reported local model/runtime available. An HTML audit found 60 unique IDs and no missing referenced images. No live provider request, model/data/credential change, or commit was made.
@@ -194,6 +201,14 @@ Updated: 2026-10-17 (Asia/Kolkata)
 - Observation: first health/startup took 37.7 seconds; the canary used 30.6 seconds of CPU inference and hit its 96-token cap before completing. It returned HTTP 200 and the unverified-answer marker.
 - First image build tried to pull CUDA dependencies despite CPU configuration; aborted before saving, then switched to official CPU-only PyTorch wheel. Successful image used no CUDA packages.
 - Final verification: 86 tests ran; 83 passed and 3 optional live tests skipped. Python compileall, shell syntax, `git diff --check`, and `pip check` passed.
+
+## 2026-10-17 — Vercel hosted-preview preparation
+
+- Prepared a Vercel root-level static build that allowlists only Comfest/Baty pages and needed public assets, plus a same-origin Node function that proxies authenticated question-only requests to the fixed Modal endpoint. Local model weights, adapters, datasets, `.env`, the local Python backend, and the legacy Parallel demo backend are excluded.
+- Added a Google sign-in hosted assistant page with clear Modal disclosure and no Firebase history writes. The landing page disables features whose APIs require the laptop service, and the `/workspace` route explains that live Parallel research remains local-only.
+- Local environment inspection: project clean before changes at `09a7abe`; no Vercel CLI, `~/.vercel` auth directory, or `VERCEL_TOKEN` was available. `.env` has local Modal proxy entries but they were not printed, copied, or exposed. The running `127.0.0.1:8765` process predates the new page route and returned HTTP errors for `/assistant`; restart the app to load the updated local handler.
+- Build verification: workspace Node.js v24.19.0 ran `scripts/build-vercel.mjs`, preparing `dist/vercel`; Node syntax checks passed for the function, browser modules, and build script; `python3 -m json.tool vercel.json`, `python3 -m compileall -q src/api/server.py`, and `git diff --check` passed. No project tests or live Modal/Firebase/Vercel requests were run.
+- Deployment is not completed. Vercel account authorization, encrypted `MODAL_PROXY_KEY` / `MODAL_PROXY_SECRET` values, and the deployed Vercel hostname in Firebase Authorized Domains remain prerequisites.
 
 
 ## 2026-10-17 — Firebase sign-in and optional assistant backup

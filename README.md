@@ -33,7 +33,7 @@ This uses project-local dependencies. No system-wide software is required. Detai
 
 Open `http://127.0.0.1:8765`.
 
-The main homepage at `/` is the Comfest site in the included `Comfest - 26/` folder, with local URL/message analysis, Q&A, OCR, records search, and private trust notes embedded in the page. The previous Cyber Desk workspace remains at `/workspace`; use it for the complete Parallel research and Firebase account workflows.
+The main homepage at `/` is the repository-root `index.html`, and loads its Comfest styles, scripts, and images from `Comfest - 26/`. It includes local URL/message analysis, Q&A, OCR, records search, and private trust notes embedded in the page. The previous Cyber Desk workspace remains at `/workspace`; use it for the complete Parallel research and Firebase account workflows.
 
 ## Web research and intelligence
 
@@ -80,6 +80,10 @@ The app will not download weights automatically. The Trendyol adapter is an isol
 ### Modal cloud inference preview
 
 The Modal CPU inference preview in [deploy/modal_app.py](deploy/modal_app.py) accepts only verified Google sign-ins from Firebase Authentication and remains protected by Modal Proxy Token at the edge. The local server keeps that Modal token out of browser code and relays Firebase ID tokens to Modal for verification. In the Learning assistant panel, choose **Use the Modal cloud model** to send a question; this is separate from the optional Firebase Q&A backup checkbox. Questions leave the laptop and are processed by Modal. The service does not package the local MLX weights, adapter, corpus, training data, or `.env`. It is not the full application and is not production-ready for security decisions. Setup, billing, limitations, and cleanup are documented in [deploy/README-modal.md](deploy/README-modal.md).
+
+### Vercel hosted preview
+
+The repository includes a limited Vercel deployment configuration in [vercel.json](vercel.json) and setup notes in [deploy/README-vercel.md](deploy/README-vercel.md). It serves the public Baty/Comfest pages and a separately authenticated Modal assistant. It does not host local MLX inference, OCR, local records or trust notes, classifiers, or Parallel research. Deployment still requires a Vercel project, server-side Modal environment variables, and the Vercel hostname in Firebase Authentication's Authorized domains; no Vercel deployment has been verified from this workspace.
 
 Open `http://127.0.0.1:8765` and choose **Ask local AI**, or open `http://127.0.0.1:8765/workspace` and choose **Learning assistant**. General questions go to local MLX inference by default; select **Include relevant local security records** to add local retrieval. Explicit CVE and current/product-specific questions still use local evidence or abstain. Generated answers remain unverified and require human review; this prototype is not ready for production security decisions.
 

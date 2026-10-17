@@ -1,5 +1,10 @@
 .ai-workspace-section{--line:rgba(25,25,22,.13);--muted:#77736b;padding:116px clamp(20px,6vw,88px) 128px;background:#efeee9;color:#1d201c;scroll-margin-top:30px}
 .ai-workspace-inner{max-width:1240px;margin:0 auto}
+.hosted-mode-notice{display:flex;align-items:center;gap:10px 18px;flex-wrap:wrap;margin:0 0 20px;padding:16px 18px;border:1px solid #d9ddd6;border-radius:10px;background:#f4f4ee;color:#353c35;font-size:12px;line-height:1.5}
+.hosted-mode-notice strong{color:#203b33}
+.hosted-mode-notice span{flex:1 1 300px;color:#70746d}
+.hosted-mode-notice a,.hosted-assistant-link a{color:#294c3b;font-weight:700;text-decoration:underline;text-underline-offset:3px}
+.hosted-assistant-link{display:grid;gap:5px;margin:14px 0 0;color:#72766e;font-size:11px;line-height:1.5}
 .ai-workspace-heading{max-width:740px;margin:0 auto 44px;text-align:center}
 .ai-workspace-heading .micro-label{display:block;margin-bottom:20px}
 .ai-workspace-heading h2{margin:0;color:#1b211d;font:400 clamp(42px,6vw,74px)/.98 var(--serif);letter-spacing:-.05em}

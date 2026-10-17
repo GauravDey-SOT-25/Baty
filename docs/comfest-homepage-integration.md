@@ -4,7 +4,7 @@ Updated 2026-10-17.
 
 ## Entry points
 
-- `http://127.0.0.1:8765/` serves the extracted `../Comfest - 26/index.html` as the main site.
+- `http://127.0.0.1:8765/` serves the repository-root `index.html` as the main site; Comfest styles, scripts, images, and secondary pages remain in `Comfest - 26/`.
 - `http://127.0.0.1:8765/workspace` serves the previous Cyber Desk UI, retaining the full Parallel research and Firebase account workflows.
 - Both pages use the same loopback API. The Comfest page loads its own styles and scripts from the extracted site folder, while reusing the existing local trust-registry browser client.
 

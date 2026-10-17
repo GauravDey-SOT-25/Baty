@@ -8,8 +8,8 @@
     <meta name="referrer" content="no-referrer" />
     <title>Baty | Local Cybersecurity AI</title>
     <link rel="preconnect" href="https://pplx-res.cloudinary.com" />
-    <link rel="stylesheet" href="styles.css" />
-    <link rel="stylesheet" href="ai-workspace.css" />
+    <link rel="stylesheet" href="./Comfest%20-%2026/styles.css" />
+    <link rel="stylesheet" href="./Comfest%20-%2026/ai-workspace.css" />
   </head>
   <body>
     <div class="site-shell">
@@ -21,7 +21,7 @@
           <a href="#how-it-works">How it works</a>
           <a href="#collaborators">Partners <span class="nav-chevron" aria-hidden="true"></span></a>
           <a href="#ai-workspace" data-open-tool="ask">Local AI</a>
-          <a href="./blockchain.html">Trust Ledger</a>
+          <a href="./Comfest%20-%2026/blockchain.html">Trust Ledger</a>
           <a class="nav-try" href="#ai-workspace" data-open-tool="url">Check a URL</a>
         </nav>
         <button class="menu-toggle" aria-label="Open menu" aria-expanded="false">
@@ -33,7 +33,7 @@
         <section class="hero" aria-label="Baty cybersecurity">
           <div class="hero-media" aria-hidden="true">
             <div class="hero-glimmer" id="hero-glimmer">
-              <img class="hero-static-poster" src="./assets/hero.webp" alt="" />
+              <img class="hero-static-poster" src="./Comfest%20-%2026/assets/hero.webp" alt="" />
               <video class="hero-glimmer-video" autoplay muted loop playsinline crossorigin="anonymous" poster="./assets/hero.webp">
                 <source src="https://pplx-res.cloudinary.com/video/upload/v1771728928/pplx-web/Computer/videos/computer-hero-bg-2.webm" type="video/webm" />
                 <source src="https://pplx-res.cloudinary.com/video/upload/v1771728928/pplx-web/Computer/videos/computer-hero-bg-fallback-2.mp4" type="video/mp4" />
@@ -147,8 +147,14 @@
             <div class="ai-workspace-heading">
               <span class="micro-label">LOCAL BATY WORKSPACE</span>
               <h2 id="ai-workspace-title">Ask. Inspect.<br /><em>See the evidence.</em></h2>
-              <p>These tools connect to the existing local cybersecurity backend. URL and message checks, OCR, retrieval, and the local model run on this computer. No submitted URL is opened automatically.</p>
+              <p>On your computer, URL and message checks, OCR, retrieval, and the local model use the local cybersecurity backend. The public preview offers a separate signed-in cloud assistant. No submitted URL is opened automatically.</p>
             </div>
+
+            <aside id="hosted-mode-notice" class="hosted-mode-notice" role="status" hidden>
+              <strong>Hosted preview capabilities</strong>
+              <span>Only signed-in cloud Q&amp;A is available here. Other analysis tools require the local app and its local data.</span>
+              <a href="./Comfest%20-%2026/assistant.html">Open the hosted assistant ↗</a>
+            </aside>
 
             <div class="ai-workspace-shell">
               <nav class="ai-tool-nav" role="tablist" aria-label="Baty local tools">
@@ -182,7 +188,7 @@
               </div>
 
               <div class="ai-tool-panel" id="ai-panel-ask" role="tabpanel" aria-labelledby="ai-tab-ask" data-tool-panel="ask" hidden>
-                <div class="ai-panel-heading"><div><span class="ai-kicker">ON-DEVICE MODEL</span><h3>Ask about cybersecurity</h3></div><span id="ai-model-pill" class="ai-mode-pill">Checking local model…</span></div>
+                <div class="ai-panel-heading"><div><span id="ai-model-label" class="ai-kicker">ON-DEVICE MODEL</span><h3>Ask about cybersecurity</h3></div><span id="ai-model-pill" class="ai-mode-pill">Checking local model…</span></div>
                 <p class="ai-panel-copy">For defensive learning and authorized labs. Current, product-specific, or incident-specific answers need verifiable sources.</p>
                 <form id="ai-ask-form" class="ai-form ai-form-stack">
                   <label for="ai-question">Your question<textarea id="ai-question" rows="5" maxlength="8000" required placeholder="Ask a defensive cybersecurity question"></textarea></label>
@@ -190,6 +196,7 @@
                   <button type="submit">Run local model</button>
                 </form>
                 <pre id="ai-ask-output" class="ai-output ai-answer-output" role="status" aria-live="polite">The local model may be inaccurate. Check important advice against official guidance.</pre>
+                <p class="hosted-assistant-link"><a href="./Comfest%20-%2026/assistant.html">Open the authenticated hosted assistant ↗</a><span>Questions submitted there are sent to Modal for cloud inference. Sign-in is required.</span></p>
               </div>
 
               <div class="ai-tool-panel" id="ai-panel-records" role="tabpanel" aria-labelledby="ai-tab-records" data-tool-panel="records" hidden>
@@ -242,7 +249,7 @@
                 <div id="trust-records" class="trust-records" aria-live="polite">Loading local records…</div>
               </div>
 
-              <div class="ai-research-link"><span>Need web research?</span><p>Open the existing research workspace. It sends a query to the configured provider only after you submit it; provider use may incur charges.</p><a href="/workspace">Open research workspace <span aria-hidden="true">↗</span></a></div>
+              <div class="ai-research-link"><span>Need web research?</span><p>The full local research workspace is available when running the local app. Live provider queries are not part of this hosted preview.</p><a href="/workspace">Open research workspace <span aria-hidden="true">↗</span></a></div>
             </div>
           </div>
         </section>
@@ -259,16 +266,16 @@
           <div><h4>Baty tools</h4><a href="#ai-workspace" data-open-tool="url">URL check</a><a href="#ai-workspace" data-open-tool="message">Message check</a><a href="#ai-workspace" data-open-tool="ask">Local AI</a><a href="#ai-workspace" data-open-tool="image">Image OCR</a></div>
           <div><h4>Protection</h4><h5>Local checks</h5><a href="#ai-workspace" data-open-tool="url">Passive URL analysis</a><a href="#ai-workspace" data-open-tool="records">Local records</a><a href="#ai-workspace" data-open-tool="trust">Private trust notes</a><h5>Boundaries</h5><a href="#features">What is checked</a><a href="#features">What needs verification</a></div>
           <div id="collaborators"><h4>Sponsored by</h4><a href="https://hackclub.com/" target="_blank" rel="noopener noreferrer">Hack the Club ↗</a><a href="https://letsdefend.io/" target="_blank" rel="noopener noreferrer">Let's Defend ↗</a><a href="#top">Cybersecurity hackathon</a></div>
-          <div><h4>Resources</h4><a href="#how-it-works">How local checks work</a><a href="#ai-workspace" data-open-tool="records">Local security records</a><a href="/workspace">Web research workspace</a><a href="./blockchain.html">Trust Ledger · prototype</a><a href="#ai-workspace" data-open-tool="ask">Local AI tools</a></div>
+          <div><h4>Resources</h4><a href="#how-it-works">How local checks work</a><a href="#ai-workspace" data-open-tool="records">Local security records</a><a href="/workspace">Web research workspace</a><a href="./Comfest%20-%2026/blockchain.html">Trust Ledger · prototype</a><a href="#ai-workspace" data-open-tool="ask">Local AI tools</a></div>
           <div><h4>About Baty</h4><a href="#top">Safer digital interactions</a><a href="#features">Prototype capabilities</a><a href="#collaborators">Hackathon collaborators</a><a href="#top">Privacy-conscious checks</a></div>
         </div>
         <div class="footer-bottom"><span>Baty · Local Cybersecurity Demo ©2026</span><div><a href="https://hackclub.com/" target="_blank" rel="noopener noreferrer">Hack the Club</a><a href="https://letsdefend.io/" target="_blank" rel="noopener noreferrer">Let's Defend</a><a href="#ai-workspace" data-open-tool="url">URL checker</a><a href="#ai-workspace" data-open-tool="trust">Local trust notes</a></div></div>
       </footer>
       <div class="sound-control"><span class="sound-bars"><i></i><i></i><i></i></span><button aria-label="Toggle sound" aria-pressed="false">SOUND OFF</button></div>
-      <div class="menu-overlay" aria-hidden="true"><div class="menu-panel"><span class="micro-label">EXPLORE BATY</span><a href="#ai-workspace" data-open-tool="url">Check a URL <span>↗</span></a><a href="#ai-workspace" data-open-tool="message">Check a message <span>↗</span></a><a href="#ai-workspace" data-open-tool="ask">Ask local AI <span>↗</span></a><a href="#ai-workspace" data-open-tool="trust">Local trust notes <span>↗</span></a><a href="./blockchain.html">Trust Ledger <span>↗</span></a><p>Inspect cautiously. Understand the evidence. Stay safer online.</p></div></div>
+      <div class="menu-overlay" aria-hidden="true"><div class="menu-panel"><span class="micro-label">EXPLORE BATY</span><a href="#ai-workspace" data-open-tool="url">Check a URL <span>↗</span></a><a href="#ai-workspace" data-open-tool="message">Check a message <span>↗</span></a><a href="#ai-workspace" data-open-tool="ask">Ask local AI <span>↗</span></a><a href="#ai-workspace" data-open-tool="trust">Local trust notes <span>↗</span></a><a href="./Comfest%20-%2026/blockchain.html">Trust Ledger <span>↗</span></a><p>Inspect cautiously. Understand the evidence. Stay safer online.</p></div></div>
     </div>
-    <script src="script.js"></script>
-    <script src="/trust.js"></script>
-    <script src="ai-workspace.js"></script>
+    <script src="./Comfest%20-%2026/script.js"></script>
+    <script src="./frontend/trust.js"></script>
+    <script src="./Comfest%20-%2026/ai-workspace.js"></script>
   </body>
 </html>

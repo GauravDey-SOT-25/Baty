@@ -12,7 +12,7 @@ import urllib.request
 from collections import defaultdict, deque
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
-from urllib.parse import urlparse
+from urllib.parse import unquote, urlparse
 
 from src.assistant.service import answer
 from src.assistant.local_model import ADAPTER_DIR, MODEL_DIR
@@ -134,10 +134,15 @@ class Handler(BaseHTTPRequestHandler):
         if path.startswith("/api/research/") and not _research_rate_allowed(self.client_address[0], path):
             return self._send(429, {"error": "Local research rate limit exceeded; wait a minute and retry."})
         if path in {"/", "/index.html"}:
-            homepage = COMFEST_ROOT / "index.html"
+            homepage = ROOT / "index.html"
             if homepage.is_file():
                 return self._send(200, homepage.read_bytes(), "text/html; charset=utf-8")
             return self._send(503, {"error": "The Comfest homepage is unavailable."})
+        if path in {"/assistant", "/assistant/", "/assistant.html"}:
+            assistant_page = COMFEST_ROOT / "assistant.html"
+            if assistant_page.is_file():
+                return self._send(200, assistant_page.read_bytes(), "text/html; charset=utf-8")
+            return self._send(503, {"error": "The hosted assistant page is unavailable."})
         if path in {"/workspace", "/workspace/", "/workspace/index.html"}:
             return self._send(200, (ROOT / "frontend" / "index.html").read_bytes(), "text/html; charset=utf-8")
         comfest_static = {
@@ -148,6 +153,8 @@ class Handler(BaseHTTPRequestHandler):
             "/blockchain.html": (COMFEST_ROOT / "blockchain.html", "text/html; charset=utf-8"),
             "/blockchain.css": (COMFEST_ROOT / "blockchain.css", "text/css; charset=utf-8"),
             "/blockchain.js": (COMFEST_ROOT / "blockchain.js", "application/javascript; charset=utf-8"),
+            "/assistant.css": (COMFEST_ROOT / "assistant.css", "text/css; charset=utf-8"),
+            "/assistant.js": (COMFEST_ROOT / "assistant.js", "text/javascript; charset=utf-8"),
         }
         if path in comfest_static:
             file_path, content_type = comfest_static[path]
@@ -176,6 +183,38 @@ class Handler(BaseHTTPRequestHandler):
                 content_type = {".webp": "image/webp", ".png": "image/png", ".jpg": "image/jpeg", ".jpeg": "image/jpeg", ".svg": "image/svg+xml", ".avif": "image/avif"}[asset_path.suffix.lower()]
                 return self._send(200, asset_path.read_bytes(), content_type)
             return self._send(404, {"error": "Not found"})
+        # GitHub Pages uses this folder-relative URL layout from root index.html.
+        decoded_path = unquote(path)
+        comfest_prefix = "/Comfest - 26/"
+        if decoded_path.startswith(comfest_prefix):
+            relative = Path(decoded_path.removeprefix(comfest_prefix))
+            if relative.parts and relative.parts[0] == "assets":
+                asset_path = (COMFEST_ROOT / relative).resolve()
+                assets_root = (COMFEST_ROOT / "assets").resolve()
+                image_types = {".webp": "image/webp", ".png": "image/png", ".jpg": "image/jpeg", ".jpeg": "image/jpeg", ".svg": "image/svg+xml", ".avif": "image/avif"}
+                if asset_path.is_relative_to(assets_root) and asset_path.is_file() and asset_path.suffix.lower() in image_types:
+                    return self._send(200, asset_path.read_bytes(), image_types[asset_path.suffix.lower()])
+                return self._send(404, {"error": "Not found"})
+            page_types = {
+                "styles.css": "text/css; charset=utf-8",
+                "script.js": "application/javascript; charset=utf-8",
+                "ai-workspace.css": "text/css; charset=utf-8",
+                "ai-workspace.js": "application/javascript; charset=utf-8",
+                "blockchain.html": "text/html; charset=utf-8",
+                "blockchain.css": "text/css; charset=utf-8",
+                "blockchain.js": "application/javascript; charset=utf-8",
+                "assistant.html": "text/html; charset=utf-8",
+                "assistant.css": "text/css; charset=utf-8",
+                "assistant.js": "text/javascript; charset=utf-8",
+                "research-not-available.html": "text/html; charset=utf-8",
+            }
+            if len(relative.parts) == 1 and relative.name in page_types:
+                file_path = (COMFEST_ROOT / relative).resolve()
+                if file_path.is_relative_to(COMFEST_ROOT.resolve()) and file_path.is_file():
+                    return self._send(200, file_path.read_bytes(), page_types[relative.name])
+            return self._send(404, {"error": "Not found"})
+        if path == "/frontend/trust.js":
+            return self._send(200, (ROOT / "frontend" / "trust.js").read_bytes(), "application/javascript; charset=utf-8")
         if path == "/app.js":
             return self._send(200, (ROOT / "frontend" / "app.js").read_bytes(), "application/javascript; charset=utf-8")
         if path == "/responsive.css":

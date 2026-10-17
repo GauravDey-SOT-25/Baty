@@ -144,9 +144,14 @@ useOCR.addEventListener('click', () => {
 });
 
 fetch('/api/health')
-  .then((response) => response.json())
+  .then((response) => {
+    if (!response.ok) throw new Error('The local service is not available at this address.');
+    return response.json();
+  })
   .then((health) => {
     const pill = document.getElementById('ai-model-pill');
+    const label = document.getElementById('ai-model-label');
+    if (label) label.textContent = 'ON-DEVICE MODEL';
     if (health.model_available && health.model_runtime_available) {
       pill.textContent = health.adapter_enabled ? 'Local model · adapter enabled' : 'Local model available';
     } else if (health.model_available) {
@@ -156,7 +161,26 @@ fetch('/api/health')
     }
   })
   .catch(() => {
-    document.getElementById('ai-model-pill').textContent = 'Local service unavailable';
+    const isHosted = !['localhost', '127.0.0.1', '::1'].includes(location.hostname);
+    const pill = document.getElementById('ai-model-pill');
+    const label = document.getElementById('ai-model-label');
+    if (isHosted) {
+      pill.textContent = 'Hosted Q&A · sign-in required';
+      if (label) label.textContent = 'MODAL CLOUD PREVIEW';
+      document.getElementById('hosted-mode-notice').hidden = false;
+      document.getElementById('ai-ask-output').textContent = 'The in-page model uses your local service. For the hosted preview, open the authenticated assistant; its questions are sent to Modal and are not source-grounded.';
+      for (const selector of [
+        '#ai-url-form button[type="submit"]', '#ai-message-form button[type="submit"]',
+        '#ai-ask-form button[type="submit"]', '#ai-records-form button[type="submit"]',
+        '#ai-ocr-form button[type="submit"]', '#trust-inspect', '#trust-register',
+        '#trust-revoke', '#trust-refresh',
+      ]) {
+        const button = document.querySelector(selector);
+        if (button) button.disabled = true;
+      }
+    } else {
+      pill.textContent = 'Local service unavailable';
+    }
   });
 
 activateTool('url');
