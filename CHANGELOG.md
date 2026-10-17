@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-10-17 — Refresh Baty popup with Liquid Glass styling
+
+- Restyled the extension popup with a polished, monochrome glass-inspired interface, subtle depth, clearer focus states, and a custom native-feeling auto-check switch. Kept the existing Baty orb and analysis flow.
+
 ## 2026-10-17 — Add the Baty browser extension
 
 - Added a standalone Chrome/Edge Manifest V3 extension under `extension/` for manual suspicious-message/URL analysis through the configured Modal endpoint.

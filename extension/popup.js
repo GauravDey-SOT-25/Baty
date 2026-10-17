@@ -218,9 +218,11 @@ function describeAutoPermissionError(error) {
 function renderAutoAnalysis(item) {
   if (!item) {
     autoLatest.hidden = true;
+    autoLatest.classList.remove("is-pending");
     return;
   }
   autoLatest.hidden = false;
+  autoLatest.classList.toggle("is-pending", Boolean(item.pending));
   autoCheckedUrl.textContent = `Latest: ${item.url || "current site"}`;
   if (item.pending) {
     autoAnswer.textContent = "Cyber-Qwen is checking this URL…";

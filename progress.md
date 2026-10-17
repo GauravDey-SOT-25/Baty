@@ -1,5 +1,11 @@
 # Project progress
 
+## 2026-10-17 — Liquid Glass popup refresh
+
+- Restyled the Baty extension popup with a light, monochrome macOS-inspired glass treatment: layered translucent surfaces, soft highlights, restrained shadows, native-feeling controls, and reduced-motion support. Kept the moon orb and existing analysis flow.
+- Added switch semantics for auto-check and synchronized the pending indicator with automatic-analysis state. No backend or endpoint behavior changed.
+- Verification: reviewed the source diff and ran `git diff --check`; no extension reload or live Modal request was performed.
+
 ## 2026-10-17 — Added the Baty browser extension
 
 - Added the self-contained Chrome/Edge Manifest V3 extension under `extension/`, including popup UI, moon icon/orb assets, Modal connection settings, and optional active-site URL checks.

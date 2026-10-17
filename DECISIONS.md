@@ -1,5 +1,9 @@
 # Decisions
 
+## 2026-10-17 — Keep Baty's glass UI monochrome and restrained
+
+- Use a light grayscale palette with layered translucent surfaces, soft specular highlights, and subtle depth to evoke macOS Liquid Glass while keeping labels and controls readable. Preserve the existing moon orb, analysis behavior, and reduced-motion preference.
+
 ## 2026-10-17 — Keep browser auto-check explicitly opt-in
 
 - Keep Baty auto-check off by default. Enabling it requests tab URL and the configured Modal host permission; checks send only the active HTTP/HTTPS URL after removing credentials, query, and fragment. Do not read or transmit page contents.
