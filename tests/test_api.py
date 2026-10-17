@@ -61,8 +61,9 @@ class APITests(unittest.TestCase):
         with urlopen(f"http://127.0.0.1:{self.port}/blockchain.html", timeout=5) as response:
             ledger_page=response.read().decode()
             self.assertEqual(response.status, 200)
-            self.assertIn("Trust Ledger", ledger_page)
-            self.assertIn("ARCHIVED PROTOTYPE · NOT CONNECTED", ledger_page)
+            self.assertIn("Trust Ledger &amp; Code | Baty", ledger_page)
+            self.assertIn('id="trust-check" aria-label="Baty URL trust checker"', ledger_page)
+            self.assertNotIn("ARCHIVED PROTOTYPE", ledger_page)
         with urlopen(f"http://127.0.0.1:{self.port}/Parallel/backend/hasher.py", timeout=5) as response:
             self.assertEqual(response.status, 200)
             self.assertIn("certificate", response.read().decode().lower())
@@ -81,6 +82,10 @@ class APITests(unittest.TestCase):
             ("/Comfest%20-%2026/styles.css", "text/css", "--paper:"),
             ("/Comfest%20-%2026/ai-workspace.js", "application/javascript", "/api/assistant"),
             ("/Comfest%20-%2026/blockchain.html", "text/html", "Trust Ledger"),
+            ("/Comfest%20-%2026/blockchain.css", "text/css", ".trust-demo"),
+            ("/Comfest%20-%2026/blockchain.js", "application/javascript", "/api/check"),
+            ("/Comfest%20-%2026/Parallel/README.md", "text/markdown", "blockchain"),
+            ("/Comfest%20-%2026/index.html", "text/html", "continue to baty"),
             ("/Comfest%20-%2026/assets/hero.webp", "image/webp", ""),
             ("/frontend/trust.js", "application/javascript", "trust"),
         ):

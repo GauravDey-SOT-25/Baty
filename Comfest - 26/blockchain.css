@@ -133,8 +133,3 @@
 .demo-register-form .demo-manual-toggle input{width:13px;height:13px;margin:0;accent-color:#546b54}
 .demo-register-form>input[hidden]{display:none!important}
 @media(max-width:700px){.demo-presets{margin:0 -2px}.demo-presets button{font-size:7px}.demo-presets button i{font-size:5px}.demo-verdict{gap:7px}.demo-score{margin-left:auto}.demo-details>div:not(.demo-detail-group){grid-template-columns:74px minmax(0,1fr)}.demo-detail-group h4{font-size:6px}.demo-register-form .demo-manual-toggle{font-size:8px}}
-.archive-disclosure{max-width:1240px;margin:96px auto 0;padding:16px 20px;display:grid;grid-template-columns:minmax(180px,auto) minmax(0,1fr);gap:8px 22px;border:1px solid #d9c99f;border-radius:9px;background:#fff9e9;color:#5f5130;font-size:12px;line-height:1.6}
-.archive-disclosure strong{font-size:10px;letter-spacing:.1em}
-.archive-disclosure a{font-weight:700;text-decoration:underline;text-underline-offset:2px}
-.trust-demo[hidden]{display:none!important}
-@media(max-width:760px){.archive-disclosure{margin:76px 18px 0;grid-template-columns:1fr}}

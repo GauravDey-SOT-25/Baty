@@ -188,6 +188,21 @@ class Handler(BaseHTTPRequestHandler):
         comfest_prefix = "/Comfest - 26/"
         if decoded_path.startswith(comfest_prefix):
             relative = Path(decoded_path.removeprefix(comfest_prefix))
+            if relative.parts and relative.parts[0] == "Parallel":
+                parallel_root = (COMFEST_ROOT / "Parallel").resolve()
+                source_path = (parallel_root.joinpath(*relative.parts[1:])).resolve()
+                content_types = {
+                    ".css": "text/css; charset=utf-8",
+                    ".html": "text/html; charset=utf-8",
+                    ".js": "application/javascript; charset=utf-8",
+                    ".json": "application/json; charset=utf-8",
+                    ".md": "text/markdown; charset=utf-8",
+                    ".py": "text/plain; charset=utf-8",
+                    ".sol": "text/plain; charset=utf-8",
+                }
+                if source_path.is_relative_to(parallel_root) and source_path.is_file() and source_path.suffix.lower() in content_types:
+                    return self._send(200, source_path.read_bytes(), content_types[source_path.suffix.lower()])
+                return self._send(404, {"error": "Not found"})
             if relative.parts and relative.parts[0] == "assets":
                 asset_path = (COMFEST_ROOT / relative).resolve()
                 assets_root = (COMFEST_ROOT / "assets").resolve()
@@ -196,6 +211,7 @@ class Handler(BaseHTTPRequestHandler):
                     return self._send(200, asset_path.read_bytes(), image_types[asset_path.suffix.lower()])
                 return self._send(404, {"error": "Not found"})
             page_types = {
+                "index.html": "text/html; charset=utf-8",
                 "styles.css": "text/css; charset=utf-8",
                 "script.js": "application/javascript; charset=utf-8",
                 "ai-workspace.css": "text/css; charset=utf-8",

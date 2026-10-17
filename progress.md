@@ -1,5 +1,11 @@
 # Project progress
 
+## 2026-10-17 — Restored the supplied Trust Ledger page
+
+- Restored `blockchain.html`, `blockchain.css`, and `blockchain.js` byte-for-byte from the original supplied Comfest ZIP. The page now has its original visible trust-check box and no archive-disclosure banner.
+- Kept the root `index.html` as the GitHub Pages homepage and added a minimal nested redirect for the old page's unchanged `index.html` navigation. The local server now safely serves the Trust Ledger's nested `Parallel/` source links.
+- Verification: original HTML/CSS/JS hashes match the ZIP; API route tests passed. `git -c core.whitespace=cr-at-eol diff --check` passed while preserving the ZIP’s original CRLF line endings.
+
 ## 2026-10-17 — Root homepage for GitHub Pages
 
 - Moved the edited Comfest `index.html` to the repository root so GitHub Pages can discover it as the site entry point. Updated its styles, scripts, images, Trust Ledger, assistant, and shared trust-client URLs to resolve from the root page.
