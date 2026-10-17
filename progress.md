@@ -283,3 +283,9 @@ Updated: 2026-10-17 (Asia/Kolkata)
 - Reviewed the archive and excluded its embedded provider credentials, permissive network backend, fabricated blockchain/oracle demo data, unreviewed deploy scripts, and unlicensed illustrations. The original archive/extraction and existing dirty project work remain intact. See `docs/comfest-url-trust-integration.md`.
 - Final verification: `.venv/bin/python -m unittest discover -s tests -q` ran 113 tests (110 passed, 3 optional live tests skipped); Python `compileall` and `git diff --check` passed; the HTML parsed with 112 unique IDs and both trust assets linked. Node is unavailable here, so standalone JavaScript syntax checking could not run. Local status, records, static asset, and passive inspection endpoints returned HTTP 200; no public TLS or reputation check, Parallel call, training, or model/data change was made.
 - No model weights, training artifacts, or existing datasets were modified; no files were committed.
+
+## 2026-10-17 — Comfest homepage visual alignment
+
+- Compared the root homepage with the user's supplied `/Users/gauravdey/Downloads/Comfest - 26/index.html`, stylesheet, animation script, and artwork. Retained the root homepage and its integrated AI tools, while restoring the supplied page's variable font definitions and keeping its original animation/style system.
+- Corrected root-page poster references and made the WebGL hero poster resolve relative to `Comfest - 26/script.js`, since the root `index.html` is outside that folder. Added the font CDN to both the local server and Vercel `font-src` policies.
+- Verified the homepage's local stylesheet, script, hero image, and section poster return HTTP 200; all Comfest paths referenced by the root HTML map to existing files; `git diff --check` passed. No model, training data, or model files changed. No test suite was run for this visual-only change.

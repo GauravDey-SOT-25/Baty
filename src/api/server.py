@@ -116,7 +116,7 @@ class Handler(BaseHTTPRequestHandler):
         self.send_header("X-Frame-Options", "DENY")
         self.send_header("Referrer-Policy", "no-referrer")
         self.send_header("Cache-Control", "no-store")
-        self.send_header("Content-Security-Policy", "default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' https://www.gstatic.com https://apis.google.com; media-src 'self' https://pplx-res.cloudinary.com; connect-src 'self' https://identitytoolkit.googleapis.com https://securetoken.googleapis.com https://baty-ac397-default-rtdb.firebaseio.com https://*.firebaseio.com https://*.firebasedatabase.app https://www.googleapis.com https://apis.google.com wss://baty-ac397-default-rtdb.firebaseio.com wss://*.firebaseio.com wss://*.firebasedatabase.app; frame-src https://baty-ac397.firebaseapp.com https://accounts.google.com; object-src 'none'; base-uri 'none'; frame-ancestors 'none'")
+        self.send_header("Content-Security-Policy", "default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' https://www.gstatic.com https://apis.google.com; font-src 'self' https://frontend-cdn.perplexity.ai; media-src 'self' https://pplx-res.cloudinary.com; connect-src 'self' https://identitytoolkit.googleapis.com https://securetoken.googleapis.com https://baty-ac397-default-rtdb.firebaseio.com https://*.firebaseio.com https://*.firebasedatabase.app https://www.googleapis.com https://apis.google.com wss://baty-ac397-default-rtdb.firebaseio.com wss://*.firebaseio.com wss://*.firebasedatabase.app; frame-src https://baty-ac397.firebaseapp.com https://accounts.google.com; object-src 'none'; base-uri 'none'; frame-ancestors 'none'")
         self.end_headers()
         self.wfile.write(body)
     def do_GET(self):

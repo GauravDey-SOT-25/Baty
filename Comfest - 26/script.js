@@ -36,6 +36,7 @@ const rotatingWord = document.querySelector('.rotating-word');
 const heroWords = ['Verifies', 'Scans', 'Detects', 'Defends', 'Protects', 'Investigates', 'Secures', 'Checks'];
 const promptRail = document.querySelector('.prompt-rail');
 const heroGlimmer = document.querySelector('#hero-glimmer');
+const heroPosterUrl = new URL('./assets/hero.webp', document.currentScript?.src || document.baseURI).href;
 const isStackedDesktop = window.matchMedia('(min-width: 961px)').matches;
 const heroVideo = heroGlimmer.querySelector('.hero-glimmer-video');
 const morphCanvas = heroGlimmer.querySelector('.hero-morph-canvas');
@@ -142,7 +143,7 @@ const createHeroMorph = () => {
     gl.bindTexture(gl.TEXTURE_2D, videoTexture);
     gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, poster);
   };
-  poster.src = new URL('./assets/hero.webp', document.baseURI).href;
+  poster.src = heroPosterUrl;
   gl.enable(gl.BLEND);
   gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
 

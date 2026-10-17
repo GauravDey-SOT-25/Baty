@@ -164,3 +164,8 @@
 - Keep Modal Proxy Token values in Vercel's encrypted server environment and forward only the submitted question and Firebase bearer token to the fixed Modal endpoint. Do not persist hosted questions or answers.
 - Mark unsupported local tools unavailable in the hosted preview. The full research workspace remains local because its provider credential and task persistence are server-side/local-only.
 - Keep deployment configured as a root-level static site plus `/api/modal/assistant`, using a build allowlist so model files, datasets, local secrets, legacy demo backend, and unrelated service code are excluded.
+
+## Comfest homepage visual reference
+
+- Use the supplied Comfest `index.html`, `styles.css`, `script.js`, and artwork as the visual source of truth for the root homepage. Keep the AI workspace integrated into that homepage and keep existing tool and Trust Ledger routes working.
+- Since the deployed homepage is at the repository root but the original script and assets remain in `Comfest - 26/`, resolve artwork relative to the script and prefix root-page poster paths with that folder. Permit the original variable-font CDN in the local and Vercel `font-src` policies; the page's existing system-font fallbacks remain available if that CDN is unreachable.

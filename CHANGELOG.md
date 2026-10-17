@@ -113,3 +113,8 @@
 ## 2026-10-17
 
 - Configured the user-provided Parallel API key in the ignored local `.env` file with mode `0600`, restarted the local app, and verified its provider status as live-web. No live Parallel request was made.
+
+## 2026-10-17
+
+- Re-aligned the root homepage with the supplied Comfest visual source by restoring its original variable-font stack and preserving its original layout, motion, and artwork. Kept the integrated AI workspace and tool navigation.
+- Fixed root-relative poster and WebGL hero artwork resolution, and allowed the source font host through the local and Vercel Content Security Policies.
