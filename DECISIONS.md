@@ -1,5 +1,10 @@
 # Decisions
 
+## 2026-10-17 — Keep browser auto-check explicitly opt-in
+
+- Keep Baty auto-check off by default. Enabling it requests tab URL and the configured Modal host permission; checks send only the active HTTP/HTTPS URL after removing credentials, query, and fragment. Do not read or transmit page contents.
+- Disclose the external Modal data flow and possible usage charges in the extension UI and README. Do not commit or distribute a user-specific Proxy Token; it is stored in browser extension storage.
+
 ## Comfest as the application homepage
 
 - Serve the Comfest homepage as the repository-root `index.html` so GitHub Pages can load it at the site root. Keep its styles, scripts, images, and secondary pages in `Comfest - 26/`. Keep the previous full Cyber Desk application at `/workspace` so its Parallel research and Firebase account features remain reachable.

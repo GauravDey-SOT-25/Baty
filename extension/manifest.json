@@ -1,0 +1,23 @@
+{
+  "manifest_version": 3,
+  "name": "Baty",
+  "version": "0.2.0",
+  "description": "Baty helps you review suspicious messages and links with Cyber-Qwen.",
+  "icons": {
+    "16": "assets/baty-moon.png",
+    "32": "assets/baty-moon.png",
+    "48": "assets/baty-moon.png",
+    "128": "assets/baty-moon.png"
+  },
+  "permissions": ["storage"],
+  "optional_permissions": ["tabs"],
+  "optional_host_permissions": ["https://*.modal.run/*"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_title": "Baty",
+    "default_icon": "assets/baty-moon.png",
+    "default_popup": "popup.html"
+  }
+}

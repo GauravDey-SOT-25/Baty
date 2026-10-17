@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-17 — Add the Baty browser extension
+
+- Added a standalone Chrome/Edge Manifest V3 extension under `extension/` for manual suspicious-message/URL analysis through the configured Modal endpoint.
+- Added optional, off-by-default active-site checking with explicit permissions, URL-only disclosure, current-result display, and timeout/error reporting. No browser install or live Modal request was performed.
+
 ## 2026-10-17 — Vercel hosted-preview preparation
 
 - Added a Vercel static build allowlist for the Baty landing page, Trust Ledger page, and hosted assistant UI; the local model, datasets, adapters, `.env`, research backend, and legacy demo backend are not included.

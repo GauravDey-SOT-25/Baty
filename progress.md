@@ -1,5 +1,11 @@
 # Project progress
 
+## 2026-10-17 — Added the Baty browser extension
+
+- Added the self-contained Chrome/Edge Manifest V3 extension under `extension/`, including popup UI, moon icon/orb assets, Modal connection settings, and optional active-site URL checks.
+- Auto-check is off by default. When enabled by the user, it reads only the active HTTP/HTTPS URL, strips credentials/query/fragment, and sends that URL to the configured Modal endpoint; it does not read page contents. A configured Modal Proxy Token stays in browser extension storage and is not part of this commit.
+- Added visible pending/result/error reporting and retry-on-popup-open for the active site. No browser install, live Modal request, or extension test was run for this commit.
+
 ## 2026-10-17 — Restored the supplied Trust Ledger page
 
 - Restored `blockchain.html`, `blockchain.css`, and `blockchain.js` byte-for-byte from the original supplied Comfest ZIP. The page now has its original visible trust-check box and no archive-disclosure banner.

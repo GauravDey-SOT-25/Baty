@@ -35,6 +35,10 @@ Open `http://127.0.0.1:8765`.
 
 The main homepage at `/` is the repository-root `index.html`, and loads its Comfest styles, scripts, and images from `Comfest - 26/`. It includes local URL/message analysis, Q&A, OCR, records search, and private trust notes embedded in the page. The previous Cyber Desk workspace remains at `/workspace`; use it for the complete Parallel research and Firebase account workflows.
 
+## Baty browser extension
+
+The self-contained Chrome/Edge Manifest V3 extension is in [`extension/`](extension/). Load that folder as an unpacked extension from the browser's extensions page. Manual message/URL analysis is sent to the configured Modal function only after clicking Analyze. Optional **Auto-check the active site** is off by default; after the user enables it and grants the requested tab/Modal permissions, it sends the active HTTP/HTTPS page URL (with credentials, query, and fragment removed) to that configured external function. It does not read page contents, and Modal usage may apply. Avoid enabling it while visiting private pages. A Modal Proxy Token, if configured, is kept in local extension storage; never commit or distribute a personalized extension profile containing credentials.
+
 ## Web research and intelligence
 
 The Web Research area extends the local app with provider-backed Search/discovery, Extract, asynchronous Deep Research, daily Monitors with on-demand event checks, and schema-based enrichment of a public security record. It uses a provider abstraction; no Parallel SDK or additional dependency is needed. The request and response shapes were checked against the current [Parallel Search](https://docs.parallel.ai/api-reference/search/search), [Extract](https://docs.parallel.ai/api-reference/extract/extract), [Task Run](https://docs.parallel.ai/api-reference/tasks/create-task-run), [Monitor](https://docs.parallel.ai/api-reference/monitor/create-monitor), [Monitor Events](https://docs.parallel.ai/api-reference/monitor/list-monitor-events), and [FindAll](https://docs.parallel.ai/api-reference/findall/create-findall-run) documentation.

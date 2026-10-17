@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Baty</title>
+    <link rel="stylesheet" href="popup.css">
+  </head>
+  <body>
+    <main class="app">
+      <header class="header">
+        <div class="mark hero-orb" aria-hidden="true">
+          <span class="orb-surface"></span>
+          <span class="orb-glint"></span>
+        </div>
+        <div>
+          <p class="eyebrow">BATY</p>
+          <h1>Check before you click.</h1>
+          <p class="hero-subtitle">A clearer read on suspicious messages and links.</p>
+        </div>
+      </header>
+
+      <label class="field-label" for="message">Suspicious message or URL</label>
+      <textarea id="message" maxlength="12000" placeholder="Paste a message, email, or link here…" spellcheck="false"></textarea>
+      <div class="meta-row">
+        <span id="charCount">0 / 12,000</span>
+        <button id="clearButton" class="text-button" type="button">Clear</button>
+      </div>
+
+      <p class="privacy"><span aria-hidden="true">ⓘ</span> Message text is sent only when you press Analyze. Auto-check sends only the active page URL after you enable it. Don’t include passwords, codes, or private information.</p>
+      <button id="analyzeButton" class="primary-button" type="button">
+        <span>Analyze with Cyber-Qwen</span><span aria-hidden="true">→</span>
+      </button>
+      <p id="status" class="status" role="status" aria-live="polite"></p>
+
+      <section class="auto-check" aria-labelledby="autoCheckTitle">
+        <label class="auto-toggle" for="autoCheckEnabled">
+          <input id="autoCheckEnabled" type="checkbox">
+          <span id="autoCheckTitle">Auto-check the active site</span>
+        </label>
+        <p class="auto-help">After you enable this, Baty checks the active tab when you visit or switch pages. It sends only the page URL (without query or fragment) to your Modal function; it does not read page contents. Modal usage may apply.</p>
+        <p id="autoStatus" class="auto-status" role="status" aria-live="polite">Off.</p>
+        <div id="autoLatest" class="auto-latest" hidden>
+          <p id="autoCheckedUrl" class="auto-checked-url"></p>
+          <p id="autoAnswer" class="auto-answer"></p>
+        </div>
+      </section>
+
+      <details class="endpoint-settings" id="endpointSettings">
+        <summary>Connect Modal function</summary>
+        <label class="field-label" for="endpointInput">Function-specific endpoint URL</label>
+        <input id="endpointInput" type="url" placeholder="https://gauravdey2020--cyber-qwen-modal-preview-inference-api.us-east.modal.run/api/assistant" spellcheck="false" autocomplete="url">
+        <label class="field-label credential-label" for="proxyTokenInput">Modal Proxy Token (optional)</label>
+        <input id="proxyTokenInput" type="password" placeholder="wk-… .ws-…" spellcheck="false" autocomplete="off">
+        <p class="endpoint-help">Private functions need a Proxy Token in ID.secret format. API tokens beginning with ak- won’t work. This function checks the Proxy Token at Modal; no separate Firebase login is needed. The token is stored in this browser’s extension storage; don’t share a packaged extension containing it.</p>
+        <button id="saveEndpointButton" class="text-button save-endpoint" type="button">Save connection</button>
+        <p class="endpoint-help">Use the deployed function URL. Cyber-Qwen’s handler is at <code>/api/assistant</code>; this route is added automatically if you paste only the function’s root URL.</p>
+      </details>
+
+      <section id="result" class="result" hidden aria-labelledby="resultTitle">
+        <div class="result-heading">
+          <div>
+            <p class="eyebrow">MODEL ASSESSMENT</p>
+            <h2 id="resultTitle">Analysis</h2>
+          </div>
+          <span class="model-tag">Cyber-Qwen</span>
+        </div>
+        <div id="resultText" class="result-text"></div>
+        <p class="caveat">Guidance only. No threat-intelligence lookup was performed; verify through the organisation’s official site or app.</p>
+      </section>
+
+      <footer>Modal endpoint · Cyber-Qwen preview</footer>
+    </main>
+    <script src="popup.js"></script>
+  </body>
+</html>
