@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#faf8f5" />
+    <meta name="description" content="Baty is a local-first cybersecurity assistant for cautious URL and message checks, evidence-grounded learning, OCR, and private trust notes." />
+    <meta name="referrer" content="no-referrer" />
+    <title>Baty | Local Cybersecurity AI</title>
+    <link rel="preconnect" href="https://pplx-res.cloudinary.com" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="ai-workspace.css" />
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="site-header" aria-label="Main navigation">
+        <a class="wordmark" href="#top" aria-label="Baty cybersecurity home">Baty</a>
+        <nav class="desktop-nav" aria-label="Main links">
+          <a href="#ai-workspace" data-open-tool="message">Scam Check <span class="nav-chevron" aria-hidden="true"></span></a>
+          <a href="#ai-workspace" data-open-tool="trust">Local Trust Notes <span class="nav-chevron" aria-hidden="true"></span></a>
+          <a href="#how-it-works">How it works</a>
+          <a href="#collaborators">Partners <span class="nav-chevron" aria-hidden="true"></span></a>
+          <a href="#ai-workspace" data-open-tool="ask">Local AI</a>
+          <a href="./blockchain.html">Trust Ledger</a>
+          <a class="nav-try" href="#ai-workspace" data-open-tool="url">Check a URL</a>
+        </nav>
+        <button class="menu-toggle" aria-label="Open menu" aria-expanded="false">
+          <span></span><span></span>
+        </button>
+      </header>
+
+      <main id="top">
+        <section class="hero" aria-label="Baty cybersecurity">
+          <div class="hero-media" aria-hidden="true">
+            <div class="hero-glimmer" id="hero-glimmer">
+              <img class="hero-static-poster" src="./assets/hero.webp" alt="" />
+              <video class="hero-glimmer-video" autoplay muted loop playsinline crossorigin="anonymous" poster="./assets/hero.webp">
+                <source src="https://pplx-res.cloudinary.com/video/upload/v1771728928/pplx-web/Computer/videos/computer-hero-bg-2.webm" type="video/webm" />
+                <source src="https://pplx-res.cloudinary.com/video/upload/v1771728928/pplx-web/Computer/videos/computer-hero-bg-fallback-2.mp4" type="video/mp4" />
+              </video>
+              <canvas class="hero-morph-canvas" aria-hidden="true"></canvas>
+            </div>
+            <div class="hero-wash"></div>
+          </div>
+          <div class="hero-center">
+            <h1>Baty <span class="rotating-word">Verifies</span></h1>
+          </div>
+          <a class="try-link" href="#ai-workspace" data-open-tool="url">Scan a URL <span>↗</span></a>
+          <div class="prompt-rail" aria-label="Cybersecurity checks">
+            <div class="prompt-track">
+              <article class="prompt-card"><span>01</span><p>Check a URL's threat reputation before opening the site.</p><small>/scan</small></article>
+              <article class="prompt-card"><span>02</span><p>Inspect suspicious message language without treating a score as proof.</p><small>/message</small></article>
+              <article class="prompt-card"><span>03</span><p>Ask the local model a defensive cybersecurity question.</p><small>/learn</small></article>
+              <article class="prompt-card"><span>04</span><p>See when an answer relies on a local record or general model knowledge.</p><small>/evidence</small></article>
+              <article class="prompt-card"><span>05</span><p>Extract text from an image locally before deciding to share it with the assistant.</p><small>/image</small></article>
+              <article class="prompt-card"><span>06</span><p>Search the local security-record snapshot for related advisories.</p><small>/records</small></article>
+              <article class="prompt-card"><span>07</span><p>Keep optional trust observations in a private local registry.</p><small>/trust</small></article>
+              <article class="prompt-card"><span>08</span><p>Use optional web research only after reviewing its provider disclosure.</p><small>/research</small></article>
+              <article class="prompt-card"><span>09</span><p>Ask for context when current or incident-specific evidence is missing.</p><small>/evidence</small></article>
+              <article class="prompt-card"><span>10</span><p>Inspect URLs as text; submitted links are not opened automatically.</p><small>/scan</small></article>
+              <article class="prompt-card"><span>11</span><p>Review the limits and source dates behind local retrieval.</p><small>/records</small></article>
+              <article class="prompt-card"><span>12</span><p>Check ordinary security messages and suspicious ones with the same cautious analyzer.</p><small>/message</small></article>
+              <article class="prompt-card"><span>13</span><p>Keep sensitive message and incident text on this computer for local checks.</p><small>/privacy</small></article>
+              <article class="prompt-card"><span>14</span><p>Verify high-impact advice against current vendor or official guidance.</p><small>/verify</small></article>
+              <article class="prompt-card"><span>15</span><p>Practice hands-on offensive security in Hack The Box labs.</p><small>/learn</small></article>
+              <article class="prompt-card"><span>16</span><p>Build defensive skills with LetsDefend incident and phishing scenarios.</p><small>/learn</small></article>
+              <article class="prompt-card"><span>17</span><p>Understand which signals contributed to a URL's trust verdict.</p><small>/proof</small></article>
+              <article class="prompt-card"><span>18</span><p>Treat unknown domains as unverified until trust evidence is available.</p><small>/scan</small></article>
+            </div>
+          </div>
+          <div class="building-status"><span class="status-label">HACKATHON DEMO</span><span class="status-dots">··········</span></div>
+        </section>
+
+        <section class="manifesto">
+          <div class="manifesto-copy">
+            <p class="manifesto-lead">Baty gives you local tools to inspect a URL, review a message, and ask defensive security questions.</p>
+            <p>Its checks are bounded aids, not safety guarantees. Local model answers may be inaccurate; optional live TLS and reputation checks are clearly marked before use.</p>
+            <p class="manifesto-punch">Check the evidence.<br /><em>Then choose to click.</em></p>
+          </div>
+        </section>
+
+        <section class="unifies">
+          <div class="unifies-sticky">
+            <div class="unifies-image" aria-hidden="true">
+              <video autoplay muted loop playsinline poster="./assets/step-01.webp">
+              </video>
+            </div>
+            <div class="unifies-cloud" aria-hidden="true"></div>
+            <div class="unifies-glints" aria-hidden="true"></div>
+            <svg class="unifies-ribbons" viewBox="0 0 1200 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+              <defs>
+                <filter id="organic-cloud" x="-12%" y="-12%" width="124%" height="124%" color-interpolation-filters="sRGB">
+                  <feTurbulence type="fractalNoise" baseFrequency=".007 .011" numOctaves="2" seed="8" result="cloud-noise" />
+                  <feDisplacementMap in="SourceGraphic" in2="cloud-noise" scale="58" xChannelSelector="R" yChannelSelector="G" result="cloud-edge" />
+                  <feGaussianBlur in="cloud-edge" stdDeviation="6" />
+                </filter>
+                <linearGradient id="ribbon-sheen" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0" stop-color="#e9e7df" />
+                  <stop offset=".22" stop-color="#fff" />
+                  <stop offset=".76" stop-color="#fff" />
+                  <stop offset="1" stop-color="#e9e7df" />
+                </linearGradient>
+                <filter id="ribbon-soft-glow" x="-25%" y="-100%" width="150%" height="300%">
+                  <feGaussianBlur stdDeviation="19" />
+                </filter>
+                <path id="ribbon-path-back" d="M-170 420 C105 386 322 326 535 251 C745 177 906 115 1070 128 C1200 138 1290 84 1380 22" />
+                <path id="ribbon-path-low" d="M-170 946 C92 876 310 792 510 692 C716 589 889 570 1044 609 C1192 646 1284 595 1380 538" />
+              </defs>
+              <g class="ribbon-band ribbon-band--back">
+                <use href="#ribbon-path-back" class="ribbon-glow" />
+                <use href="#ribbon-path-back" class="ribbon-shape" />
+                <use href="#ribbon-path-back" class="ribbon-gloss" />
+                <text class="ribbon-label ribbon-label--back"><textPath href="#ribbon-path-back">Passive URL Checks ✦ Local Model Answers ✦ Message Triage ✦ Evidence Review ✦ Private Local Notes ✦ Passive URL Checks ✦</textPath></text>
+              </g>
+              <g class="ribbon-band ribbon-band--low">
+                <use href="#ribbon-path-low" class="ribbon-glow" />
+                <use href="#ribbon-path-low" class="ribbon-shape" />
+                <use href="#ribbon-path-low" class="ribbon-gloss" />
+                <text class="ribbon-label ribbon-label--low"><textPath href="#ribbon-path-low">Optional TLS Inspection ✦ Local OCR ✦ Source Attribution ✦ No Automatic URL Fetching ✦ Optional Research ✦</textPath></text>
+              </g>
+            </svg>
+            <div class="unifies-content"><h2>Evidence, not guesswork</h2></div>
+          </div>
+        </section>
+
+        <section class="how section-pad" id="how-it-works">
+          <div class="section-top"><span class="micro-label">STEPS</span><h2>How it works</h2></div>
+          <div class="steps-grid">
+            <article class="step-card step-one"><div class="step-visual"><div class="fake-window"><span class="window-dots">● ● ●</span><div class="fake-input">Check this suspicious link before I open it…<b>↗</b></div><div class="fake-tag">Baty Scan</div></div></div><div class="step-copy"><span class="step-number">01</span><h3>Enter a URL</h3><p>Inspect the submitted text locally. No page is fetched or opened by the passive URL checker.</p></div></article>
+            <article class="step-card step-two"><div class="step-visual"><div class="orbit orbit-a"></div><div class="orbit orbit-b"></div><div class="orbit-core">✳</div><div class="orbit-tag tag-research">⌕ &nbsp; Evidence</div><div class="orbit-tag tag-build">▧ &nbsp; Local AI</div><div class="orbit-tag tag-write">✎ &nbsp; Notes</div></div><div class="step-copy"><span class="step-number">02</span><h3>Compare the evidence</h3><p>Review what the local analyzer or record actually says. Optional network checks run only when you select them.</p></div></article>
+            <article class="step-card step-three"><div class="step-visual"><div class="review-window"><div class="review-side"><b>◉</b><i></i><i></i><i></i></div><div class="review-main"><small>LOCAL ASSESSMENT</small><strong>Evidence and limits</strong><div class="review-chart"><span></span><span></span><span></span><span></span><span></span><span></span></div><p>Review the signals&nbsp;&nbsp; <b>↗</b></p></div></div></div><div class="step-copy"><span class="step-number">03</span><h3>Understand the result</h3><p>See what the tool observed, what it did not check, and when further verification is needed.</p></div></article>
+          </div>
+        </section>
+
+        <section class="features section-pad" id="features">
+          <div class="section-top"><span class="micro-label">BATY SECURITY</span><h2>Check the link. See the evidence.</h2></div>
+          <div class="feature-list">
+            <a class="feature-row" href="#ai-workspace" data-open-tool="url"><div class="feature-copy"><span class="feature-index">01</span><div><h3>Inspect URL text locally</h3><p>Review syntax and observable URL features without fetching the page. Optional TLS and reputation checks are separate and explicitly selected.</p><span class="feature-cta">Open URL checker <b>↗</b></span></div></div><div class="feature-image feature-monitor"><div class="monitor-card"><small>PASSIVE URL CHECK</small><b>Text inspected locally</b><div class="monitor-line"><i></i><span>Automatic page fetch</span><small>No</small></div><div class="monitor-line"><i></i><span>Optional network checks</span><small>Opt-in</small></div><div class="monitor-wave"></div></div></div></a>
+            <a class="feature-row" href="#ai-workspace" data-open-tool="trust"><div class="feature-copy"><span class="feature-index">02</span><div><h3>Keep private trust notes</h3><p>Save user-maintained domain observations locally. An active note, TLS certificate, or reputation result is not proof that a site is safe.</p><span class="feature-cta">Open local trust notes <b>↗</b></span></div></div><div class="feature-image feature-research"><div class="research-board"><div class="board-top"><span>Local observation</span><span>•••</span></div><div class="research-columns"><div><i></i><i></i><i></i></div><div><i></i><i></i><i></i></div><div><i></i><i></i><i></i></div></div><div class="source-chip">PRIVATE · LOCAL</div></div></div></a>
+            <a class="feature-row" href="#ai-workspace" data-open-tool="records"><div class="feature-copy"><span class="feature-index">03</span><div><h3>Search local security records</h3><p>Find related records in the on-device snapshot, with available source details and dates. Retrieval is lexical and may miss relevant material.</p><span class="feature-cta">Search records <b>↗</b></span></div></div><div class="feature-image feature-connect"><div class="app-orbit"><span class="app-icon app-g">C</span><span class="app-icon app-n">V</span><span class="app-icon app-s">✳</span><span class="app-icon app-c">▣</span><span class="app-center">⌕</span><span class="app-icon app-m">N</span><span class="app-icon app-l">ID</span><span class="app-icon app-d">◈</span></div></div></a>
+            <a class="feature-row" id="scam-check" href="#ai-workspace" data-open-tool="message"><div class="feature-copy"><span class="feature-index">04</span><div><h3>Analyze a message and ask the local model</h3><p>Use a separate message analyzer or ask the local model for defensive education. OCR extracts image text locally; none of these results authenticate a sender.</p><span class="feature-cta">Open local AI tools <b>↗</b></span></div></div><div class="feature-image feature-create"><div class="code-window"><div class="code-bar"><i></i><i></i><i></i><span>local-cyber-assistant</span></div><div class="code-content"><span><b>01</b> <i>input</i> message_or_question</span><span><b>02</b></span><span><b>03</b> <i>analyze</i> locally</span><span><b>04</b> &nbsp; <i>review</i> evidence</span><span><b>05</b> &nbsp;&nbsp;&lt;<em>Limitations</em> /&gt;</span><span><b>06</b> &nbsp; <i>verify</i> important claims</span><span><b>07</b> }</span></div></div></div></a>
+          </div>
+        </section>
+
+        <section class="ai-workspace-section" id="ai-workspace" aria-labelledby="ai-workspace-title">
+          <div class="ai-workspace-inner">
+            <div class="ai-workspace-heading">
+              <span class="micro-label">LOCAL BATY WORKSPACE</span>
+              <h2 id="ai-workspace-title">Ask. Inspect.<br /><em>See the evidence.</em></h2>
+              <p>These tools connect to the existing local cybersecurity backend. URL and message checks, OCR, retrieval, and the local model run on this computer. No submitted URL is opened automatically.</p>
+            </div>
+
+            <div class="ai-workspace-shell">
+              <nav class="ai-tool-nav" role="tablist" aria-label="Baty local tools">
+                <button class="is-active" id="ai-tab-url" type="button" role="tab" aria-selected="true" aria-controls="ai-panel-url" data-tool="url">URL check</button>
+                <button id="ai-tab-message" type="button" role="tab" aria-selected="false" aria-controls="ai-panel-message" data-tool="message">Message check</button>
+                <button id="ai-tab-ask" type="button" role="tab" aria-selected="false" aria-controls="ai-panel-ask" data-tool="ask">Ask local AI</button>
+                <button id="ai-tab-records" type="button" role="tab" aria-selected="false" aria-controls="ai-panel-records" data-tool="records">Security records</button>
+                <button id="ai-tab-image" type="button" role="tab" aria-selected="false" aria-controls="ai-panel-image" data-tool="image">Image OCR</button>
+                <button id="ai-tab-trust" type="button" role="tab" aria-selected="false" aria-controls="ai-panel-trust" data-tool="trust">Trust notes</button>
+              </nav>
+
+              <div class="ai-tool-panel" id="ai-panel-url" role="tabpanel" aria-labelledby="ai-tab-url" data-tool-panel="url">
+                <div class="ai-panel-heading"><div><span class="ai-kicker">PASSIVE · LOCAL</span><h3>Inspect a URL</h3></div><span class="ai-mode-pill">No automatic fetch</span></div>
+                <p class="ai-panel-copy">Checks URL text and syntax only. This cannot confirm a site’s live content, ownership, or reputation.</p>
+                <form id="ai-url-form" class="ai-form">
+                  <label for="ai-url-input">URL or domain<input id="ai-url-input" name="url" maxlength="4096" required placeholder="https://example.com/path" autocomplete="url" /></label>
+                  <button type="submit">Inspect URL</button>
+                </form>
+                <pre id="ai-url-output" class="ai-output" role="status" aria-live="polite">No URL checked.</pre>
+              </div>
+
+              <div class="ai-tool-panel" id="ai-panel-message" role="tabpanel" aria-labelledby="ai-tab-message" data-tool-panel="message" hidden>
+                <div class="ai-panel-heading"><div><span class="ai-kicker">LOCAL MESSAGE TRIAGE</span><h3>Review a message</h3></div><span class="ai-mode-pill">Not sender verification</span></div>
+                <p class="ai-panel-copy">The analyzer reports language and URL signals; a result cannot authenticate the sender or establish that a message is safe.</p>
+                <form id="ai-message-form" class="ai-form ai-form-stack">
+                  <label for="ai-message-sender">Sender (optional)<input id="ai-message-sender" maxlength="500" placeholder="Displayed sender or address" /></label>
+                  <label for="ai-message-text">Message text<textarea id="ai-message-text" rows="6" maxlength="20000" required placeholder="Paste a message you want to review"></textarea></label>
+                  <button type="submit">Analyze locally</button>
+                </form>
+                <pre id="ai-message-output" class="ai-output" role="status" aria-live="polite">No message analyzed.</pre>
+              </div>
+
+              <div class="ai-tool-panel" id="ai-panel-ask" role="tabpanel" aria-labelledby="ai-tab-ask" data-tool-panel="ask" hidden>
+                <div class="ai-panel-heading"><div><span class="ai-kicker">ON-DEVICE MODEL</span><h3>Ask about cybersecurity</h3></div><span id="ai-model-pill" class="ai-mode-pill">Checking local model…</span></div>
+                <p class="ai-panel-copy">For defensive learning and authorized labs. Current, product-specific, or incident-specific answers need verifiable sources.</p>
+                <form id="ai-ask-form" class="ai-form ai-form-stack">
+                  <label for="ai-question">Your question<textarea id="ai-question" rows="5" maxlength="8000" required placeholder="Ask a defensive cybersecurity question"></textarea></label>
+                  <label class="ai-check-label"><input id="ai-include-records" type="checkbox" /> Include relevant local security records</label>
+                  <button type="submit">Run local model</button>
+                </form>
+                <pre id="ai-ask-output" class="ai-output ai-answer-output" role="status" aria-live="polite">The local model may be inaccurate. Check important advice against official guidance.</pre>
+              </div>
+
+              <div class="ai-tool-panel" id="ai-panel-records" role="tabpanel" aria-labelledby="ai-tab-records" data-tool-panel="records" hidden>
+                <div class="ai-panel-heading"><div><span class="ai-kicker">LOCAL SNAPSHOT</span><h3>Search security records</h3></div><span class="ai-mode-pill">No live lookup</span></div>
+                <p class="ai-panel-copy">Search available local advisories and records. Matches are lexical, may be incomplete or stale, and do not prove that your systems are affected.</p>
+                <form id="ai-records-form" class="ai-form ai-form-stack">
+                  <label for="ai-records-query">Product, identifier, or topic<textarea id="ai-records-query" rows="4" maxlength="8000" required placeholder="CVE identifier, product, or incident topic"></textarea></label>
+                  <button type="submit">Search local records</button>
+                </form>
+                <pre id="ai-records-output" class="ai-output" role="status" aria-live="polite">No search yet.</pre>
+              </div>
+
+              <div class="ai-tool-panel" id="ai-panel-image" role="tabpanel" aria-labelledby="ai-tab-image" data-tool-panel="image" hidden>
+                <div class="ai-panel-heading"><div><span class="ai-kicker">LOCAL OCR</span><h3>Extract text from an image</h3></div><span class="ai-mode-pill">Image stays local</span></div>
+                <p class="ai-panel-copy">OCR runs on this computer. Review the extracted text before you choose to put it into a question.</p>
+                <form id="ai-ocr-form" class="ai-form ai-form-stack">
+                  <label for="ai-image-file">Image (up to 4 MiB)<input id="ai-image-file" type="file" accept="image/png,image/jpeg,image/gif,image/webp,image/heic,image/heif" required /></label>
+                  <button type="submit">Extract text locally</button>
+                </form>
+                <pre id="ai-ocr-output" class="ai-output" role="status" aria-live="polite">Extracted text will appear here.</pre>
+                <button id="ai-use-ocr" class="ai-secondary-button" type="button" disabled>Use selected text in Ask local AI</button>
+              </div>
+
+              <div class="ai-tool-panel" id="ai-panel-trust" role="tabpanel" aria-labelledby="ai-tab-trust" data-tool-panel="trust" hidden>
+                <div class="ai-panel-heading"><div><span class="ai-kicker">PRIVATE · USER-MAINTAINED</span><h3>Local trust notes</h3></div><span class="ai-mode-pill">No blockchain connected</span></div>
+                <p class="ai-panel-copy">This registry stores your own notes on this computer. It is not independent verification or a verdict that a domain is safe. TLS and reputation checks are optional, off by default, and make network requests only if selected.</p>
+                <div class="trust-grid">
+                  <div class="trust-panel">
+                    <h4>Inspect a domain</h4>
+                    <label for="trust-url">URL or domain<input id="trust-url" maxlength="4096" placeholder="https://example.com/path" /></label>
+                    <label class="trust-check"><input id="trust-check-tls" type="checkbox" /> <span>Fetch the current TLS certificate from this public host on port 443<small>No page is fetched and no redirects are followed. Private and non-public addresses are blocked.</small></span></label>
+                    <label class="trust-check"><input id="trust-check-reputation" type="checkbox" /> <span>Check the domain root with configured reputation services<small>The domain is sent to the configured provider; usage and retention depend on that service.</small></span></label>
+                    <button id="trust-inspect" type="button">Inspect selected checks</button>
+                    <pre id="trust-inspect-output" class="ai-output trust-output" role="status" aria-live="polite">Enter a hostname. Nothing is resolved or sent unless an optional check is selected.</pre>
+                  </div>
+                  <div class="trust-panel">
+                    <h4>Save a local note</h4>
+                    <label for="trust-register-url">Domain<input id="trust-register-url" maxlength="4096" placeholder="example.com" /></label>
+                    <label for="trust-fingerprint">Certificate SHA-256 fingerprint<input id="trust-fingerprint" maxlength="128" placeholder="64 hexadecimal characters" /></label>
+                    <small id="trust-fingerprint-source">Manually enter the fingerprint or copy one from an explicitly selected TLS check.</small>
+                    <label for="trust-metadata">Note (optional)<input id="trust-metadata" maxlength="500" placeholder="Context for your local record" /></label>
+                    <button id="trust-register" type="button">Save local note</button>
+                    <label for="trust-revoke-reason">Revocation note<input id="trust-revoke-reason" maxlength="500" placeholder="Why this note is no longer current" /></label>
+                    <button id="trust-revoke" type="button">Revoke local note</button>
+                    <pre id="trust-register-output" class="ai-output trust-output" role="status" aria-live="polite">No local record saved yet.</pre>
+                  </div>
+                </div>
+                <p id="trust-status" class="trust-status" role="status" aria-live="polite">Checking local registry configuration…</p>
+                <div class="trust-ledger-head"><h4>Saved local records</h4><button id="trust-refresh" type="button">Refresh</button></div>
+                <div id="trust-records" class="trust-records" aria-live="polite">Loading local records…</div>
+              </div>
+
+              <div class="ai-research-link"><span>Need web research?</span><p>Open the existing research workspace. It sends a query to the configured provider only after you submit it; provider use may incur charges.</p><a href="/workspace">Open research workspace <span aria-hidden="true">↗</span></a></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="get-started">
+          <div class="get-started-art" aria-hidden="true"></div>
+          <div class="get-started-content"><span class="micro-label">LOCAL FIRST · DEFENSIVE BY DESIGN</span><h2 aria-label="Safer choices"><span class="get-started-word get-started-word--left" aria-hidden="true">Safer</span><em class="get-started-word get-started-word--right" aria-hidden="true">choices</em></h2><p>Use the local tools as a starting point. Verify important findings with current vendor and official security guidance before acting.</p><a class="button-link" href="#ai-workspace" data-open-tool="url">Check a URL <span>↗</span></a></div>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <a class="footer-wordmark" href="#top">Baty</a>
+        <div class="footer-columns">
+          <div><h4>Baty tools</h4><a href="#ai-workspace" data-open-tool="url">URL check</a><a href="#ai-workspace" data-open-tool="message">Message check</a><a href="#ai-workspace" data-open-tool="ask">Local AI</a><a href="#ai-workspace" data-open-tool="image">Image OCR</a></div>
+          <div><h4>Protection</h4><h5>Local checks</h5><a href="#ai-workspace" data-open-tool="url">Passive URL analysis</a><a href="#ai-workspace" data-open-tool="records">Local records</a><a href="#ai-workspace" data-open-tool="trust">Private trust notes</a><h5>Boundaries</h5><a href="#features">What is checked</a><a href="#features">What needs verification</a></div>
+          <div id="collaborators"><h4>Sponsored by</h4><a href="https://hackclub.com/" target="_blank" rel="noopener noreferrer">Hack the Club ↗</a><a href="https://letsdefend.io/" target="_blank" rel="noopener noreferrer">Let's Defend ↗</a><a href="#top">Cybersecurity hackathon</a></div>
+          <div><h4>Resources</h4><a href="#how-it-works">How local checks work</a><a href="#ai-workspace" data-open-tool="records">Local security records</a><a href="/workspace">Web research workspace</a><a href="./blockchain.html">Trust Ledger · prototype</a><a href="#ai-workspace" data-open-tool="ask">Local AI tools</a></div>
+          <div><h4>About Baty</h4><a href="#top">Safer digital interactions</a><a href="#features">Prototype capabilities</a><a href="#collaborators">Hackathon collaborators</a><a href="#top">Privacy-conscious checks</a></div>
+        </div>
+        <div class="footer-bottom"><span>Baty · Local Cybersecurity Demo ©2026</span><div><a href="https://hackclub.com/" target="_blank" rel="noopener noreferrer">Hack the Club</a><a href="https://letsdefend.io/" target="_blank" rel="noopener noreferrer">Let's Defend</a><a href="#ai-workspace" data-open-tool="url">URL checker</a><a href="#ai-workspace" data-open-tool="trust">Local trust notes</a></div></div>
+      </footer>
+      <div class="sound-control"><span class="sound-bars"><i></i><i></i><i></i></span><button aria-label="Toggle sound" aria-pressed="false">SOUND OFF</button></div>
+      <div class="menu-overlay" aria-hidden="true"><div class="menu-panel"><span class="micro-label">EXPLORE BATY</span><a href="#ai-workspace" data-open-tool="url">Check a URL <span>↗</span></a><a href="#ai-workspace" data-open-tool="message">Check a message <span>↗</span></a><a href="#ai-workspace" data-open-tool="ask">Ask local AI <span>↗</span></a><a href="#ai-workspace" data-open-tool="trust">Local trust notes <span>↗</span></a><a href="./blockchain.html">Trust Ledger <span>↗</span></a><p>Inspect cautiously. Understand the evidence. Stay safer online.</p></div></div>
+    </div>
+    <script src="script.js"></script>
+    <script src="/trust.js"></script>
+    <script src="ai-workspace.js"></script>
+  </body>
+</html>

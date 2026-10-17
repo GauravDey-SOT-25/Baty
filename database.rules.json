@@ -1,0 +1,19 @@
+{
+  "rules": {
+    ".read": false,
+    ".write": false,
+    "users": {
+      "$uid": {
+        "assistantHistory": {
+          ".read": "auth != null && auth.uid === $uid",
+          ".write": "auth != null && auth.uid === $uid",
+          ".indexOn": ["createdAt"],
+          ".validate": "newData.numChildren() <= 200",
+          "$entryId": {
+            ".validate": "newData.hasChildren(['question', 'answer', 'answerBasis', 'createdAt']) && newData.child('question').isString() && newData.child('question').val().length <= 8000 && newData.child('answer').isString() && newData.child('answer').val().length <= 12000 && newData.child('answerBasis').isString() && newData.child('answerBasis').val().length <= 80 && newData.child('createdAt').isNumber()"
+          }
+        }
+      }
+    }
+  }
+}

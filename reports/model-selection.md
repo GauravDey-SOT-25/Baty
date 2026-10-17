@@ -21,13 +21,13 @@ The 4-bit base plus LoRA was a runtime/format choice, not a model-quality endors
 | `mlx-community/Qwen2.5-1.5B-Instruct-4bit` | Apache-2.0; Qwen2; 4-bit MLX conversion; model card documents MLX inference. Exact local load, generation, QLoRA, adapter loading and adapter-weight resume were tested. | Primary local artifact. |
 | `Qwen/Qwen3.5-2B` | Apache-2.0; 2B-parameter hybrid Gated DeltaNet/attention model with a much longer advertised context. Installed MLX-LM guide does not list this as a verified LoRA family; an MLX-LM issue reports a slow Gated DeltaNet backward path. | Not selected; no compatible fallback has been verified. |
 
-## Training experiment
+## Training experiments
 
-- The Trendyol and Heimdall samples were not used for training because the spot reviews could not establish accuracy and safety.
-- A 36-record project-authored defensive dataset was made solely to test the pipeline (24 train / 6 validation / 6 held-out test). Exact questions were kept separate by topic.
-- Config: batch 1, 256-token cap, 2 LoRA layers, 8 iterations, gradient checkpointing, prompt masking, rank 8. MLX reported 0.659M trainable parameters (0.043% of 1.544B). Validation loss moved from 4.548 initially to 4.301 after 8 iterations; the run is too small to infer quality.
-- The adapter loads for inference, but a six-question qualitative review showed no material improvement over base. It is not used by default.
-- Recovery was tested by interrupting a separate pilot after a periodic adapter save and resuming with `--resume-adapter-file`. The framework restored adapter weights and completed; optimizer/scheduler state was not restored.
+- Earlier, the Trendyol and Heimdall samples were held back because spot review could not establish answer accuracy and safety. A 36-record project-authored set was used to verify the pipeline (24 train / 6 validation / 6 held-out test); the smoke adapter did not show material improvement and is not used by default.
+- Following a later user request, one filtered 701-row Trendyol training copy was run locally. The source train split had 796 records; obvious reasoning artifacts, placeholder phrases, and explicit harmful-action prompts were filtered, while 100 validation and 100 test examples remained unchanged. Remaining data was not human fact-checked. See `reports/trendyol-m5-training.md` and the generated training manifest.
+- The LoRA run completed 701 optimizer steps on the already installed MLX 4-bit Qwen conversion. Held-out test loss was lower (base 3.119 / perplexity 22.615; adapter 1.809 / perplexity 6.105), but a single-pass QA review scored the base 2/8 and the adapter 1/8. The adapter fabricated a patch version and made unsafe claims about HTTPS. Keep it as an isolated experiment; this result does not justify enabling it or claiming safer cybersecurity answers.
+- The full-precision upstream Qwen repository was not downloaded in that run; the existing pinned 4-bit MLX conversion of the same Qwen2.5-1.5B-Instruct family was used to fit the hardware/time constraint.
+- Recovery was tested earlier by interrupting a separate pilot after a periodic adapter save and resuming with `--resume-adapter-file`. Adapter weights restored, but optimizer/scheduler state did not.
 
 ## Sources
 

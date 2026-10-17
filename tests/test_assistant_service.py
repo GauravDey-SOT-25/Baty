@@ -12,6 +12,8 @@ class AssistantServiceTests(unittest.TestCase):
             ("Is HTTPS enough to trust this site with my password?", "do not prove"),
             ("Can I trust this email if the analyzer found no indicators?", "does not prove"),
             ("Should I wipe the compromised server now?", "preserving evidence"),
+            ("A user clicked a suspicious link but reports no visible issue. Can we conclude no compromise occurred?", "does not prove"),
+            ("An advisory names a vulnerability but we do not know our installed product versions. Are we affected?", "cannot be established without verifying"),
         ]
         with patch("src.assistant.service.answer_locally", side_effect=AssertionError("model should not run")):
             for question, expected in cases:
@@ -36,6 +38,7 @@ class AssistantServiceTests(unittest.TestCase):
         self.assertNotIn("federal enterprise", result["answer"])
         self.assertEqual(result["sources"][0]["id"], "CVE-2026-102764")
         self.assertEqual(result["sources"][0]["url"], record["source_url"])
+        self.assertEqual(result["sources"][0]["source"], "CISA KEV")
 
     def test_missing_cve_does_not_call_model(self):
         with patch("src.assistant.service.search_incidents", return_value={"incidents": []}), \
@@ -43,6 +46,36 @@ class AssistantServiceTests(unittest.TestCase):
             result = answer("Summarize CVE-2099-12345")
         self.assertIn("not found in the local CISA snapshot", result["answer"])
         self.assertEqual(result["sources"], [])
+
+    def test_current_claim_without_evidence_abstains(self):
+        with patch("src.assistant.service.search_incidents", return_value={"incidents": []}), \
+             patch("src.assistant.service.answer_locally", side_effect=AssertionError("model should not run")):
+            result = answer("What is the current patch version for Example Gateway?")
+        self.assertEqual(result["answer_basis"], "abstention_missing_evidence")
+        self.assertIn("can’t verify", result["answer"])
+        self.assertEqual(result["sources"], [])
+
+    def test_general_education_is_labeled_unverified(self):
+        with patch("src.assistant.service.search_incidents", return_value={"incidents": []}), \
+             patch("src.assistant.service.answer_locally", return_value="Use least privilege.") as model:
+            result = answer("What does least privilege mean?")
+        self.assertEqual(result["answer_basis"], "general_model_knowledge_unverified")
+        self.assertIn("general cybersecurity education", model.call_args.args[0])
+        self.assertIn("Use least privilege", result["answer"])
+
+    def test_direct_model_mode_skips_incident_retrieval(self):
+        with patch("src.assistant.service.search_incidents", side_effect=AssertionError("retrieval should be skipped")), \
+             patch("src.assistant.service.answer_locally", return_value="Local model response"):
+            result = answer("Explain a cryptographic nonce.", include_local_records=False)
+        self.assertEqual(result["answer"], "Local model response")
+        self.assertEqual(result["answer_basis"], "general_model_knowledge_unverified")
+
+    def test_direct_model_mode_still_retrieves_explicit_cve(self):
+        with patch("src.assistant.service.search_incidents", return_value={"incidents": []}) as search, \
+             patch("src.assistant.service.answer_locally", side_effect=AssertionError("missing CVE must abstain")):
+            result = answer("Summarize CVE-2099-12345", include_local_records=False)
+        search.assert_called_once()
+        self.assertEqual(result["answer_basis"], "abstention_missing_evidence")
 
 
 if __name__ == "__main__":

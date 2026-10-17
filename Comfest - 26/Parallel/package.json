@@ -1,0 +1,19 @@
+{
+  "name": "decentralized-url-trust-verifier",
+  "version": "1.0.0",
+  "description": "Decentralized URL Trust Verifier using Ethereum smart contracts and Python Flask API",
+  "main": "hardhat.config.js",
+  "scripts": {
+    "node": "hardhat node",
+    "compile": "hardhat compile",
+    "deploy": "hardhat run scripts/deploy.js --network localhost",
+    "test": "hardhat test"
+  },
+  "keywords": ["blockchain", "security", "web3", "url-verifier", "solidity"],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^5.0.0",
+    "hardhat": "^2.22.18"
+  }
+}

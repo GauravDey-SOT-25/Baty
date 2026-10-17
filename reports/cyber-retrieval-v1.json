@@ -1,0 +1,808 @@
+{
+  "evaluation_id": "cyber_retrieval_v1",
+  "created_at": "2026-10-16T21:57:51.006266+00:00",
+  "dataset_sha256": "15babff63b02272a4eda2ce091e5dc01e26d372be4fb8851f9df4a782869cf9b",
+  "corpus_sha256": "5c8148e61e018af0c54cf5233b67c1e84fad5364fc4dc0fb5f3fbe0ceaca6110",
+  "dataset_size": 25,
+  "model_invoked": false,
+  "network_access": "None; all URLs are metadata and were not opened/resolved.",
+  "metrics": {
+    "ambiguous_query": {
+      "n": 4,
+      "positive_n": 0,
+      "negative_n": 4,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "negative_query_correct_abstention_rate": 1.0,
+      "negative_query_false_match_rate": 0.0,
+      "expected_source_url_attribution_accuracy": null,
+      "citation_checks": 0,
+      "assistant_missing_evidence_abstention_accuracy": null
+    },
+    "common_word_false_match": {
+      "n": 3,
+      "positive_n": 0,
+      "negative_n": 3,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "negative_query_correct_abstention_rate": 1.0,
+      "negative_query_false_match_rate": 0.0,
+      "expected_source_url_attribution_accuracy": null,
+      "citation_checks": 0,
+      "assistant_missing_evidence_abstention_accuracy": null
+    },
+    "exact_advisory": {
+      "n": 3,
+      "positive_n": 3,
+      "negative_n": 0,
+      "tp": 3,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "negative_query_correct_abstention_rate": null,
+      "negative_query_false_match_rate": null,
+      "expected_source_url_attribution_accuracy": 1.0,
+      "citation_checks": 3,
+      "assistant_missing_evidence_abstention_accuracy": null
+    },
+    "exact_cve": {
+      "n": 6,
+      "positive_n": 6,
+      "negative_n": 0,
+      "tp": 6,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "negative_query_correct_abstention_rate": null,
+      "negative_query_false_match_rate": null,
+      "expected_source_url_attribution_accuracy": 1.0,
+      "citation_checks": 6,
+      "assistant_missing_evidence_abstention_accuracy": null
+    },
+    "missing_evidence_abstention": {
+      "n": 1,
+      "positive_n": 0,
+      "negative_n": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "negative_query_correct_abstention_rate": 1.0,
+      "negative_query_false_match_rate": 0.0,
+      "expected_source_url_attribution_accuracy": null,
+      "citation_checks": 0,
+      "assistant_missing_evidence_abstention_accuracy": 1.0
+    },
+    "relevant_security_record": {
+      "n": 8,
+      "positive_n": 8,
+      "negative_n": 0,
+      "tp": 8,
+      "fp": 1,
+      "fn": 0,
+      "precision": 0.8888888888888888,
+      "recall": 1.0,
+      "f1": 0.9411764705882353,
+      "negative_query_correct_abstention_rate": null,
+      "negative_query_false_match_rate": null,
+      "expected_source_url_attribution_accuracy": 1.0,
+      "citation_checks": 8,
+      "assistant_missing_evidence_abstention_accuracy": null
+    },
+    "all_retrieval_cases": {
+      "n": 25,
+      "positive_n": 17,
+      "negative_n": 8,
+      "tp": 17,
+      "fp": 1,
+      "fn": 0,
+      "precision": 0.9444444444444444,
+      "recall": 1.0,
+      "f1": 0.9714285714285714,
+      "negative_query_correct_abstention_rate": 1.0,
+      "negative_query_false_match_rate": 0.0,
+      "expected_source_url_attribution_accuracy": 1.0,
+      "citation_checks": 17,
+      "assistant_missing_evidence_abstention_accuracy": 1.0
+    }
+  },
+  "results": [
+    {
+      "id": "kev-exact-01",
+      "category": "exact_cve",
+      "query": "CVE-2026-102764",
+      "expected_record_ids": [
+        "CVE-2026-102764"
+      ],
+      "should_abstain": false,
+      "retrieved_record_ids": [
+        "CVE-2026-102764"
+      ],
+      "retrieved_records": [
+        {
+          "id": "CVE-2026-102764",
+          "title": "BeyondTrust Remote Support Authentication Bypass by Spoofing Vulnerability",
+          "source": "CISA Known Exploited Vulnerabilities Catalog",
+          "source_url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?search=CVE-2026-102764",
+          "published_at": "2026-10-16",
+          "relevance_score": 1000.0
+        }
+      ],
+      "factual_sources": [
+        {
+          "id": "CVE-2026-102764",
+          "license_note": "U.S. government public catalog; verify source terms before redistribution",
+          "published_at": "2026-10-16",
+          "snapshot_released_at": "2026-10-16T17:15:48.8752Z",
+          "source": "CISA Known Exploited Vulnerabilities Catalog",
+          "source_url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?search=CVE-2026-102764",
+          "title": "BeyondTrust Remote Support Authentication Bypass by Spoofing Vulnerability"
+        }
+      ],
+      "hit": true
+    },
+    {
+      "id": "kev-exact-02",
+      "category": "exact_cve",
+      "query": "CVE-2025-61624",
+      "expected_record_ids": [
+        "CVE-2025-61624"
+      ],
+      "should_abstain": false,
+      "retrieved_record_ids": [
+        "CVE-2025-61624"
+      ],
+      "retrieved_records": [
+        {
+          "id": "CVE-2025-61624",
+          "title": "Fortinet Multiple Products Path Traversal Vulnerability",
+          "source": "CISA Known Exploited Vulnerabilities Catalog",
+          "source_url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?search=CVE-2025-61624",
+          "published_at": "2026-10-16",
+          "relevance_score": 1000.0
+        }
+      ],
+      "factual_sources": [
+        {
+          "id": "CVE-2025-61624",
+          "license_note": "U.S. government public catalog; verify source terms before redistribution",
+          "published_at": "2026-10-16",
+          "snapshot_released_at": "2026-10-16T17:15:48.8752Z",
+          "source": "CISA Known Exploited Vulnerabilities Catalog",
+          "source_url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?search=CVE-2025-61624",
+          "title": "Fortinet Multiple Products Path Traversal Vulnerability"
+        }
+      ],
+      "hit": true
+    },
+    {
+      "id": "kev-exact-03",
+      "category": "exact_cve",
+      "query": "CVE-2026-21589",
+      "expected_record_ids": [
+        "CVE-2026-21589"
+      ],
+      "should_abstain": false,
+      "retrieved_record_ids": [
+        "CVE-2026-21589"
+      ],
+      "retrieved_records": [
+        {
+          "id": "CVE-2026-21589",
+          "title": "Atlassian Multiple Products Files or Directories Accessible to External Parties Vulnerability",
+          "source": "CISA Known Exploited Vulnerabilities Catalog",
+          "source_url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?search=CVE-2026-21589",
+          "published_at": "2026-10-15",
+          "relevance_score": 1000.0
+        }
+      ],
+      "factual_sources": [
+        {
+          "id": "CVE-2026-21589",
+          "license_note": "U.S. government public catalog; verify source terms before redistribution",
+          "published_at": "2026-10-15",
+          "snapshot_released_at": "2026-10-16T17:15:48.8752Z",
+          "source": "CISA Known Exploited Vulnerabilities Catalog",
+          "source_url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?search=CVE-2026-21589",
+          "title": "Atlassian Multiple Products Files or Directories Accessible to External Parties Vulnerability"
+        }
+      ],
+      "hit": true
+    },
+    {
+      "id": "kev-exact-04",
+      "category": "exact_cve",
+      "query": "CVE-2026-105134",
+      "expected_record_ids": [
+        "CVE-2026-105134"
+      ],
+      "should_abstain": false,
+      "retrieved_record_ids": [
+        "CVE-2026-105134"
+      ],
+      "retrieved_records": [
+        {
+          "id": "CVE-2026-105134",
+          "title": "Ahsay AhsayCBS Command Injection Vulnerability",
+          "source": "CISA Known Exploited Vulnerabilities Catalog",
+          "source_url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?search=CVE-2026-105134",
+          "published_at": "2026-10-14",
+          "relevance_score": 1000.0
+        }
+      ],
+      "factual_sources": [
+        {
+          "id": "CVE-2026-105134",
+          "license_note": "U.S. government public catalog; verify source terms before redistribution",
+          "published_at": "2026-10-14",
+          "snapshot_released_at": "2026-10-16T17:15:48.8752Z",
+          "source": "CISA Known Exploited Vulnerabilities Catalog",
+          "source_url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?search=CVE-2026-105134",
+          "title": "Ahsay AhsayCBS Command Injection Vulnerability"
+        }
+      ],
+      "hit": true
+    },
+    {
+      "id": "kev-exact-05",
+      "category": "exact_cve",
+      "query": "CVE-2026-76519",
+      "expected_record_ids": [
+        "CVE-2026-76519"
+      ],
+      "should_abstain": false,
+      "retrieved_record_ids": [
+        "CVE-2026-76519"
+      ],
+      "retrieved_records": [
+        {
+          "id": "CVE-2026-76519",
+          "title": "Cisco Secure Email Gateway Relative Path Traversal Vulnerability",
+          "source": "CISA Known Exploited Vulnerabilities Catalog",
+          "source_url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?search=CVE-2026-76519",
+          "published_at": "2026-10-14",
+          "relevance_score": 1000.0
+        }
+      ],
+      "factual_sources": [
+        {
+          "id": "CVE-2026-76519",
+          "license_note": "U.S. government public catalog; verify source terms before redistribution",
+          "published_at": "2026-10-14",
+          "snapshot_released_at": "2026-10-16T17:15:48.8752Z",
+          "source": "CISA Known Exploited Vulnerabilities Catalog",
+          "source_url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?search=CVE-2026-76519",
+          "title": "Cisco Secure Email Gateway Relative Path Traversal Vulnerability"
+        }
+      ],
+      "hit": true
+    },
+    {
+      "id": "kev-exact-06",
+      "category": "exact_cve",
+      "query": "CVE-2026-0322",
+      "expected_record_ids": [
+        "CVE-2026-0322"
+      ],
+      "should_abstain": false,
+      "retrieved_record_ids": [
+        "CVE-2026-0322"
+      ],
+      "retrieved_records": [
+        {
+          "id": "CVE-2026-0322",
+          "title": "Palo Alto Networks PAN-OS Code Injection Vulnerability",
+          "source": "CISA Known Exploited Vulnerabilities Catalog",
+          "source_url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?search=CVE-2026-0322",
+          "published_at": "2026-10-14",
+          "relevance_score": 1000.0
+        }
+      ],
+      "factual_sources": [
+        {
+          "id": "CVE-2026-0322",
+          "license_note": "U.S. government public catalog; verify source terms before redistribution",
+          "published_at": "2026-10-14",
+          "snapshot_released_at": "2026-10-16T17:15:48.8752Z",
+          "source": "CISA Known Exploited Vulnerabilities Catalog",
+          "source_url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?search=CVE-2026-0322",
+          "title": "Palo Alto Networks PAN-OS Code Injection Vulnerability"
+        }
+      ],
+      "hit": true
+    },
+    {
+      "id": "advisory-exact-01",
+      "category": "exact_advisory",
+      "query": "Eclipse Foundation Eclipse Milo",
+      "expected_record_ids": [
+        "/node/25629"
+      ],
+      "should_abstain": false,
+      "retrieved_record_ids": [
+        "/node/25629"
+      ],
+      "retrieved_records": [
+        {
+          "id": "/node/25629",
+          "title": "Eclipse Foundation Eclipse Milo",
+          "source": "CISA Cybersecurity Advisories RSS",
+          "source_url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-288-01",
+          "published_at": "Thu, 15 Oct 26 12:00:00 +0000",
+          "relevance_score": 108.5986
+        }
+      ],
+      "factual_sources": [
+        {
+          "id": "/node/25629",
+          "license_note": "CISA RSS metadata and summaries; source attribution retained",
+          "published_at": "Thu, 15 Oct 26 12:00:00 +0000",
+          "snapshot_released_at": "2026-10-16T19:49:27.727103+00:00",
+          "source": "CISA Cybersecurity Advisories RSS",
+          "source_url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-288-01",
+          "title": "Eclipse Foundation Eclipse Milo"
+        }
+      ],
+      "hit": true
+    },
+    {
+      "id": "advisory-exact-02",
+      "category": "exact_advisory",
+      "query": "Thermo Fisher Torrent Suite Software",
+      "expected_record_ids": [
+        "/node/25627"
+      ],
+      "should_abstain": false,
+      "retrieved_record_ids": [
+        "/node/25627"
+      ],
+      "retrieved_records": [
+        {
+          "id": "/node/25627",
+          "title": "Thermo Fisher Torrent Suite Software",
+          "source": "CISA Cybersecurity Advisories RSS",
+          "source_url": "https://www.cisa.gov/news-events/ics-medical-advisories/icsma-26-288-01",
+          "published_at": "Thu, 15 Oct 26 12:00:00 +0000",
+          "relevance_score": 156.723
+        }
+      ],
+      "factual_sources": [
+        {
+          "id": "/node/25627",
+          "license_note": "CISA RSS metadata and summaries; source attribution retained",
+          "published_at": "Thu, 15 Oct 26 12:00:00 +0000",
+          "snapshot_released_at": "2026-10-16T19:49:27.727103+00:00",
+          "source": "CISA Cybersecurity Advisories RSS",
+          "source_url": "https://www.cisa.gov/news-events/ics-medical-advisories/icsma-26-288-01",
+          "title": "Thermo Fisher Torrent Suite Software"
+        }
+      ],
+      "hit": true
+    },
+    {
+      "id": "advisory-exact-03",
+      "category": "exact_advisory",
+      "query": "Cyber Threat Actors Use a Variety of Techniques to Target Election and Campaign Officials",
+      "expected_record_ids": [
+        "/node/25636"
+      ],
+      "should_abstain": false,
+      "retrieved_record_ids": [
+        "/node/25636"
+      ],
+      "retrieved_records": [
+        {
+          "id": "/node/25636",
+          "title": "Cyber Threat Actors Use a Variety of Techniques to Target Election and Campaign Officials",
+          "source": "CISA Cybersecurity Advisories RSS",
+          "source_url": "https://www.cisa.gov/resources-tools/resources/cyber-threat-actors-use-variety-techniques-target-election-and-campaign-officials",
+          "published_at": "Fri, 16 Oct 26 12:00:00 +0000",
+          "relevance_score": 209.0358
+        }
+      ],
+      "factual_sources": [
+        {
+          "id": "/node/25636",
+          "license_note": "CISA RSS metadata and summaries; source attribution retained",
+          "published_at": "Fri, 16 Oct 26 12:00:00 +0000",
+          "snapshot_released_at": "2026-10-16T19:49:27.727103+00:00",
+          "source": "CISA Cybersecurity Advisories RSS",
+          "source_url": "https://www.cisa.gov/resources-tools/resources/cyber-threat-actors-use-variety-techniques-target-election-and-campaign-officials",
+          "title": "Cyber Threat Actors Use a Variety of Techniques to Target Election and Campaign Officials"
+        }
+      ],
+      "hit": true
+    },
+    {
+      "id": "kev-relevant-01",
+      "category": "relevant_security_record",
+      "query": "BeyondTrust Remote Support spoofing authentication bypass",
+      "expected_record_ids": [
+        "CVE-2026-102764"
+      ],
+      "should_abstain": false,
+      "retrieved_record_ids": [
+        "CVE-2026-102764"
+      ],
+      "retrieved_records": [
+        {
+          "id": "CVE-2026-102764",
+          "title": "BeyondTrust Remote Support Authentication Bypass by Spoofing Vulnerability",
+          "source": "CISA Known Exploited Vulnerabilities Catalog",
+          "source_url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?search=CVE-2026-102764",
+          "published_at": "2026-10-16",
+          "relevance_score": 154.6725
+        }
+      ],
+      "factual_sources": [
+        {
+          "id": "CVE-2026-102764",
+          "license_note": "U.S. government public catalog; verify source terms before redistribution",
+          "published_at": "2026-10-16",
+          "snapshot_released_at": "2026-10-16T17:15:48.8752Z",
+          "source": "CISA Known Exploited Vulnerabilities Catalog",
+          "source_url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?search=CVE-2026-102764",
+          "title": "BeyondTrust Remote Support Authentication Bypass by Spoofing Vulnerability"
+        }
+      ],
+      "hit": true
+    },
+    {
+      "id": "kev-relevant-02",
+      "category": "relevant_security_record",
+      "query": "Fortinet FortiPAM FortiProxy FortiSwitchManager path traversal",
+      "expected_record_ids": [
+        "CVE-2025-61624"
+      ],
+      "should_abstain": false,
+      "retrieved_record_ids": [
+        "CVE-2025-61624"
+      ],
+      "retrieved_records": [
+        {
+          "id": "CVE-2025-61624",
+          "title": "Fortinet Multiple Products Path Traversal Vulnerability",
+          "source": "CISA Known Exploited Vulnerabilities Catalog",
+          "source_url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?search=CVE-2025-61624",
+          "published_at": "2026-10-16",
+          "relevance_score": 116.2067
+        }
+      ],
+      "factual_sources": [
+        {
+          "id": "CVE-2025-61624",
+          "license_note": "U.S. government public catalog; verify source terms before redistribution",
+          "published_at": "2026-10-16",
+          "snapshot_released_at": "2026-10-16T17:15:48.8752Z",
+          "source": "CISA Known Exploited Vulnerabilities Catalog",
+          "source_url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?search=CVE-2025-61624",
+          "title": "Fortinet Multiple Products Path Traversal Vulnerability"
+        }
+      ],
+      "hit": true
+    },
+    {
+      "id": "kev-relevant-03",
+      "category": "relevant_security_record",
+      "query": "Atlassian Data Center files accessible external parties",
+      "expected_record_ids": [
+        "CVE-2026-21589"
+      ],
+      "should_abstain": false,
+      "retrieved_record_ids": [
+        "CVE-2026-21589"
+      ],
+      "retrieved_records": [
+        {
+          "id": "CVE-2026-21589",
+          "title": "Atlassian Multiple Products Files or Directories Accessible to External Parties Vulnerability",
+          "source": "CISA Known Exploited Vulnerabilities Catalog",
+          "source_url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?search=CVE-2026-21589",
+          "published_at": "2026-10-15",
+          "relevance_score": 155.3357
+        }
+      ],
+      "factual_sources": [
+        {
+          "id": "CVE-2026-21589",
+          "license_note": "U.S. government public catalog; verify source terms before redistribution",
+          "published_at": "2026-10-15",
+          "snapshot_released_at": "2026-10-16T17:15:48.8752Z",
+          "source": "CISA Known Exploited Vulnerabilities Catalog",
+          "source_url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?search=CVE-2026-21589",
+          "title": "Atlassian Multiple Products Files or Directories Accessible to External Parties Vulnerability"
+        }
+      ],
+      "hit": true
+    },
+    {
+      "id": "kev-relevant-04",
+      "category": "relevant_security_record",
+      "query": "AhsayCBS command injection replication receiver",
+      "expected_record_ids": [
+        "CVE-2026-105134"
+      ],
+      "should_abstain": false,
+      "retrieved_record_ids": [
+        "CVE-2026-105134"
+      ],
+      "retrieved_records": [
+        {
+          "id": "CVE-2026-105134",
+          "title": "Ahsay AhsayCBS Command Injection Vulnerability",
+          "source": "CISA Known Exploited Vulnerabilities Catalog",
+          "source_url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?search=CVE-2026-105134",
+          "published_at": "2026-10-14",
+          "relevance_score": 118.9572
+        }
+      ],
+      "factual_sources": [
+        {
+          "id": "CVE-2026-105134",
+          "license_note": "U.S. government public catalog; verify source terms before redistribution",
+          "published_at": "2026-10-14",
+          "snapshot_released_at": "2026-10-16T17:15:48.8752Z",
+          "source": "CISA Known Exploited Vulnerabilities Catalog",
+          "source_url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?search=CVE-2026-105134",
+          "title": "Ahsay AhsayCBS Command Injection Vulnerability"
+        }
+      ],
+      "hit": true
+    },
+    {
+      "id": "kev-relevant-05",
+      "category": "relevant_security_record",
+      "query": "Cisco Secure Email Gateway relative path traversal",
+      "expected_record_ids": [
+        "CVE-2026-76519"
+      ],
+      "should_abstain": false,
+      "retrieved_record_ids": [
+        "CVE-2026-76519"
+      ],
+      "retrieved_records": [
+        {
+          "id": "CVE-2026-76519",
+          "title": "Cisco Secure Email Gateway Relative Path Traversal Vulnerability",
+          "source": "CISA Known Exploited Vulnerabilities Catalog",
+          "source_url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?search=CVE-2026-76519",
+          "published_at": "2026-10-14",
+          "relevance_score": 192.5536
+        }
+      ],
+      "factual_sources": [
+        {
+          "id": "CVE-2026-76519",
+          "license_note": "U.S. government public catalog; verify source terms before redistribution",
+          "published_at": "2026-10-14",
+          "snapshot_released_at": "2026-10-16T17:15:48.8752Z",
+          "source": "CISA Known Exploited Vulnerabilities Catalog",
+          "source_url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?search=CVE-2026-76519",
+          "title": "Cisco Secure Email Gateway Relative Path Traversal Vulnerability"
+        }
+      ],
+      "hit": true
+    },
+    {
+      "id": "kev-relevant-06",
+      "category": "relevant_security_record",
+      "query": "Palo Alto Networks PAN-OS code injection firewall",
+      "expected_record_ids": [
+        "CVE-2026-0322"
+      ],
+      "should_abstain": false,
+      "retrieved_record_ids": [
+        "CVE-2026-0322",
+        "CVE-2024-3400"
+      ],
+      "retrieved_records": [
+        {
+          "id": "CVE-2026-0322",
+          "title": "Palo Alto Networks PAN-OS Code Injection Vulnerability",
+          "source": "CISA Known Exploited Vulnerabilities Catalog",
+          "source_url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?search=CVE-2026-0322",
+          "published_at": "2026-10-14",
+          "relevance_score": 196.2819
+        },
+        {
+          "id": "CVE-2024-3400",
+          "title": "Palo Alto Networks PAN-OS Command Injection Vulnerability",
+          "source": "CISA Known Exploited Vulnerabilities Catalog",
+          "source_url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?search=CVE-2024-3400",
+          "published_at": "2024-04-12",
+          "relevance_score": 161.9874
+        }
+      ],
+      "factual_sources": [
+        {
+          "id": "CVE-2026-0322",
+          "license_note": "U.S. government public catalog; verify source terms before redistribution",
+          "published_at": "2026-10-14",
+          "snapshot_released_at": "2026-10-16T17:15:48.8752Z",
+          "source": "CISA Known Exploited Vulnerabilities Catalog",
+          "source_url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?search=CVE-2026-0322",
+          "title": "Palo Alto Networks PAN-OS Code Injection Vulnerability"
+        }
+      ],
+      "hit": true
+    },
+    {
+      "id": "advisory-relevant-01",
+      "category": "relevant_security_record",
+      "query": "CISA advisory vulnerabilities in Eclipse Milo",
+      "expected_record_ids": [
+        "/node/25629"
+      ],
+      "should_abstain": false,
+      "retrieved_record_ids": [
+        "/node/25629"
+      ],
+      "retrieved_records": [
+        {
+          "id": "/node/25629",
+          "title": "Eclipse Foundation Eclipse Milo",
+          "source": "CISA Cybersecurity Advisories RSS",
+          "source_url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-288-01",
+          "published_at": "Thu, 15 Oct 26 12:00:00 +0000",
+          "relevance_score": 63.7347
+        }
+      ],
+      "factual_sources": [
+        {
+          "id": "/node/25629",
+          "license_note": "CISA RSS metadata and summaries; source attribution retained",
+          "published_at": "Thu, 15 Oct 26 12:00:00 +0000",
+          "snapshot_released_at": "2026-10-16T19:49:27.727103+00:00",
+          "source": "CISA Cybersecurity Advisories RSS",
+          "source_url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-288-01",
+          "title": "Eclipse Foundation Eclipse Milo"
+        }
+      ],
+      "hit": true
+    },
+    {
+      "id": "advisory-relevant-02",
+      "category": "relevant_security_record",
+      "query": "CISA advisory vulnerabilities in Thermo Fisher Torrent Suite",
+      "expected_record_ids": [
+        "/node/25627"
+      ],
+      "should_abstain": false,
+      "retrieved_record_ids": [
+        "/node/25627"
+      ],
+      "retrieved_records": [
+        {
+          "id": "/node/25627",
+          "title": "Thermo Fisher Torrent Suite Software",
+          "source": "CISA Cybersecurity Advisories RSS",
+          "source_url": "https://www.cisa.gov/news-events/ics-medical-advisories/icsma-26-288-01",
+          "published_at": "Thu, 15 Oct 26 12:00:00 +0000",
+          "relevance_score": 156.5983
+        }
+      ],
+      "factual_sources": [
+        {
+          "id": "/node/25627",
+          "license_note": "CISA RSS metadata and summaries; source attribution retained",
+          "published_at": "Thu, 15 Oct 26 12:00:00 +0000",
+          "snapshot_released_at": "2026-10-16T19:49:27.727103+00:00",
+          "source": "CISA Cybersecurity Advisories RSS",
+          "source_url": "https://www.cisa.gov/news-events/ics-medical-advisories/icsma-26-288-01",
+          "title": "Thermo Fisher Torrent Suite Software"
+        }
+      ],
+      "hit": true
+    },
+    {
+      "id": "ambiguous-01",
+      "category": "ambiguous_query",
+      "query": "Cisco",
+      "expected_record_ids": [],
+      "should_abstain": true,
+      "retrieved_record_ids": [],
+      "retrieved_records": [],
+      "factual_sources": [],
+      "hit": false
+    },
+    {
+      "id": "ambiguous-02",
+      "category": "ambiguous_query",
+      "query": "Microsoft patch",
+      "expected_record_ids": [],
+      "should_abstain": true,
+      "retrieved_record_ids": [],
+      "retrieved_records": [],
+      "factual_sources": [],
+      "hit": false
+    },
+    {
+      "id": "ambiguous-03",
+      "category": "ambiguous_query",
+      "query": "security",
+      "expected_record_ids": [],
+      "should_abstain": true,
+      "retrieved_record_ids": [],
+      "retrieved_records": [],
+      "factual_sources": [],
+      "hit": false
+    },
+    {
+      "id": "ambiguous-04",
+      "category": "ambiguous_query",
+      "query": "latest vulnerability updates",
+      "expected_record_ids": [],
+      "should_abstain": true,
+      "retrieved_record_ids": [],
+      "retrieved_records": [],
+      "factual_sources": [],
+      "hit": false
+    },
+    {
+      "id": "common-01",
+      "category": "common_word_false_match",
+      "query": "What is vulnerability security?",
+      "expected_record_ids": [],
+      "should_abstain": true,
+      "retrieved_record_ids": [],
+      "retrieved_records": [],
+      "factual_sources": [],
+      "hit": false
+    },
+    {
+      "id": "common-02",
+      "category": "common_word_false_match",
+      "query": "latest security update",
+      "expected_record_ids": [],
+      "should_abstain": true,
+      "retrieved_record_ids": [],
+      "retrieved_records": [],
+      "factual_sources": [],
+      "hit": false
+    },
+    {
+      "id": "common-03",
+      "category": "common_word_false_match",
+      "query": "What are general security practices?",
+      "expected_record_ids": [],
+      "should_abstain": true,
+      "retrieved_record_ids": [],
+      "retrieved_records": [],
+      "factual_sources": [],
+      "hit": false
+    },
+    {
+      "id": "missing-01",
+      "category": "missing_evidence_abstention",
+      "query": "What is the local status of CVE-2099-54321?",
+      "expected_record_ids": [],
+      "should_abstain": true,
+      "retrieved_record_ids": [],
+      "retrieved_records": [],
+      "factual_sources": [],
+      "hit": false,
+      "assistant_answer_basis": "abstention_missing_evidence",
+      "assistant_abstained": true
+    }
+  ],
+  "limitations": [
+    "Project-authored retrieval queries and labels are diagnostic; not independently reviewed.",
+    "The benchmark is small, focuses on CISA snapshots, and does not estimate real-world query distribution.",
+    "Expected source IDs judge known positive targets. Extra retrieved records are counted as false positives even if a human might consider them useful context.",
+    "No free-form model answer correctness is inferred from retrieval success."
+  ]
+}

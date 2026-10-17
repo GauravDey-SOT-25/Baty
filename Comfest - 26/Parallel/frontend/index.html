@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Parallel | Where agents find answers</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="parallel-body">
+
+  <!-- Top Announcement Banner -->
+  <div class="parallel-top-banner" id="announcement-banner">
+    <div class="banner-inner">
+      <span>Introducing <strong>Parallel Search Fast</strong>: A web search API for agents that's fast, cheap, and accurate. <a href="#checker-tab" class="banner-link">Learn more.</a></span>
+    </div>
+    <button class="banner-close" id="btn-banner-close" aria-label="Close">×</button>
+  </div>
+
+  <!-- Navbar -->
+  <header class="parallel-navbar">
+    <div class="nav-container">
+      <div class="nav-left">
+        <a href="#checker-tab" class="parallel-brand">parallel</a>
+      </div>
+
+      <nav class="nav-links">
+        <div class="nav-dropdown">
+          <span>Products</span>
+          <svg class="chevron" viewBox="0 0 10 6" fill="none"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <div class="nav-dropdown">
+          <span>Solutions</span>
+          <svg class="chevron" viewBox="0 0 10 6" fill="none"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <div class="nav-dropdown">
+          <span>Developers</span>
+          <svg class="chevron" viewBox="0 0 10 6" fill="none"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <div class="nav-dropdown">
+          <span>Resources</span>
+          <svg class="chevron" viewBox="0 0 10 6" fill="none"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <a href="#ledger-tab" class="nav-item tab-btn" data-tab="ledger-tab">Blog</a>
+        <a href="#web3-tab" class="nav-item tab-btn" data-tab="web3-tab">Pricing</a>
+      </nav>
+
+      <div class="nav-actions">
+        <div class="status-indicator">
+          <span class="pulse-dot online" id="node-pulse"></span>
+          <span id="node-status-text">Ledger Online</span>
+        </div>
+        <button class="btn-nav-contact" id="btn-contact">CONTACT <span class="shortcut-pill">C</span></button>
+        <button class="btn-nav-login" id="btn-login">LOG IN <span class="shortcut-pill orange">P</span></button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <div class="parallel-main-wrapper">
+
+    <!-- Hero Headline Section -->
+    <section class="parallel-hero-headline">
+      <h1 class="hero-title">Where agents find answers</h1>
+      <p class="hero-subtitle">Web infrastructure for AI to search, extract, monitor, and reason over the world's information</p>
+
+      <div class="hero-cta-group">
+        <button class="btn-cta-orange">
+          START BUILDING FOR FREE <span class="kbd-badge">P</span>
+        </button>
+        <button class="btn-cta-prompt">
+          <svg class="prompt-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+          COPY ONBOARDING PROMPT
+          <span class="prompt-emojis">💥 🌐 ⬡</span>
+          <svg class="chevron-sm" viewBox="0 0 10 6" fill="none"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+    </section>
+
+    <!-- Hero Atmospheric Sky Box & Floating Text Box -->
+    <section class="parallel-sky-hero">
+      <div class="sky-atmosphere-ring"></div>
+
+      <!-- Pill Tabs: Research, Monitor, Search, Extract -->
+      <div class="sky-pill-tabs">
+        <button class="sky-tab-pill active tab-btn" data-tab="checker-tab">Research</button>
+        <button class="sky-tab-pill tab-btn" data-tab="ledger-tab">Monitor</button>
+        <button class="sky-tab-pill tab-btn" data-tab="register-tab">Search</button>
+        <button class="sky-tab-pill tab-btn" data-tab="web3-tab">Extract</button>
+      </div>
+
+      <!-- Floating Text Box Card -->
+      <div class="sky-input-container">
+        <form id="checker-form" class="parallel-input-card">
+          <div class="input-card-main">
+            <div class="input-icon-sphere">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="2" y1="12" x2="22" y2="12"></line>
+                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+              </svg>
+            </div>
+            <textarea
+              id="check-url-input"
+              class="parallel-textarea"
+              rows="2"
+              placeholder="Analyze the top 3 competitors to Ramp and their GTM strategy"
+              required
+              autocomplete="off"
+            >https://ethereum.org</textarea>
+          </div>
+
+          <div class="input-card-actions">
+            <span class="input-hint-label">Web3 Proof-of-Trust verification via VirusTotal, Google Safe Browsing, &amp; Ethereum</span>
+            <button type="submit" id="btn-scan" class="btn-parallel-run">
+              <span class="btn-text">RUN <span class="enter-char">↵</span></span>
+              <span class="btn-loader" style="display: none;">RUNNING...</span>
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Bottom Pill Toggle: HUMAN / MACHINE -->
+      <div class="sky-bottom-pill">
+        <span class="sparkle">✦</span>
+        <span class="pill-mode active">HUMAN</span>
+        <span class="pill-sync">⟳</span>
+        <span class="pill-mode">MACHINE</span>
+      </div>
+    </section>
+
+    <!-- Quick Demo Presets -->
+    <div class="quick-presets parallel-presets">
+      <span class="presets-label">Quick Test Scenarios:</span>
+      <button class="preset-chip" data-url="https://ethereum.org">
+        <span class="chip-status-dot verified"></span> ethereum.org (Verified Trust)
+      </button>
+      <button class="preset-chip" data-url="https://github.com">
+        <span class="chip-status-dot verified"></span> github.com (Verified Trust)
+      </button>
+      <button class="preset-chip" data-url="https://phishing-crypto-airdrop.xyz">
+        <span class="chip-status-dot unverified"></span> phishing-crypto-airdrop.xyz (Unverified)
+      </button>
+      <button class="preset-chip" data-url="https://expired.badssl.com">
+        <span class="chip-status-dot warning"></span> expired.badssl.com (Threat / SSL Anomaly)
+      </button>
+    </div>
+
+    <!-- Secondary Navigation / Web3 Sub-Tabs -->
+    <nav class="mode-tabs parallel-subnav">
+      <button class="tab-btn active" data-tab="checker-tab">
+        <span class="icon">🔍</span> Trust Scanner &amp; Verifier
+      </button>
+      <button class="tab-btn" data-tab="register-tab">
+        <span class="icon">✍️</span> On-Chain Registry
+      </button>
+      <button class="tab-btn" data-tab="ledger-tab">
+        <span class="icon">⛓️</span> Immutable Ledger Explorer (<span id="record-count">0</span>)
+      </button>
+      <button class="tab-btn" data-tab="web3-tab">
+        <span class="icon">⚡</span> Web3 Consensus &amp; Staking
+      </button>
+      <button class="tab-btn" data-tab="architecture-tab">
+        <span class="icon">📐</span> Architecture &amp; Schema
+      </button>
+    </nav>
+
+    <!-- TAB 1: Trust Scanner Content -->
+    <main id="checker-tab" class="tab-content active">
+
+      <!-- Sequential Live Verification Checklist Box (Visible on Page) -->
+      <section id="scan-progress-box" class="card progress-card">
+        <div class="progress-header">
+          <div class="progress-title-wrapper">
+            <span class="spinner-dot" id="progress-spinner"></span>
+            <h3 id="progress-status-heading">Multi-Layer Verification Pipeline (Ready)</h3>
+          </div>
+          <span class="progress-pill-status" id="pipeline-overall-status">STANDBY</span>
+        </div>
+
+        <div class="checklist-container">
+          <!-- Step 1: VirusTotal -->
+          <div class="check-step" id="step-virustotal">
+            <div class="check-box-circle" id="circle-virustotal">
+              <span class="check-icon" id="icon-virustotal">⚪</span>
+            </div>
+            <div class="step-info">
+              <div class="step-title-row">
+                <span class="step-name">1. VirusTotal Multi-Engine Reputation</span>
+                <span class="step-badge" id="tag-virustotal">Ready</span>
+              </div>
+              <p class="step-desc" id="desc-virustotal">Evaluates URL across 92 global cybersecurity antivirus vendors (Kaspersky, Sophos, BitDefender)...</p>
+            </div>
+          </div>
+
+          <!-- Step 2: Google Safe Browsing -->
+          <div class="check-step" id="step-gsb">
+            <div class="check-box-circle" id="circle-gsb">
+              <span class="check-icon" id="icon-gsb">⚪</span>
+            </div>
+            <div class="step-info">
+              <div class="step-title-row">
+                <span class="step-name">2. Google Safe Browsing Threat Inspection</span>
+                <span class="step-badge" id="tag-gsb">Ready</span>
+              </div>
+              <p class="step-desc" id="desc-gsb">Checks Google's real-time malware, phishing, and social engineering threat lists...</p>
+            </div>
+          </div>
+
+          <!-- Step 3: Live SSL Handshake -->
+          <div class="check-step" id="step-ssl">
+            <div class="check-box-circle" id="circle-ssl">
+              <span class="check-icon" id="icon-ssl">⚪</span>
+            </div>
+            <div class="step-info">
+              <div class="step-title-row">
+                <span class="step-name">3. Live Server &amp; SSL/TLS Cryptographic Handshake</span>
+                <span class="step-badge" id="tag-ssl">Ready</span>
+              </div>
+              <p class="step-desc" id="desc-ssl">Connects to host port 443, inspects TLS certificate chain &amp; extracts X.509 SHA-256 fingerprint...</p>
+            </div>
+          </div>
+
+          <!-- Step 4: Web3 Blockchain Smart Contract -->
+          <div class="check-step" id="step-blockchain">
+            <div class="check-box-circle" id="circle-blockchain">
+              <span class="check-icon" id="icon-blockchain">⚪</span>
+            </div>
+            <div class="step-info">
+              <div class="step-title-row">
+                <span class="step-name">4. Web3 Decentralized Ledger Attestation</span>
+                <span class="step-badge" id="tag-blockchain">Ready</span>
+              </div>
+              <p class="step-desc" id="desc-blockchain">Queries TrustRegistry.sol smart contract and generates O(log n) Merkle State Root proof...</p>
+            </div>
+          </div>
+
+          <!-- Step 5: Multi-Oracle Consensus & Staking -->
+          <div class="check-step" id="step-quorum">
+            <div class="check-box-circle" id="circle-quorum">
+              <span class="check-icon" id="icon-quorum">⚪</span>
+            </div>
+            <div class="step-info">
+              <div class="step-title-row">
+                <span class="step-name">5. Multi-Oracle Byzantine Quorum &amp; Staking</span>
+                <span class="step-badge" id="tag-quorum">Ready</span>
+              </div>
+              <p class="step-desc" id="desc-quorum">Verifies 3-of-3 decentralized validator oracle signatures and checks locked collateral...</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Scan Result Display (Initially Hidden) -->
+      <section id="scan-result-card" class="card result-card" style="display: none;">
+        <div class="result-header">
+          <div class="verdict-banner" id="verdict-banner">
+            <div class="verdict-icon" id="verdict-icon">✓</div>
+            <div>
+              <div class="verdict-category" id="verdict-title">Verified Trust</div>
+              <div class="verdict-summary" id="verdict-summary">Matched Blockchain Record</div>
+            </div>
+          </div>
+          <div class="score-container">
+            <div class="score-circle" id="score-circle">
+              <span class="score-val" id="score-number">100</span>
+              <span class="score-denom">/100</span>
+            </div>
+            <span class="score-tag" id="score-tag">CRYPTOGRAPHIC PROOF</span>
+          </div>
+        </div>
+
+        <!-- Explanation Block -->
+        <div class="explanation-box" id="explanation-box">
+          <p id="verdict-explanation-text">Analyzing...</p>
+          <ul id="verdict-indicators" class="indicators-list"></ul>
+        </div>
+
+        <!-- Cryptographic Comparison Grid -->
+        <div class="crypto-grid">
+          <!-- Column 1: On-Chain Ledger Proof -->
+          <div class="crypto-card">
+            <div class="crypto-card-title">
+              <span>⛓️ Smart Contract Ledger State</span>
+              <span class="badge" id="chain-badge">REGISTERED</span>
+            </div>
+            <div class="detail-row">
+              <span class="label">Target Domain:</span>
+              <span class="value mono" id="res-domain">-</span>
+            </div>
+            <div class="detail-row">
+              <span class="label">Canonical URL:</span>
+              <span class="value" id="res-canonical-url">-</span>
+            </div>
+            <div class="detail-row">
+              <span class="label">Domain SHA-256 Hash:</span>
+              <span class="value mono hash" id="res-url-hash">-</span>
+            </div>
+            <div class="detail-row">
+              <span class="label">On-Chain SSL Fingerprint:</span>
+              <span class="value mono hash" id="res-onchain-fingerprint">-</span>
+            </div>
+            <div class="detail-row">
+              <span class="label">Attesting Verifier ID:</span>
+              <span class="value mono" id="res-verifier-id">-</span>
+            </div>
+            <div class="detail-row">
+              <span class="label">Registration Timestamp:</span>
+              <span class="value" id="res-timestamp">-</span>
+            </div>
+          </div>
+
+          <!-- Column 2: Live Network / SSL Inspection -->
+          <div class="crypto-card">
+            <div class="crypto-card-title">
+              <span>🔒 Live Server &amp; SSL Telemetry</span>
+              <span class="badge" id="ssl-badge">INSPECTED</span>
+            </div>
+            <div class="detail-row">
+              <span class="label">SSL Certificate Status:</span>
+              <span class="value" id="res-ssl-status">-</span>
+            </div>
+            <div class="detail-row">
+              <span class="label">Live SSL SHA-256 Digest:</span>
+              <span class="value mono hash" id="res-live-fingerprint">-</span>
+            </div>
+            <div class="detail-row">
+              <span class="label">Certificate Authority (Issuer):</span>
+              <span class="value" id="res-cert-issuer">-</span>
+            </div>
+            <div class="detail-row">
+              <span class="label">Common Name (Subject):</span>
+              <span class="value" id="res-cert-subject">-</span>
+            </div>
+            <div class="detail-row">
+              <span class="label">Expiration Date:</span>
+              <span class="value" id="res-cert-expires">-</span>
+            </div>
+            <div class="detail-row">
+              <span class="label">Cryptographic Match:</span>
+              <span class="value match-pill" id="res-match-pill">-</span>
+            </div>
+          </div>
+
+          <!-- Column 3: Multi-Oracle Consensus & Cryptoeconomic Staking -->
+          <div class="crypto-card">
+            <div class="crypto-card-title">
+              <span>⚡ Multi-Oracle Consensus &amp; Staking</span>
+              <span class="badge verified" id="consensus-badge">QUORUM 3/3</span>
+            </div>
+            <div class="detail-row">
+              <span class="label">Decentralized Consensus Score:</span>
+              <span class="value" id="res-consensus-score">100% (Threshold Passed)</span>
+            </div>
+            <div class="detail-row">
+              <span class="label">Collateral Staked Behind Claim:</span>
+              <span class="value" style="color: var(--accent-green); font-weight: 700;" id="res-staked-collateral">1.00 ETH ($3,200)</span>
+            </div>
+            <div class="detail-row">
+              <span class="label">Slashing Penalty Condition:</span>
+              <span class="value" style="color: var(--text-muted); font-size: 0.8rem;" id="res-slashing-condition">100% Slash on Fraudulent Cert Rotation</span>
+            </div>
+            <div class="detail-row">
+              <span class="label">Validator Quorum Nodes:</span>
+              <div class="quorum-chips-list" id="res-quorum-nodes">
+                <span class="oracle-pill">🛡️ Alpha Sentinel (15 ETH)</span>
+                <span class="oracle-pill">🛡️ CertiK Node (20 ETH)</span>
+                <span class="oracle-pill">🛡️ OpenZeppelin Defender (12.5 ETH)</span>
+              </div>
+            </div>
+            <div class="detail-row">
+              <span class="label">IPFS Snapshot Content-ID (CIDv1):</span>
+              <span class="value mono hash" id="res-ipfs-cid">bafybei...</span>
+            </div>
+          </div>
+
+          <!-- Column 4: Cryptographic Merkle State Root & EIP-712 Signature -->
+          <div class="crypto-card">
+            <div class="crypto-card-title">
+              <span>🌲 Merkle State Root &amp; EIP-712 Proof</span>
+              <span class="badge" style="color: var(--accent-cyan); border-color: var(--accent-cyan);" id="merkle-badge">ANCHORED</span>
+            </div>
+            <div class="detail-row">
+              <span class="label">State Merkle Root:</span>
+              <span class="value mono hash" id="res-merkle-root">0x...</span>
+            </div>
+            <div class="detail-row">
+              <span class="label">Light-Client Merkle Proof (Siblings):</span>
+              <span class="value mono hash" id="res-merkle-proof" style="font-size: 0.75rem;">O(log n) Proof Generated</span>
+            </div>
+            <div class="detail-row">
+              <span class="label">EIP-712 Typed Signature (v, r, s):</span>
+              <span class="value mono hash" id="res-eip712-sig" style="font-size: 0.72rem;">0x...</span>
+            </div>
+            <div class="detail-row">
+              <span class="label">EIP-1559 Block &amp; Gas Telemetry:</span>
+              <span class="value" style="font-size: 0.82rem;" id="res-gas-telemetry">Gas: 68,420 | Base: 14.2 Gwei</span>
+            </div>
+            <div class="detail-row">
+              <span class="label">Transaction Hash:</span>
+              <span class="value mono hash" id="res-tx-hash">-</span>
+            </div>
+          </div>
+
+          <!-- Column 5: Global Threat Intelligence Shield (VirusTotal & Google Safe Browsing) -->
+          <div class="crypto-card">
+            <div class="crypto-card-title">
+              <span>🛡️ Threat Intelligence (VirusTotal &amp; Google)</span>
+              <span class="badge verified" id="threat-intel-badge">INTELLIGENCE ACTIVE</span>
+            </div>
+            <div class="detail-row">
+              <span class="label">VirusTotal Multi-Engine Reputation:</span>
+              <span class="value" id="res-vt-status">Scanning 90+ Engines...</span>
+            </div>
+            <div class="detail-row">
+              <span class="label">Antivirus Detection Ratio:</span>
+              <span class="value" id="res-vt-engines" style="color: var(--accent-green); font-weight: 600;">0 / 92 Engines Malicious</span>
+            </div>
+            <div class="detail-row">
+              <span class="label">Google Safe Browsing Threat Status:</span>
+              <span class="value" id="res-gsb-status">Inspecting Google Threat List...</span>
+            </div>
+            <div class="detail-row">
+              <span class="label">Security Classification Categories:</span>
+              <span class="value" id="res-threat-categories">Finance, Web3, Technology</span>
+            </div>
+            <div class="detail-row">
+              <span class="label">Defense Layer Evaluation:</span>
+              <span class="value match-pill matched" id="res-threat-pill">CLEAN (0 Threats Detected)</span>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- TAB 2: Registration Form -->
+    <main id="register-tab" class="tab-content">
+      <section class="card">
+        <div class="card-header">
+          <h2>Register Trusted Link into Distributed Ledger</h2>
+          <p>Authorized security verifiers record immutable trust proofs by binding a canonical domain SHA-256 hash with its certified SSL fingerprint on the Ethereum blockchain.</p>
+        </div>
+
+        <form id="register-form" class="standard-form">
+          <div class="form-group">
+            <label for="reg-url">Target URL or Domain *</label>
+            <input
+              type="text"
+              id="reg-url"
+              placeholder="e.g. https://vitalik.eth.limo or uniswap.org"
+              required
+            />
+            <small class="helper-text">The domain will be canonically normalized and hashed using SHA-256.</small>
+          </div>
+
+          <div class="form-group">
+            <label for="reg-metadata">Descriptive Label / Organization Name</label>
+            <input
+              type="text"
+              id="reg-metadata"
+              placeholder="e.g. Uniswap Official DEX Portal"
+            />
+          </div>
+
+          <div class="form-group checkbox-group">
+            <label class="toggle-container">
+              <input type="checkbox" id="reg-auto-ssl" checked />
+              <span class="toggle-slider"></span>
+              <span class="toggle-label">Auto-extract live SSL certificate fingerprint from target server</span>
+            </label>
+          </div>
+
+          <div class="form-group" id="manual-fingerprint-group" style="display: none;">
+            <label for="reg-fingerprint">Custom SSL Certificate SHA-256 Fingerprint</label>
+            <input
+              type="text"
+              id="reg-fingerprint"
+              placeholder="0x... (64 hex characters)"
+            />
+            <small class="helper-text">Required only if testing offline sites or pre-authorized certificates.</small>
+          </div>
+
+          <button type="submit" id="btn-register" class="btn btn-primary">
+            <span class="btn-text">Execute On-Chain Registration</span>
+            <span class="btn-loader" style="display: none;">Submitting to Ledger...</span>
+          </button>
+        </form>
+
+        <div id="register-alert" class="alert-box" style="display: none;"></div>
+      </section>
+    </main>
+
+    <!-- TAB 3: Immutable Ledger Explorer -->
+    <main id="ledger-tab" class="tab-content">
+      <section class="card">
+        <div class="card-header table-header-flex">
+          <div>
+            <h2>Immutable On-Chain Ledger</h2>
+            <p>Cryptographic records stored on the <code>TrustRegistry.sol</code> smart contract.</p>
+          </div>
+          <button id="btn-refresh-ledger" class="btn btn-outline">🔄 Refresh Records</button>
+        </div>
+
+        <div class="table-responsive">
+          <table class="ledger-table">
+            <thead>
+              <tr>
+                <th>Status</th>
+                <th>Domain / Metadata</th>
+                <th>Domain SHA-256 Hash</th>
+                <th>SSL Fingerprint</th>
+                <th>Verifier ID</th>
+                <th>Timestamp</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="ledger-tbody">
+              <tr>
+                <td colspan="7" class="text-center">Loading ledger records...</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <!-- TAB: Web3 Consensus & Staking (Next-Gen Web3 Protocol) -->
+    <main id="web3-tab" class="tab-content">
+      <section class="card">
+        <div class="card-header">
+          <h2>⚡ Next-Gen Web3 Trust Protocol &amp; Multi-Oracle Consensus</h2>
+          <p>Moving beyond basic smart contract key-value stores to enterprise-grade cryptoeconomic security, validator staking, and Merkle inclusion proofs.</p>
+        </div>
+
+        <!-- Protocol Stat Cards -->
+        <div class="web3-stat-grid">
+          <div class="web3-stat-card">
+            <span class="stat-label">Total Collateral Staked (TVL)</span>
+            <span class="stat-number" style="color: var(--accent-green);">47.50 ETH</span>
+            <span class="stat-sub">~$152,000 Cryptoeconomic Security</span>
+          </div>
+          <div class="web3-stat-card">
+            <span class="stat-label">Consensus Quorum Threshold</span>
+            <span class="stat-number" style="color: var(--accent-cyan);">2 of 3 Nodes</span>
+            <span class="stat-sub">Byzantine Fault Tolerant (BFT)</span>
+          </div>
+          <div class="web3-stat-card">
+            <span class="stat-label">Slashing Penalty Model</span>
+            <span class="stat-number" style="color: var(--accent-red);">100% Stake Slash</span>
+            <span class="stat-sub">On-Chain Fraud Proof Trigger</span>
+          </div>
+          <div class="web3-stat-card">
+            <span class="stat-label">Active State Merkle Epoch</span>
+            <span class="stat-number" style="color: var(--accent-amber);">Epoch #14</span>
+            <span class="stat-sub">Light-Client O(log n) Verification</span>
+          </div>
+        </div>
+
+        <!-- Validator Oracles Table -->
+        <div class="blueprint-section" style="margin-top: 24px;">
+          <h3>Active Consensus Validator Oracles</h3>
+          <div class="table-responsive">
+            <table class="ledger-table">
+              <thead>
+                <tr>
+                  <th>Oracle Validator</th>
+                  <th>Node Ethereum Address</th>
+                  <th>Staked Collateral</th>
+                  <th>Reputation Score</th>
+                  <th>Enclave / Infrastructure</th>
+                  <th>Attestation Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>🛡️ Alpha Sentinel Oracle</strong></td>
+                  <td class="code-cell">0x89205A3A3b2A69De6Dbf7f01ED13B2108B2c43e7</td>
+                  <td style="color: var(--accent-green); font-weight: 600;">15.0 ETH</td>
+                  <td>99.8%</td>
+                  <td>Decentralized AWS/GCP Cluster</td>
+                  <td><span class="badge verified">Active &bull; Validating</span></td>
+                </tr>
+                <tr>
+                  <td><strong>🛡️ CertiK Guardian Node</strong></td>
+                  <td class="code-cell">0x70997970C51812dc3A010C7d01b50e0d17dc79C8</td>
+                  <td style="color: var(--accent-green); font-weight: 600;">20.0 ETH</td>
+                  <td>99.9%</td>
+                  <td>Intel SGX Confidential Enclave</td>
+                  <td><span class="badge verified">Active &bull; Validating</span></td>
+                </tr>
+                <tr>
+                  <td><strong>🛡️ OpenZeppelin Defender</strong></td>
+                  <td class="code-cell">0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC</td>
+                  <td style="color: var(--accent-green); font-weight: 600;">12.5 ETH</td>
+                  <td>99.7%</td>
+                  <td>Automated Relayer Network</td>
+                  <td><span class="badge verified">Active &bull; Validating</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Merkle & Cryptographic Pipeline -->
+        <div class="blueprint-section">
+          <h3>Cryptographic Merkle State Tree &amp; Inclusion Proofs</h3>
+          <p>Every attested link is committed as a leaf into a binary Merkle tree. Light clients can cryptographically prove that a link exists on the decentralized ledger without downloading the entire blockchain state:</p>
+          <div class="merkle-box">
+            <div class="merkle-node root">
+              <span class="tag">MERKLE ROOT</span>
+              <code id="web3-display-merkle-root">0x... (Anchored On-Chain)</code>
+            </div>
+            <div class="merkle-branches">
+              <div class="merkle-branch">
+                <div class="merkle-node branch">Intermediate Hash H(0,1)</div>
+                <div class="merkle-leaves">
+                  <div class="merkle-node leaf">Leaf 0: SHA-256(ethereum.org)</div>
+                  <div class="merkle-node leaf">Leaf 1: SHA-256(github.com)</div>
+                </div>
+              </div>
+              <div class="merkle-branch">
+                <div class="merkle-node branch">Intermediate Hash H(2,3)</div>
+                <div class="merkle-leaves">
+                  <div class="merkle-node leaf">Leaf 2: SHA-256(uniswap.org)</div>
+                  <div class="merkle-node leaf">Leaf 3: Sibling Padding Hash</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- TAB 4: Architecture & Design Blueprint -->
+    <main id="architecture-tab" class="tab-content">
+      <section class="card">
+        <div class="card-header">
+          <h2>Phase 1 &amp; Phase 2 Blueprint: System Flow &amp; Schema</h2>
+          <p>Comprehensive technical specification of the Decentralized URL Trust Verifier.</p>
+        </div>
+
+        <div class="blueprint-section">
+          <h3>1. Transaction &amp; Ledger JSON Schema</h3>
+          <p>Exact schema representing the on-chain TrustRecord and transaction payload:</p>
+          <pre class="code-block"><code>{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "BlockchainTrustRecord",
+  "type": "object",
+  "required": ["url_hash", "cert_fingerprint", "timestamp", "verifier_id", "is_trusted"],
+  "properties": {
+    "url_hash": {
+      "type": "string",
+      "pattern": "^0x[a-fA-F0-9]{64}$",
+      "description": "SHA-256 cryptographic digest of the canonical domain/URL"
+    },
+    "cert_fingerprint": {
+      "type": "string",
+      "pattern": "^0x[a-fA-F0-9]{64}$",
+      "description": "SHA-256 fingerprint of the domain's X.509 SSL/TLS certificate"
+    },
+    "timestamp": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Unix epoch block timestamp when the trust proof was registered"
+    },
+    "verifier_id": {
+      "type": "string",
+      "pattern": "^0x[a-fA-F0-9]{40}$",
+      "description": "Ethereum address of the certified security verifier/auditor"
+    },
+    "is_trusted": {
+      "type": "boolean",
+      "description": "Active state: true if verified and in-force, false if revoked"
+    },
+    "metadata": {
+      "type": "string",
+      "description": "Descriptive organization label or domain annotation"
+    }
+  }
+}</code></pre>
+        </div>
+
+        <div class="blueprint-section">
+          <h3>2. End-to-End Verification Pipeline</h3>
+          <div class="flow-steps">
+            <div class="flow-step">
+              <div class="step-num">1</div>
+              <div class="step-content">
+                <strong>Frontend Input</strong>
+                <p>User inputs link. UI sends request to <code>GET /api/check?url=...</code></p>
+              </div>
+            </div>
+            <div class="flow-arrow">➔</div>
+            <div class="flow-step">
+              <div class="step-num">2</div>
+              <div class="step-content">
+                <strong>Backend Normalizer &amp; Hasher</strong>
+                <p>Normalizes hostname and computes canonical SHA-256 domain digest.</p>
+              </div>
+            </div>
+            <div class="flow-arrow">➔</div>
+            <div class="flow-step">
+              <div class="step-num">3</div>
+              <div class="step-content">
+                <strong>Dual Verification Engine</strong>
+                <p>Queries <code>TrustRegistry.sol</code> via Web3 AND fetches live SSL DER fingerprint.</p>
+              </div>
+            </div>
+            <div class="flow-arrow">➔</div>
+            <div class="flow-step">
+              <div class="step-num">4</div>
+              <div class="step-content">
+                <strong>Trust Score &amp; Verdict</strong>
+                <p>Validates on-chain existence + cryptographic SSL match. Outputs 100, 30, or 0.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="blueprint-section">
+          <h3>3. Trust Scoring Decision Matrix</h3>
+          <div class="table-responsive">
+            <table class="ledger-table">
+              <thead>
+                <tr>
+                  <th>Verdict</th>
+                  <th>Score</th>
+                  <th>Ledger Condition</th>
+                  <th>SSL Fingerprint Condition</th>
+                  <th>Security Implication</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><span class="badge verified">Verified Trust</span></td>
+                  <td><strong>100 / 100</strong></td>
+                  <td>Record exists, <code>isTrusted == true</code></td>
+                  <td>Live SSL fingerprint matches on-chain record</td>
+                  <td>Authentic domain attested by authorized verifier.</td>
+                </tr>
+                <tr>
+                  <td><span class="badge warning">Potential Threat</span></td>
+                  <td><strong>30 / 100</strong></td>
+                  <td>Record exists, <code>isTrusted == true</code></td>
+                  <td>Live SSL fingerprint DOES NOT MATCH</td>
+                  <td>Potential MITM, DNS spoofing, or rogue SSL certificate.</td>
+                </tr>
+                <tr>
+                  <td><span class="badge danger">Potential Threat</span></td>
+                  <td><strong>20 / 100</strong></td>
+                  <td>Record exists, <code>isTrusted == false</code></td>
+                  <td>Any</td>
+                  <td>Trust explicitly revoked due to compromise or expiration.</td>
+                </tr>
+                <tr>
+                  <td><span class="badge unverified">Unverified</span></td>
+                  <td><strong>0 / 100</strong></td>
+                  <td>No record found on-chain</td>
+                  <td>Not attested</td>
+                  <td>Zero proof of trust on ledger. Untrusted until verified.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="app-footer">
+      <p>Decentralized URL Trust Verifier Prototype &bull; Web3 Security MVP &bull; Solidity + Web3.py + Flask + Modern JS</p>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

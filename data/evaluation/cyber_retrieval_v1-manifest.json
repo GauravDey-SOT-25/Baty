@@ -1,0 +1,18 @@
+{
+  "evaluation_id": "cyber_retrieval_v1",
+  "example_count": 25,
+  "evaluation_sha256": "15babff63b02272a4eda2ce091e5dc01e26d372be4fb8851f9df4a782869cf9b",
+  "corpus_sha256": "5c8148e61e018af0c54cf5233b67c1e84fad5364fc4dc0fb5f3fbe0ceaca6110",
+  "corpus_path": "/Users/gauravdey/Documents/Codex/AI Model/files-pasted-by-the-user-master/data/processed/incidents.jsonl",
+  "source_policy": "Factual references use only official CISA KEV/advisory snapshot records; queries and labels are project-authored.",
+  "license_notes": "CISA public catalog/feed metadata and attributed summaries. Confirm source terms before redistribution. Evaluation-only; do not train on this file.",
+  "network_access": "None; generated from the local corpus snapshot.",
+  "categories": {
+    "exact_cve": 6,
+    "exact_advisory": 3,
+    "relevant_security_record": 8,
+    "ambiguous_query": 4,
+    "common_word_false_match": 3,
+    "missing_evidence_abstention": 1
+  }
+}

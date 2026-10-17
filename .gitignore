@@ -18,3 +18,5 @@ logs/**
 .DS_Store
 
 work/
+data/url_trust_registry.json
+data/.url_trust_registry.json.*

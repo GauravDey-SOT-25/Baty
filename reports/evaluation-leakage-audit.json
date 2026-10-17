@@ -1,0 +1,58 @@
+{
+  "audit_id": "evaluation_prompt_overlap_v1",
+  "network_access": "none",
+  "audits": [
+    {
+      "method": "NFKC/casefold alphanumeric normalization; exact normalized prompt check and word 3-gram Jaccard",
+      "near_duplicate_threshold": 0.8,
+      "evaluation_count": 25,
+      "instruction_split_counts": {
+        "train": 796,
+        "valid": 100,
+        "test": 100
+      },
+      "instruction_split_sha256": {
+        "train": "aa72fa38aac7bdb8c42f3f1fe25d932a0dc2b40a379cc25209b38392b0c67ce5",
+        "valid": "91bf76e8d155925a5a6cd714d925a4ee22ce30ea88c4153d156d5607d398a8be",
+        "test": "c57b3cfe0e0915458b09b8eca3d6c81e1feca815aec7e44e984e6ba62b5bb46a"
+      },
+      "prompt_count_compared": 996,
+      "near_duplicate_matches": [],
+      "clear_at_threshold": true,
+      "limitations": [
+        "Lexical overlap cannot detect paraphrase, answer leakage, or semantic similarity.",
+        "Short prompts can have coarse Jaccard scores; matches require human review.",
+        "Only user prompts/queries are compared; system and assistant messages are excluded.",
+        "This is a diagnostic audit, not proof of split independence."
+      ],
+      "evaluation_path": "data/evaluation/cyber_retrieval_v1.jsonl",
+      "evaluation_sha256": "15babff63b02272a4eda2ce091e5dc01e26d372be4fb8851f9df4a782869cf9b"
+    },
+    {
+      "method": "NFKC/casefold alphanumeric normalization; exact normalized prompt check and word 3-gram Jaccard",
+      "near_duplicate_threshold": 0.8,
+      "evaluation_count": 40,
+      "instruction_split_counts": {
+        "train": 796,
+        "valid": 100,
+        "test": 100
+      },
+      "instruction_split_sha256": {
+        "train": "aa72fa38aac7bdb8c42f3f1fe25d932a0dc2b40a379cc25209b38392b0c67ce5",
+        "valid": "91bf76e8d155925a5a6cd714d925a4ee22ce30ea88c4153d156d5607d398a8be",
+        "test": "c57b3cfe0e0915458b09b8eca3d6c81e1feca815aec7e44e984e6ba62b5bb46a"
+      },
+      "prompt_count_compared": 996,
+      "near_duplicate_matches": [],
+      "clear_at_threshold": true,
+      "limitations": [
+        "Lexical overlap cannot detect paraphrase, answer leakage, or semantic similarity.",
+        "Short prompts can have coarse Jaccard scores; matches require human review.",
+        "Only user prompts/queries are compared; system and assistant messages are excluded.",
+        "This is a diagnostic audit, not proof of split independence."
+      ],
+      "evaluation_path": "data/evaluation/cyber_eval_v1.jsonl",
+      "evaluation_sha256": "96cd6f1ceb2bf704bbaaeab97dd849cbd368be817e9165fdba49a8b410c73c1e"
+    }
+  ]
+}

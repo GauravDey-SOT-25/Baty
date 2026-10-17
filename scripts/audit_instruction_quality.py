@@ -11,6 +11,12 @@ def find_text(row,field):
   if isinstance(row.get(key),list):
    for message in row[key]:
     if isinstance(message,dict) and message.get("role")==("assistant" if field=="assistant" else "user"):return str(message.get("content",""))
+ messages=row.get("messages")
+ if isinstance(messages,list):
+  role="assistant" if field=="assistant" else "user"
+  for message in messages:
+   if isinstance(message,dict) and message.get("role")==role:
+    return str(message.get("content",""))
  return ""
 def audit(path):
  counts={k:0 for k in FLAGS}; rows=0; missing_user=0; missing_answer=0; answer_lengths=[]; seen=set();duplicates=0

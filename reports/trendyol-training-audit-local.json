@@ -1,0 +1,56 @@
+{
+  "data/processed/instructions/train.jsonl": {
+    "file": "data/processed/instructions/train.jsonl",
+    "rows": 796,
+    "missing_user": 0,
+    "missing_answer": 0,
+    "exact_prompt_answer_duplicates": 0,
+    "assistant_character_lengths": {
+      "min": 497,
+      "median": 2336,
+      "max": 3588
+    },
+    "review_flag_counts": {
+      "internal_reasoning": 25,
+      "placeholder_language": 57,
+      "generic_model_disclaimer": 0
+    },
+    "note": "Automated string flags are triage aids, not factuality or safety labels; human review remains necessary."
+  },
+  "data/processed/instructions/valid.jsonl": {
+    "file": "data/processed/instructions/valid.jsonl",
+    "rows": 100,
+    "missing_user": 0,
+    "missing_answer": 0,
+    "exact_prompt_answer_duplicates": 0,
+    "assistant_character_lengths": {
+      "min": 522,
+      "median": 2269,
+      "max": 3095
+    },
+    "review_flag_counts": {
+      "internal_reasoning": 4,
+      "placeholder_language": 8,
+      "generic_model_disclaimer": 0
+    },
+    "note": "Automated string flags are triage aids, not factuality or safety labels; human review remains necessary."
+  },
+  "data/processed/instructions/test.jsonl": {
+    "file": "data/processed/instructions/test.jsonl",
+    "rows": 100,
+    "missing_user": 0,
+    "missing_answer": 0,
+    "exact_prompt_answer_duplicates": 0,
+    "assistant_character_lengths": {
+      "min": 1458,
+      "median": 2313,
+      "max": 3134
+    },
+    "review_flag_counts": {
+      "internal_reasoning": 1,
+      "placeholder_language": 9,
+      "generic_model_disclaimer": 0
+    },
+    "note": "Automated string flags are triage aids, not factuality or safety labels; human review remains necessary."
+  }
+}

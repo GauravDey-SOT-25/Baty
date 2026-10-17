@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#faf8f5" />
+    <meta name="description" content="Archived blockchain prototype materials. This prototype is not connected to the running Baty application." />
+    <title>Archived Blockchain Prototype | Baty</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="blockchain.css" />
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="site-header" aria-label="Main navigation">
+        <a class="wordmark" href="index.html#top" aria-label="Baty cybersecurity home">Baty</a>
+        <nav class="desktop-nav" aria-label="Main links">
+          <a href="index.html#scam-check">Scam Check <span class="nav-chevron" aria-hidden="true"></span></a>
+          <a href="#ledger-code" aria-current="page">Trust Ledger <span class="nav-chevron" aria-hidden="true"></span></a>
+          <a href="index.html#how-it-works">How it works</a>
+          <a href="index.html#collaborators">Partners <span class="nav-chevron" aria-hidden="true"></span></a>
+          <a href="index.html#elevate">Elevate</a>
+          <a class="nav-try" href="#trust-check">Check a URL</a>
+        </nav>
+        <button class="menu-toggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span></button>
+      </header>
+
+      <main class="trust-page" id="top">
+        <aside class="archive-disclosure" role="note"><strong>ARCHIVED PROTOTYPE · NOT CONNECTED</strong><span>This page documents code and illustrative states from the extracted archive. It does not perform URL checks, connect to a blockchain, or provide live trust scores. Use the <a href="index.html#ai-workspace">main Baty workspace</a> for the tools currently connected to the local backend.</span></aside>
+        <section class="trust-hero">
+          <div class="trust-hero-copy">
+            <span class="micro-label">CYBERSECURITY · BLOCKCHAIN</span>
+            <h1>Ground URL checks<br />in <em>verifiable trust.</em></h1>
+            <p>This archived design describes a separate prototype. The running Baty application does not connect these chain, oracle, or URL-scanning components.</p>
+            <div class="trust-hero-actions"><a class="button-link" href="#trust-check">RUN A URL CHECK <span>↓</span></a><a class="text-link" href="#ledger-code">EXPLORE THE CODE <span>↓</span></a></div>
+            <div class="trust-hero-note"><span class="note-icon">✳</span><span>Unknown domains start <b>unverified</b> until evidence is recorded.</span></div>
+          </div>
+          <div class="trust-demo" id="trust-check" aria-label="Archived mock URL trust checker" hidden>
+            <div class="trust-demo-top"><div><i></i><i></i><i></i></div><span>BATY / TRUST CHECK</span><span class="demo-live" id="backend-status"><b></b> CONNECTING</span></div>
+            <div class="demo-mode-tabs" role="tablist" aria-label="Trust workflow"><button type="button" class="is-active" role="tab" aria-selected="true" data-mode="check">CHECK URL</button><button type="button" role="tab" aria-selected="false" data-mode="record">REGISTER TRUST</button></div>
+            <div class="demo-workspace">
+              <form class="demo-command" id="inline-check-form"><span class="demo-search-icon" aria-hidden="true">⌕</span><label class="sr-only" for="inline-check-url">URL to assess</label><input id="inline-check-url" name="url" type="text" placeholder="Paste a URL or domain to check" autocomplete="url" required><button type="submit" id="inline-check-submit"><span class="button-label">RUN ↗</span></button></form>
+              <form class="demo-register-form" id="inline-register-form" hidden><label class="sr-only" for="inline-register-url">URL to register</label><input id="inline-register-url" name="url" type="text" placeholder="URL to register" autocomplete="url" required><label class="sr-only" for="inline-register-meta">Optional trust record label</label><input id="inline-register-meta" name="metadata" type="text" maxlength="160" placeholder="Optional record label"><button type="submit">REGISTER TRUST ↗</button><label class="demo-manual-toggle"><input id="inline-manual-cert" type="checkbox"><span>Provide fingerprint manually</span></label><input id="inline-cert-fingerprint" name="cert_fingerprint" type="text" placeholder="0x… certificate SHA-256 fingerprint" hidden></form>
+              <div class="demo-presets" aria-label="Quick scan scenarios"><span>QUICK CHECK</span><button type="button" data-url="https://ethereum.org">ethereum.org <i>TRUST RECORD</i></button><button type="button" data-url="https://github.com">github.com <i>TRUST RECORD</i></button><button type="button" data-url="https://phishing-crypto-airdrop.xyz">unverified domain <i>UNVERIFIED</i></button><button type="button" data-url="https://expired.badssl.com">expired.badssl.com <i>TLS CHECK</i></button></div>
+              <div class="demo-result-head"><span id="result-title">VERIFICATION PIPELINE</span><span id="result-mode-label">5 LIVE CHECKS</span></div>
+              <div id="demo-message" class="demo-message" role="status" aria-live="polite">Enter a URL, choose a quick check, or register a trust record. Pipeline evidence appears here after each run.</div>
+              <div class="demo-steps" id="demo-steps" aria-live="polite">
+                <div class="demo-step"><span class="demo-step-icon">01</span><div><b>VirusTotal reputation</b><small>Multi-engine URL reputation</small></div><span class="demo-state">READY</span></div>
+                <div class="demo-step"><span class="demo-step-icon">02</span><div><b>Google Safe Browsing</b><small>Phishing and malware lists</small></div><span class="demo-state">READY</span></div>
+                <div class="demo-step"><span class="demo-step-icon">03</span><div><b>Live SSL/TLS certificate</b><small>Handshake and X.509 fingerprint</small></div><span class="demo-state">READY</span></div>
+                <div class="demo-step"><span class="demo-step-icon">04</span><div><b>Blockchain trust record</b><small>Domain hash and Merkle proof</small></div><span class="demo-state">READY</span></div>
+                <div class="demo-step"><span class="demo-step-icon">05</span><div><b>Oracle quorum and stake</b><small>Validator consensus evidence</small></div><span class="demo-state">READY</span></div>
+              </div>
+              <div class="demo-verdict"><div><span id="verdict-label">TRUST ASSESSMENT</span><b id="verdict-value">Not checked</b></div><span class="demo-score"><b id="verdict-score">—</b><small>/100</small></span><span class="verdict-pill" id="verdict-pill">AWAITING URL</span></div>
+              <div class="demo-details" id="demo-details" hidden></div>
+            </div><p class="demo-footnote">Checks run through the configured Baty prototype backend. Results reflect available signals and do not guarantee a site is safe.</p>
+          </div>
+          <div class="trust-hero-orbit orbit-one"></div><div class="trust-hero-orbit orbit-two"></div>
+        </section>
+
+        <section class="trust-signals partner-strip" aria-label="Hackathon collaborators"><span>SPONSORED BY</span><a class="partner-logo-link" href="https://www.hackthebox.com/" target="_blank" rel="noopener noreferrer"><img class="partner-logo partner-logo-htb" src="assets/partners/hack-the-box.svg" alt="" aria-hidden="true" width="21" height="23" style="width:21px;height:23px;object-fit:contain;flex:none"><span>HACK THE BOX</span></a><a class="partner-logo-link" href="https://letsdefend.io/" target="_blank" rel="noopener noreferrer"><img class="partner-logo partner-logo-letsdefend" src="assets/partners/letsdefend.png" alt="" aria-hidden="true" width="22" height="22" style="width:22px;height:22px;object-fit:contain;flex:none"><span>LetsDefend</span></a><span>BATY CYBERSECURITY PLATFORM</span></section>
+
+        <section class="trust-overview">
+          <div class="trust-section-head"><span class="micro-label">USE CASES</span><h2>Ground every URL check<br />in verifiable evidence</h2><p>Scan links, compare certificates, record verified domains, and inspect the cryptographic trail behind every trust decision.</p></div>
+          <div class="trust-case-grid">
+            <article class="trust-case"><div class="trust-case-copy"><span class="use-card-index">01 / SCAN</span><h3>Check a URL against live signals</h3><p>Normalize the submitted domain, query its trust record, inspect the live certificate, and review available VirusTotal and Google Safe Browsing results.</p><a href="#trust-check">RUN A URL CHECK <b>↗</b></a></div><div class="case-visual case-results"><div class="case-visual-top"><span>THREAT SIGNALS</span><span>CHECK SUMMARY</span></div><div class="signal-row"><span class="signal-mark mark-green">✓</span><span><b>Trust record</b><small>No record found</small></span><em>UNVERIFIED</em></div><div class="signal-row"><span class="signal-mark mark-blue">⌁</span><span><b>TLS certificate</b><small>Live fingerprint collected</small></span><em>COMPARE</em></div><div class="signal-row"><span class="signal-mark mark-amber">!</span><span><b>Threat intelligence</b><small>Available sources checked</small></span><em>REVIEW</em></div><div class="case-visual-foot">An unverified result is not a clean bill of health.</div></div></article>
+            <article class="trust-case trust-case-reverse"><div class="trust-case-copy"><span class="use-card-index">02 / COMPARE</span><h3>Match the live certificate</h3><p>The backend retrieves the site's X.509 certificate, computes its SHA-256 fingerprint, and compares it with the certificate recorded for that domain.</p><a href="./Parallel/backend/hasher.py" target="_blank">VIEW TLS INSPECTION CODE <b>↗</b></a></div><div class="case-visual case-diff"><div class="case-visual-top"><span>CERTIFICATE FINGERPRINT</span><span>SAMPLE DATA</span></div><div class="fingerprint-card"><small>LEDGER RECORD</small><code>0x7c2d…a419</code></div><div class="fingerprint-connector"><span></span><b>≠</b><span></span></div><div class="fingerprint-card fingerprint-live"><small>LIVE CERTIFICATE</small><code>0x91fa…0b62</code></div><div class="case-warning">EXAMPLE MISMATCH · REVIEW NEEDED</div></div></article>
+            <article class="trust-case"><div class="trust-case-copy"><span class="use-card-index">03 / ATTEST</span><h3>Register or revoke trust</h3><p>The Solidity registry attributes a domain hash and TLS fingerprint to an authorized verifier. The owner can call the prototype's slashing function to mark a record untrusted.</p><a href="Parallel/contracts/TrustRegistry.sol" target="_blank">OPEN TRUSTREGISTRY.SOL <b>↗</b></a></div><div class="case-visual case-contract"><div class="case-visual-top"><span>TRUSTREGISTRY.SOL</span><span>SOLIDITY</span></div><div class="contract-code"><span><i>01</i> <b>function</b> addAdvancedTrustRecord(</span><span><i>02</i> &nbsp; string memory urlHash,</span><span><i>03</i> &nbsp; string memory certFingerprint,</span><span><i>04</i> &nbsp; string memory ipfsCid,</span><span><i>05</i> &nbsp; address[] memory quorumNodes,</span><span><i>06</i> &nbsp; uint8 consensusScore,</span><span><i>07</i> &nbsp; string memory metadata</span><span><i>08</i> ) public onlyActiveValidator {</span><span><i>09</i> ...</span></div><div class="case-visual-foot">SOURCE EXCERPT · OPEN FULL CONTRACT ↗</div></div></article>
+            <article class="trust-case trust-case-reverse"><div class="trust-case-copy"><span class="use-card-index">04 / PROVE</span><h3>Inspect a Merkle proof</h3><p>The code builds a Merkle tree in the standalone ledger and attaches a record's inclusion proof and current root to its result for inspection.</p><a href="./Parallel/backend/blockchain.py" target="_blank">VIEW LEDGER IMPLEMENTATION <b>↗</b></a></div><div class="case-visual case-merkle"><div class="case-visual-top"><span>RECORD INCLUSION</span><span>SAMPLE PROOF</span></div><div class="merkle-level"><code>leaf · domain hash</code><span class="merkle-line"></span><code>0x4a…91d2</code></div><div class="merkle-level"><code>sibling hash</code><span class="merkle-line"></span><code>0x9c…20af</code></div><div class="merkle-root"><span>CURRENT ROOT</span><code>0x18…a7f0</code><b>VERIFY</b></div><div class="case-visual-foot">Illustrative proof path · see project code for verification.</div></div></article>
+          </div>
+        </section>
+
+        <section class="trust-code-section" id="ledger-code">
+          <div class="trust-code-intro"><span class="micro-label">INSIDE THE REPOSITORY</span><h2>Follow the check<br /><em>from request to record.</em></h2><p>These excerpts come from the files in `Parallel/`. Pick a layer to inspect the real implementation, then open the complete source files.</p>
+            <div class="source-links"><a href="Parallel/contracts/TrustRegistry.sol" target="_blank">TrustRegistry.sol <span>↗</span></a><a href="Parallel/backend/app.py" target="_blank">backend/app.py <span>↗</span></a><a href="Parallel/backend/hasher.py" target="_blank">backend/hasher.py <span>↗</span></a></div>
+          </div>
+          <div class="code-viewer">
+            <div class="code-viewer-head"><div class="code-window-dots"><i></i><i></i><i></i></div><span class="code-path">Parallel / <b id="active-file">contracts / TrustRegistry.sol</b></span><button class="copy-code" type="button">COPY <span>▣</span></button></div>
+            <div class="code-tabs" role="tablist" aria-label="Choose source code"><button class="code-tab is-active" type="button" role="tab" aria-selected="true" data-code="solidity">Solidity <small>01</small></button><button class="code-tab" type="button" role="tab" aria-selected="false" data-code="api">Flask API <small>02</small></button><button class="code-tab" type="button" role="tab" aria-selected="false" data-code="hash">SHA-256 <small>03</small></button></div>
+            <pre class="code-sample is-visible" data-sample="solidity"><code><span class="code-comment">// Parallel/contracts/TrustRegistry.sol</span>
+<span class="code-key">function</span> <span class="code-fn">addAdvancedTrustRecord</span>(
+    <span class="code-type">string</span> <span class="code-key">memory</span> urlHash,
+    <span class="code-type">string</span> <span class="code-key">memory</span> certFingerprint,
+    <span class="code-type">string</span> <span class="code-key">memory</span> ipfsCid,
+    <span class="code-type">address[]</span> <span class="code-key">memory</span> quorumNodes,
+    <span class="code-type">uint8</span> consensusScore,
+    <span class="code-type">string</span> <span class="code-key">memory</span> metadata
+) <span class="code-key">public</span> onlyActiveValidator {
+    <span class="code-key">require</span>(bytes(urlHash).length &gt; <span class="code-num">0</span>, <span class="code-str">"Empty urlHash"</span>);
+    <span class="code-key">require</span>(bytes(certFingerprint).length &gt; <span class="code-num">0</span>, <span class="code-str">"Empty certFingerprint"</span>);
+
+    <span class="code-key">if</span> (!hashExists[urlHash]) {
+        registeredHashes.push(urlHash);
+        hashExists[urlHash] = <span class="code-bool">true</span>;
+    }
+
+    <span class="code-type">uint256</span> lockedCollateral = <span class="code-num">1 ether</span>;
+    records[urlHash] = TrustRecord({
+        urlHash: urlHash,
+        certFingerprint: certFingerprint,
+        ipfsCid: ipfsCid,
+        timestamp: block.timestamp,
+        primaryVerifier: msg.sender,
+        oracleQuorum: quorumNodes,
+        stakeLocked: lockedCollateral,
+        isTrusted: <span class="code-bool">true</span>,
+        consensusScore: consensusScore,
+        metadata: metadata
+    });
+
+    emit LinkAttested(
+        urlHash,
+        urlHash,
+        certFingerprint,
+        ipfsCid,
+        msg.sender,
+        lockedCollateral,
+        consensusScore,
+        block.timestamp
+    );
+}</code></pre>
+            <pre class="code-sample" data-sample="api" hidden><code><span class="code-comment"># Parallel/backend/app.py</span>
+<span class="code-decorator">@app.route</span>(<span class="code-str">"/api/check"</span>, methods=[<span class="code-str">"GET"</span>])
+<span class="code-key">def</span> <span class="code-fn">api_check</span>():
+    <span class="code-str">"""
+    Takes a URL, hashes it, checks the smart contract, fetches live SSL certificate,
+    and returns comprehensive Trust Score and verification verdict.
+    Query parameter:
+      - url: Target URL/domain to scan
+    """</span>
+    raw_url = request.args.get(<span class="code-str">"url"</span>, <span class="code-str">""</span>).strip()
+    <span class="code-key">if not</span> raw_url:
+        <span class="code-key">return</span> jsonify({
+            <span class="code-str">"success"</span>: <span class="code-bool">False</span>,
+            <span class="code-str">"error"</span>: <span class="code-str">"Query parameter 'url' is required (e.g. /api/check?url=ethereum.org)"</span>
+        }), <span class="code-num">400</span>
+
+    <span class="code-key">try</span>:
+        canonical_url, hostname, port = normalize_url(raw_url)
+        url_hash = compute_url_hash(hostname)
+
+        <span class="code-comment"># 1. Query Blockchain Reader</span>
+        is_trusted_on_chain = blockchain.is_trusted(url_hash)
+        chain_record = blockchain.get_trust_record(url_hash)
+
+        <span class="code-comment"># 2. Live SSL Certificate Inspection</span>
+        live_cert = fetch_ssl_fingerprint(hostname, port)
+
+        <span class="code-comment"># 3. Live Threat Intelligence (VirusTotal + Google Safe Browsing)</span>
+        threat_intel = get_threat_intelligence(canonical_url, hostname)
+
+        <span class="code-comment"># 4. Trust Scoring Engine</span>
+        verdict = evaluate_trust(
+            url_hash=url_hash,
+            chain_record=chain_record,
+            is_trusted_on_chain=is_trusted_on_chain,
+            live_cert=live_cert,
+            threat_intel=threat_intel
+        )
+</code></pre>
+            <pre class="code-sample" data-sample="hash" hidden><code><span class="code-comment"># Parallel/backend/hasher.py</span>
+<span class="code-key">def</span> <span class="code-fn">compute_url_hash</span>(input_str: str) -&gt; str:
+    <span class="code-str">"""</span>
+    <span class="code-str">Computes standard SHA-256 hash of the canonical domain/URL.</span>
+    <span class="code-str">Returns 0x-prefixed 64-character lowercase hex string.</span>
+    <span class="code-str">"""</span>
+    _, host, _ = normalize_url(input_str)
+    <span class="code-comment"># Hash the normalized domain name</span>
+    raw_hash = hashlib.sha256(host.encode(<span class="code-str">"utf-8"</span>)).hexdigest()
+    <span class="code-key">return</span> <span class="code-str">f"0x{raw_hash}"</span>
+</code></pre>
+            <div class="code-viewer-foot"><span><i></i> SOURCE EXCERPT · PROTOTYPE IMPLEMENTATION</span><a href="Parallel/README.md" target="_blank">Read project notes ↗</a></div>
+          </div>
+        </section>
+
+        <section class="trust-scenarios">
+          <div class="scenario-heading"><span class="micro-label">SAMPLE VERDICTS</span><h2>See what changes<br />the trust score.</h2><p>Example states from the scoring logic in `Parallel/backend/app.py`.</p></div>
+          <div class="scenario-grid">
+            <article class="scenario-card"><div class="scenario-card-head"><span>01 · THREAT INTEL FLAG</span><span class="scenario-status status-alert">REVIEW</span></div><div class="scenario-score"><strong>10</strong><span>/ 100</span></div><h3>Potential threat</h3><p>An available external threat source reports a malicious or phishing signal. The assessment is immediately downgraded.</p><div class="scenario-meter"><i style="--score:10%"></i></div><small>EXAMPLE ONLY · CHECK BACKEND CONFIGURATION</small></article>
+            <article class="scenario-card"><div class="scenario-card-head"><span>02 · CERTIFICATE MISMATCH</span><span class="scenario-status status-warn">INSPECT</span></div><div class="scenario-score"><strong>30</strong><span>/ 100</span></div><h3>Fingerprint mismatch</h3><p>A trusted record exists, but the live TLS certificate fingerprint differs from the one stored in the record.</p><div class="scenario-meter"><i style="--score:30%"></i></div><small>EXAMPLE ONLY · NOT A LIVE SCAN RESULT</small></article>
+          </div>
+        </section>
+
+        <section class="trust-safety">
+          <div class="safety-copy"><span class="micro-label">TRUST &amp; TRANSPARENCY</span><h2>Built to show<br /><em>its evidence.</em></h2><p>The prototype explains its verdict with the record, certificate, and threat signals it received. Its chain mode is visible so demo data is not mistaken for a public blockchain transaction.</p></div>
+          <div class="safety-list"><div><span>01</span><b>Verifier attribution</b><small>Trust entries identify the verifier address saved with the record.</small></div><div><span>02</span><b>Certificate comparison</b><small>A live X.509 fingerprint is checked against the saved fingerprint.</small></div><div><span>03</span><b>Owner-controlled slashing</b><small>The contract owner can mark an active record untrusted with the slashTrust function.</small></div><div><span>04</span><b>Prototype mode disclosed</b><small>The backend can run with local RPC or a standalone in-memory ledger.</small></div></div>
+        </section>
+
+        <section class="trust-score-section" id="scoring-logic">
+          <div class="score-copy"><span class="micro-label">SCORING LOGIC</span><h2>Know what each<br />number means.</h2><p>The current backend returns fixed scores for defined states. These are prototype rules to help explain a result, not a universal measure of website safety.</p><a href="Parallel/backend/app.py" target="_blank">READ THE SCORING FUNCTION <b>↗</b></a></div>
+          <div class="score-table"><div><span>VERDICT</span><span>PROTOTYPE SCORE</span><span>TRIGGER</span></div><div><b class="score-green">Verified trust</b><strong>100</strong><small>Active record + matching TLS fingerprint + no threat flag</small></div><div><b class="score-amber">Certificate mismatch</b><strong>30</strong><small>Active record + different live fingerprint</small></div><div><b class="score-amber">Trust revoked</b><strong>20</strong><small>Record inactive or revoked</small></div><div><b class="score-red">Threat flagged</b><strong>10</strong><small>Threat intelligence source reports a flag</small></div><div><b class="score-muted">Unverified</b><strong>0</strong><small>No trust record exists</small></div></div>
+        </section>
+
+        <section class="trust-build">
+          <div class="trust-build-copy"><span class="micro-label">RUN THE PROTOTYPE</span><h2>See the code<br />in context.</h2><p>Start the Flask demo, connect it to a local Hardhat or Ganache node if configured, then inspect a URL and review the resulting ledger record.</p><a class="button-link" href="./Parallel/README.md">OPEN QUICKSTART <span>↗</span></a></div>
+          <div class="build-steps"><div><span>01</span><b>Install backend requirements</b><code>pip install -r backend/requirements.txt</code></div><div><span>02</span><b>Run the local demo</b><code>python run_demo.py</code></div><div><span>03</span><b>Open the scanner</b><code>http://127.0.0.1:5000</code></div></div>
+        </section>
+
+        <section class="trust-faq">
+          <div><span class="micro-label">FAQ</span><h2>About the prototype.</h2></div>
+          <div class="faq-list"><details open><summary>Does every result come from a public blockchain?</summary><p>No. The backend can use a configured local Ethereum RPC, or run in a standalone in-memory ledger mode. Check `/api/status` to see the current mode.</p></details><details><summary>Does a verified result guarantee a site is safe?</summary><p>No. It means the prototype's available record and certificate checks match and no configured threat source returned a flag. New or unreported attacks may not appear in those signals.</p></details><details><summary>What happens when no record exists?</summary><p>The current scoring function returns “Unverified” with a score of zero. It does not treat an unknown domain as trusted by default.</p></details><details><summary>Can trust be revoked?</summary><p>The smart contract exposes an owner-only slashing path. The standalone backend's in-memory ledger has a simulated revocation operation.</p></details></div>
+        </section>
+
+        <section class="trust-bottom"><div><span class="micro-label">TRY THE IMPLEMENTATION</span><h2>Inspect a URL.<br /><em>Trace the evidence.</em></h2><p>Open the local Baty demo to run a check or explore the registry UI. The backend reports whether it is using a live local RPC connection or the standalone in-memory ledger.</p></div><div class="bottom-actions"><a class="button-link" href="#trust-check">Open URL scanner <span>↗</span></a><a class="bottom-secondary" href="#ledger-code">Open trust ledger <span>↗</span></a></div></section>
+      </main>
+      <footer class="trust-footer"><a class="footer-wordmark" href="index.html#top">Baty</a><div class="trust-footer-columns"><div><h4>BATY TOOLS</h4><a href="#trust-check">URL scanner</a><a href="#ledger-code">Trust ledger</a><a href="index.html#scam-check">Scam Check · Soon</a><a href="index.html#elevate">Elevate · Soon</a></div><div><h4>BLOCKCHAIN</h4><a href="#ledger-code">Solidity contract</a><a href="Parallel/backend/app.py" target="_blank">Flask API</a><a href="Parallel/backend/hasher.py" target="_blank">URL &amp; TLS hashing</a><a href="Parallel/backend/blockchain.py" target="_blank">Merkle ledger</a></div><div><h4>RESOURCES</h4><a href="Parallel/README.md" target="_blank">Project quickstart</a><a href="#scoring-logic">Trust scoring</a><a href="#ledger-code">Architecture overview</a><a href="index.html#how-it-works">How URL checks work</a></div><div><h4>COLLABORATORS</h4><a href="https://www.hackthebox.com/" target="_blank" rel="noopener noreferrer">Hack The Box ↗</a><a href="https://letsdefend.io/" target="_blank" rel="noopener noreferrer">LetsDefend ↗</a><a href="index.html#top">Cybersecurity hackathon</a></div></div><div class="trust-footer-bottom"><span>BATY · CYBERSECURITY HACKATHON PROTOTYPE ©2026</span><a href="index.html#top">Back to home ↑</a></div></footer>
+      <div class="menu-overlay" aria-hidden="true"><div class="menu-panel"><span class="micro-label">EXPLORE BATY</span><a href="#trust-check">Check a URL <span>↗</span></a><a href="index.html#scam-check">Scam Message AI · Soon <span>↗</span></a><a href="#ledger-code">Trust Ledger <span>↗</span></a><a href="index.html#elevate">Elevate AI · Soon <span>↗</span></a><p>Verify the link. Understand the evidence. Stay safer online.</p></div></div>
+    </div>
+  </body>
+</html>

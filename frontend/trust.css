@@ -1,0 +1,34 @@
+.workspace > section#trust { border-top: 3px solid #cc9d47; }
+.trust-disclosure { padding: 13px 15px; border: 1px solid #ead9b5; border-radius: 10px; background: #fffaf0; color: #685638; }
+.trust-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin-top: 19px; }
+.trust-panel { min-width: 0; padding: 18px; border: 1px solid var(--line); border-radius: 12px; background: #fbfcfe; }
+.trust-panel h3 { margin: 0 0 8px; color: #263b53; font-size: 15px; }
+.trust-panel > p { margin: 0 0 14px; color: var(--muted); font-size: 12px; }
+.trust-panel > label > small { display: block; margin-top: 4px; font-weight: 400; }
+.trust-check { display: flex !important; align-items: flex-start; gap: 7px; margin: 12px 0 !important; font-weight: 500 !important; }
+.trust-check input { flex: 0 0 auto; margin-top: 4px !important; }
+.trust-meta { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.trust-meta label { min-width: 0; }
+.trust-subtle-button { margin-top: 7px; }
+.trust-output { min-height: 84px !important; }
+.trust-status { display: block; margin: 12px 0; color: #64748b; font-size: 11px; }
+.trust-ledger-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin: 22px 0 12px; }
+.trust-ledger-head h3 { margin: 0; color: #263b53; font-size: 15px; }
+.trust-records { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.trust-record { display: grid; gap: 8px; min-width: 0; padding: 13px; border: 1px solid var(--line); border-radius: 10px; background: #fff; }
+.trust-record-heading { display: flex; justify-content: space-between; align-items: center; gap: 8px; color: #263b53; }
+.trust-record-heading strong { min-width: 0; overflow-wrap: anywhere; }
+.trust-record code { display: block; overflow-wrap: anywhere; color: #475569; font-size: 10px; }
+.trust-record small { color: var(--muted); }
+.trust-record button { justify-self: start; }
+.trust-badge { flex: 0 0 auto; padding: 4px 7px; border-radius: 999px; font-size: 10px; }
+.trust-active { background: #e7f5ee; color: #28704f; }
+.trust-revoked { background: #fbe9e7; color: #985048; }
+@media (max-width: 760px) {
+  .trust-grid, .trust-records { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 480px) {
+  .trust-panel { padding: 14px; }
+  .trust-meta { grid-template-columns: minmax(0, 1fr); gap: 0; }
+  .trust-record-heading { align-items: flex-start; flex-direction: column; }
+}

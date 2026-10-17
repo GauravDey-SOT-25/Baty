@@ -1,0 +1,933 @@
+/* Responsive layout layer for the landing page and in-app tools. */
+:root {
+  text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  width: 100%;
+  min-height: 100%;
+  overflow-x: clip;
+  scroll-behavior: smooth;
+}
+
+body {
+  width: 100%;
+  min-width: 0;
+  min-height: 100vh;
+  min-height: 100dvh;
+  overflow-x: clip;
+}
+
+button,
+input,
+textarea,
+select {
+  max-width: 100%;
+}
+
+button {
+  min-height: 40px;
+  touch-action: manipulation;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+summary:focus-visible {
+  outline: 3px solid #4d9be2;
+  outline-offset: 2px;
+}
+
+img,
+video,
+canvas,
+svg,
+iframe {
+  max-width: 100%;
+}
+
+.app-shell {
+  width: 100%;
+  grid-template-columns: clamp(10.75rem, 18vw, 15.75rem) minmax(0, 1fr);
+}
+
+.sidebar,
+.main-area,
+.workspace,
+.workspace > section,
+.workspace > section > *,
+.landing-home,
+.playground-shell,
+.playground-content,
+.feature-card,
+.local-section > * {
+  min-width: 0;
+}
+
+.sidebar {
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+  height: 100vh;
+  height: 100dvh;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.sidebar nav button {
+  min-width: 0;
+  min-height: 42px;
+}
+
+.main-area {
+  width: 100%;
+  container: app-content / inline-size;
+}
+
+.topbar,
+.topbar > div:first-child,
+.top-actions,
+.workspace,
+.landing-home,
+.landing-nav,
+.landing-nav nav,
+.playground-head,
+.playground-prompt,
+.playground-foot,
+.landing-status,
+.landing-footer {
+  min-width: 0;
+}
+
+.runtime-pill {
+  white-space: normal;
+}
+
+.workspace input:not([type="checkbox"]):not([type="file"]),
+.workspace textarea,
+.workspace select {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.workspace input[type="file"] {
+  width: 100%;
+  max-width: 100%;
+}
+
+.workspace pre {
+  width: 100%;
+  max-height: min(60vh, 680px);
+  overflow: auto;
+  overscroll-behavior: contain;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+}
+
+.workspace a,
+.workspace [role="status"],
+.workspace small,
+.workspace summary,
+.workspace li,
+.feature-copy,
+.landing-lede,
+.landing-footer > span {
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.workspace fieldset {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.landing-mode .main-area {
+  width: 100%;
+}
+
+.landing-mode .app-shell {
+  display: block;
+}
+
+.landing-home {
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+.landing-nav {
+  flex-wrap: wrap;
+}
+
+.landing-nav nav,
+.playground-tabs {
+  max-width: 100%;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+
+.landing-nav nav button,
+.playground-tabs button {
+  min-height: 42px;
+  flex: 0 0 auto;
+}
+
+.landing-hero h1 {
+  text-wrap: balance;
+}
+
+.landing-actions {
+  flex-wrap: wrap;
+}
+
+.playground-shell {
+  width: min(100% - 2rem, 59.375rem);
+}
+
+.playground-prompt > span:nth-child(2) {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.feature-grid {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+}
+
+.local-section {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
+}
+
+@media (min-width: 1440px) {
+  .main-area {
+    padding-inline: clamp(56px, 7vw, 120px);
+  }
+
+  .workspace,
+  .topbar,
+  .main-footer {
+    max-width: 1240px;
+  }
+
+  .landing-hero {
+    padding-top: clamp(105px, 11vh, 150px);
+  }
+
+  .feature-section,
+  .landing-footer {
+    max-width: 1180px;
+  }
+}
+
+@media (max-width: 900px) {
+  .app-shell {
+    grid-template-columns: 12rem minmax(0, 1fr);
+  }
+
+  .sidebar {
+    padding-inline: 12px;
+  }
+
+  .main-area {
+    padding-inline: clamp(16px, 3vw, 30px);
+  }
+
+  .workspace > section {
+    padding: clamp(18px, 3vw, 28px);
+  }
+
+  .landing-hero {
+    padding-top: 82px;
+  }
+}
+
+@media (max-width: 760px) {
+  .app-shell {
+    display: block;
+    min-height: 100vh;
+    min-height: 100dvh;
+  }
+
+  .sidebar {
+    position: sticky;
+    z-index: 20;
+    top: 0;
+    width: 100%;
+    height: auto;
+    min-height: 0;
+    max-height: none;
+    padding: 9px clamp(12px, 4vw, 22px) 8px;
+    box-shadow: 0 4px 16px rgba(12, 27, 45, .12);
+  }
+
+  .brand {
+    padding: 0 4px 8px;
+  }
+
+  .sidebar-label,
+  .sidebar-bottom {
+    display: none;
+  }
+
+  .sidebar nav {
+    display: flex;
+    width: 100%;
+    gap: 5px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 0 1px 4px;
+    scrollbar-width: thin;
+    overscroll-behavior-inline: contain;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .sidebar nav button {
+    width: auto;
+    flex: 0 0 auto;
+    min-height: 40px;
+    padding: 8px 11px;
+    white-space: nowrap;
+  }
+
+  .nav-icon {
+    display: none;
+  }
+
+  .main-area {
+    padding: 24px clamp(14px, 4vw, 28px) 20px;
+  }
+
+  .topbar {
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 18px;
+  }
+
+  .topbar h1 {
+    font-size: clamp(23px, 5vw, 30px);
+  }
+
+  .top-actions {
+    width: 100%;
+    justify-content: space-between;
+    margin-top: 0;
+    padding-top: 0;
+  }
+
+  .workspace > section {
+    padding: clamp(17px, 4vw, 24px);
+    margin-bottom: 14px;
+    border-radius: 13px;
+  }
+
+  .workspace > section h2 {
+    font-size: clamp(19px, 4vw, 22px);
+  }
+
+  .landing-nav {
+    height: auto;
+    min-height: 66px;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 7px;
+    padding: 14px clamp(15px, 4vw, 28px) 7px;
+  }
+
+  .landing-nav nav {
+    width: 100%;
+    gap: 3px;
+  }
+
+  .landing-nav nav button {
+    padding-inline: 10px;
+    white-space: nowrap;
+  }
+
+  .landing-hero {
+    padding: clamp(58px, 11vw, 84px) 18px 38px;
+  }
+
+  .landing-hero h1 {
+    font-size: clamp(2.4rem, 9vw, 4.25rem);
+  }
+
+  .landing-lede {
+    max-width: 570px;
+    font-size: clamp(14px, 2.4vw, 16px);
+  }
+
+  .landing-status {
+    flex-wrap: wrap;
+    line-height: 1.5;
+  }
+
+  .playground-shell {
+    width: calc(100% - 28px);
+  }
+
+  .playground-head {
+    gap: 10px;
+    padding: 17px;
+  }
+
+  .playground-content {
+    padding: 15px 17px 16px;
+  }
+
+  .playground-prompt {
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 11px;
+  }
+
+  .playground-prompt > span:nth-child(2) {
+    flex: 1 1 calc(100% - 40px);
+  }
+
+  .playground-prompt button {
+    margin-left: auto;
+  }
+
+  .playground-foot {
+    line-height: 1.5;
+  }
+
+  .feature-section {
+    width: 100%;
+    margin-top: clamp(64px, 11vw, 90px);
+    padding-inline: clamp(15px, 4vw, 28px);
+  }
+
+  .feature-card {
+    min-height: 170px;
+    padding: clamp(13px, 3vw, 19px);
+  }
+
+  .local-section {
+    gap: 24px;
+    margin-top: clamp(66px, 11vw, 94px);
+    padding-inline: clamp(15px, 4vw, 28px);
+  }
+
+  .landing-footer {
+    flex-direction: column;
+    margin-top: 65px;
+    padding-inline: clamp(15px, 4vw, 28px);
+  }
+}
+
+@container app-content (max-width: 42rem) {
+  .topbar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .top-actions {
+    flex-wrap: wrap;
+  }
+
+  .workspace > section {
+    padding: clamp(14px, 4cqw, 22px);
+  }
+
+  #research > div[style*="flex"] {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 8rem), 1fr));
+  }
+
+  #research > div[style*="flex"] button {
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
+}
+
+@media (max-width: 480px) {
+  .main-area {
+    padding: 18px 11px 16px;
+  }
+
+  .workspace > section {
+    padding: 16px 13px;
+    border-radius: 11px;
+  }
+
+  .workspace textarea {
+    min-height: 88px;
+  }
+
+  .top-actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .runtime-pill {
+    justify-content: center;
+  }
+
+  .account-button {
+    width: 100%;
+    min-height: 42px;
+  }
+
+  .workspace button {
+    min-height: 42px;
+    white-space: normal;
+  }
+
+  .landing-actions {
+    align-items: stretch;
+    flex-direction: column;
+    max-width: 330px;
+    margin-inline: auto;
+  }
+
+  .landing-primary,
+  .landing-secondary {
+    min-height: 45px;
+  }
+
+  .playground-head {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .playground-tabs {
+    padding-inline: 7px;
+  }
+
+  .playground-tabs button {
+    padding-inline: 9px;
+    font-size: 10px;
+  }
+
+  .feature-card {
+    min-height: 150px;
+  }
+
+  .local-card {
+    padding: 17px;
+  }
+}
+
+@media (max-width: 600px) {
+  .landing-hero h1 {
+    font-size: clamp(2rem, 8vw, 3.35rem);
+  }
+
+  .landing-hero h1 br {
+    display: none;
+  }
+}
+
+@media (max-width: 360px) {
+  .landing-hero {
+    padding-inline: 13px;
+  }
+
+  .landing-hero .landing-eyebrow {
+    font-size: 8px;
+    letter-spacing: .11em;
+  }
+
+  .playground-shell {
+    width: calc(100% - 20px);
+  }
+
+  .playground-foot {
+    gap: 5px;
+  }
+
+  .feature-heading h2,
+  .local-section h2 {
+    font-size: 29px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* Shared Parallel-inspired visual system for every tool view. */
+body:not(.landing-mode) {
+  color: #20211f;
+  background: #f8f7f4;
+}
+
+body:not(.landing-mode) .app-shell {
+  display: block;
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+  background: #f8f7f4;
+}
+
+body:not(.landing-mode) .sidebar {
+  position: sticky;
+  z-index: 30;
+  top: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: clamp(14px, 3vw, 32px);
+  width: 100%;
+  height: auto;
+  min-height: 0;
+  max-height: none;
+  padding: 12px clamp(16px, 6vw, 92px);
+  overflow: visible;
+  color: #20211f;
+  background: #f8f7f4;
+  border-bottom: 1px solid #e6e4df;
+  box-shadow: none;
+}
+
+body:not(.landing-mode) .brand {
+  flex: 0 0 auto;
+  gap: 10px;
+  padding: 0;
+  color: #20211f;
+}
+
+body:not(.landing-mode) .brand-mark {
+  width: 31px;
+  height: 31px;
+  border: 0;
+  border-radius: 50%;
+  color: #fff;
+  background: #20211f;
+  font-size: 11px;
+}
+
+body:not(.landing-mode) .brand-name {
+  color: #20211f;
+  font-size: 15px;
+}
+
+body:not(.landing-mode) .brand-caption,
+body:not(.landing-mode) .sidebar-label,
+body:not(.landing-mode) .sidebar-bottom,
+body:not(.landing-mode) .nav-icon {
+  display: none;
+}
+
+body:not(.landing-mode) .sidebar nav {
+  display: flex;
+  flex: 1 1 auto;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 4px;
+  min-width: 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 2px 1px 4px;
+  scrollbar-width: thin;
+  overscroll-behavior-inline: contain;
+  -webkit-overflow-scrolling: touch;
+}
+
+body:not(.landing-mode) .sidebar nav button {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  width: auto;
+  min-height: 42px;
+  padding: 9px 11px;
+  color: #41423f;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 7px;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+body:not(.landing-mode) .sidebar nav button:hover,
+body:not(.landing-mode) .sidebar nav button.active {
+  color: #20211f;
+  background: #efeee9;
+  border-color: #e4e2dc;
+  box-shadow: none;
+}
+
+body:not(.landing-mode) .main-area {
+  width: 100%;
+  padding: clamp(27px, 4vw, 50px) clamp(14px, 5.5vw, 84px) 60px;
+  background: #f8f7f4;
+}
+
+body:not(.landing-mode) .topbar {
+  align-items: flex-end;
+  gap: 24px;
+  max-width: 1120px;
+  margin: 0 auto 26px;
+}
+
+body:not(.landing-mode) .topbar h1 {
+  margin: 0 0 6px;
+  color: #171917;
+  font-size: clamp(32px, 4.6vw, 54px);
+  font-weight: 560;
+  line-height: 1.03;
+  letter-spacing: -.055em;
+  text-wrap: balance;
+}
+
+body:not(.landing-mode) .topbar p {
+  max-width: 680px;
+  color: #6e7069;
+  font-size: 13px;
+  line-height: 1.65;
+}
+
+body:not(.landing-mode) .topbar .eyebrow {
+  margin-bottom: 10px;
+  color: #686b65 !important;
+  font-size: 10px !important;
+  letter-spacing: .15em;
+}
+
+body:not(.landing-mode) .top-actions {
+  flex: 0 0 auto;
+  gap: 9px;
+}
+
+body:not(.landing-mode) .runtime-pill {
+  border-color: #deddd7;
+  border-radius: 999px;
+  background: #fff;
+  color: #51534d;
+}
+
+body:not(.landing-mode) .account-button {
+  border-color: #cfcdc7;
+  border-radius: 7px;
+  background: transparent;
+  color: #252622;
+  box-shadow: none;
+}
+
+body:not(.landing-mode) #account-shortcut {
+  display: none;
+}
+
+body:not(.landing-mode) .workspace {
+  width: 100%;
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
+body:not(.landing-mode) .workspace > section {
+  padding: clamp(20px, 4vw, 36px);
+  margin: 0 0 20px;
+  color: #20211f;
+  background: #fff;
+  border: 1px solid #deddd7;
+  border-radius: 11px;
+  box-shadow: 0 14px 44px rgba(32, 33, 29, .055);
+}
+
+body:not(.landing-mode) .workspace > section#account,
+body:not(.landing-mode) .workspace > section#message,
+body:not(.landing-mode) .workspace > section#url,
+body:not(.landing-mode) .workspace > section#assistant,
+body:not(.landing-mode) .workspace > section#incidents,
+body:not(.landing-mode) .workspace > section#research {
+  border-top: 1px solid #deddd7;
+}
+
+body:not(.landing-mode) .workspace > section h2 {
+  margin: 0 0 11px;
+  color: #20211f;
+  font-size: clamp(23px, 3vw, 32px);
+  font-weight: 560;
+  line-height: 1.15;
+  letter-spacing: -.045em;
+}
+
+body:not(.landing-mode) .workspace > section > p,
+body:not(.landing-mode) .workspace details > p {
+  color: #6e7069;
+  line-height: 1.7;
+}
+
+body:not(.landing-mode) .workspace label {
+  color: #41423f;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+body:not(.landing-mode) .workspace input:not([type="checkbox"]):not([type="file"]),
+body:not(.landing-mode) .workspace textarea,
+body:not(.landing-mode) .workspace select {
+  width: 100%;
+  max-width: 100%;
+  padding: 11px 12px;
+  color: #252622;
+  background: #fff;
+  border: 1px solid #deddd7;
+  border-radius: 7px;
+  box-shadow: none;
+}
+
+body:not(.landing-mode) .workspace textarea {
+  min-height: 110px;
+}
+
+body:not(.landing-mode) .workspace input:focus,
+body:not(.landing-mode) .workspace textarea:focus,
+body:not(.landing-mode) .workspace select:focus {
+  border-color: #8d8e86;
+  box-shadow: 0 0 0 3px rgba(40, 42, 37, .08);
+}
+
+body:not(.landing-mode) .workspace button {
+  min-height: 42px;
+  padding: 10px 14px;
+  color: #252622;
+  background: #fff;
+  border: 1px solid #deddd7;
+  border-radius: 7px;
+  font-size: 12px;
+  font-weight: 620;
+}
+
+body:not(.landing-mode) .workspace button:hover {
+  color: #20211f;
+  background: #f0efeb;
+  border-color: #c9c7c1;
+}
+
+body:not(.landing-mode) .workspace button.active,
+body:not(.landing-mode) .workspace button#analyze-message,
+body:not(.landing-mode) .workspace button#analyze-url,
+body:not(.landing-mode) .workspace button#ask-assistant,
+body:not(.landing-mode) .workspace button#search-incidents,
+body:not(.landing-mode) .workspace button#r-search-btn,
+body:not(.landing-mode) .workspace button#r-extract-btn,
+body:not(.landing-mode) .workspace button#r-task-btn,
+body:not(.landing-mode) .workspace button#r-monitor-btn,
+body:not(.landing-mode) .workspace button#r-enrich-btn,
+body:not(.landing-mode) .workspace button#r-answer-btn,
+body:not(.landing-mode) .workspace button#r-findall-ingest-btn,
+body:not(.landing-mode) .workspace button#r-findall-run-btn,
+body:not(.landing-mode) .workspace button#extract-image-text {
+  color: #fff;
+  background: #252622;
+  border-color: #252622;
+}
+
+body:not(.landing-mode) .workspace button.active:hover,
+body:not(.landing-mode) .workspace button#analyze-message:hover,
+body:not(.landing-mode) .workspace button#analyze-url:hover,
+body:not(.landing-mode) .workspace button#ask-assistant:hover,
+body:not(.landing-mode) .workspace button#search-incidents:hover,
+body:not(.landing-mode) .workspace button#r-search-btn:hover,
+body:not(.landing-mode) .workspace button#r-extract-btn:hover,
+body:not(.landing-mode) .workspace button#r-task-btn:hover,
+body:not(.landing-mode) .workspace button#r-monitor-btn:hover,
+body:not(.landing-mode) .workspace button#r-enrich-btn:hover,
+body:not(.landing-mode) .workspace button#r-answer-btn:hover,
+body:not(.landing-mode) .workspace button#r-findall-ingest-btn:hover,
+body:not(.landing-mode) .workspace button#r-findall-run-btn:hover,
+body:not(.landing-mode) .workspace button#extract-image-text:hover {
+  color: #fff;
+  background: #3a3b36;
+  border-color: #3a3b36;
+}
+
+body:not(.landing-mode) .workspace pre {
+  color: #444640;
+  background: #f5f4ef;
+  border-color: #e5e4de;
+  border-radius: 8px;
+}
+
+body:not(.landing-mode) .workspace details,
+body:not(.landing-mode) #modal-disclosure {
+  background: #f8f7f4;
+  border-color: #e5e4de;
+  border-radius: 8px;
+}
+
+body:not(.landing-mode) .workspace details summary {
+  color: #343631;
+}
+
+body:not(.landing-mode) .workspace fieldset {
+  border-color: #deddd7;
+  border-radius: 8px;
+}
+
+@container app-content (max-width: 50rem) {
+  body:not(.landing-mode) .topbar {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  body:not(.landing-mode) .top-actions {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    width: 100%;
+  }
+
+  body:not(.landing-mode) .workspace > section {
+    padding: clamp(17px, 4cqw, 26px);
+  }
+}
+
+@media (max-width: 1100px) {
+  body:not(.landing-mode) .sidebar {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 7px;
+    padding: 11px clamp(14px, 4vw, 24px) 7px;
+  }
+
+  body:not(.landing-mode) .sidebar nav {
+    flex: 0 0 auto;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    width: 100%;
+    overflow: visible;
+    padding: 0;
+  }
+
+  body:not(.landing-mode) .main-area {
+    padding-inline: clamp(12px, 4vw, 26px);
+  }
+}
+
+@media (max-width: 420px) {
+  body:not(.landing-mode) .brand-caption {
+    display: none;
+  }
+
+  body:not(.landing-mode) .top-actions {
+    align-items: stretch;
+  }
+
+  body:not(.landing-mode) .account-button {
+    min-height: 42px;
+  }
+}
