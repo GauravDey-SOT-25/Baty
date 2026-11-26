@@ -178,3 +178,7 @@
 
 - Use the supplied Comfest `index.html`, `styles.css`, `script.js`, and artwork as the visual source of truth for the root homepage. Keep the AI workspace integrated into that homepage and keep existing tool and Trust Ledger routes working.
 - Since the deployed homepage is at the repository root but the original script and assets remain in `Comfest - 26/`, resolve artwork relative to the script and prefix root-page poster paths with that folder. Permit the original variable-font CDN in the local and Vercel `font-src` policies; the page's existing system-font fallbacks remain available if that CDN is unreachable.
+# 2026-11-26 — Restore the pinned local runtime in this checkout
+
+- Keep dependencies in `.venv` and use the project setup script on this Apple silicon machine (Python 3.14.7); do not alter system Python. Restore only the existing pinned Qwen snapshot that the project records as previously approved. Keep model files and generated runtime artifacts out of Git and keep adapters disabled by default.
+- Start the service on its enforced loopback address. A successful page/API response and one short local inference establish basic operation only; they do not validate model answer quality or security decisions.

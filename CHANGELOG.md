@@ -127,3 +127,6 @@
 
 - Re-aligned the root homepage with the supplied Comfest visual source by restoring its original variable-font stack and preserving its original layout, motion, and artwork. Kept the integrated AI workspace and tool navigation.
 - Fixed root-relative poster and WebGL hero artwork resolution, and allowed the source font host through the local and Vercel Content Security Policies.
+# 2026-11-26 — Restore local app runtime
+
+- Recreated the project-local Python environment and restored the previously approved pinned Qwen model snapshot, which were absent from this checkout. The local API and main pages respond successfully, and a short base-model inference completed with no adapter enabled. See `progress.md` for exact versions, command, and verification limits.
