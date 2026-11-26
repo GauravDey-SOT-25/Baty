@@ -2,13 +2,13 @@
 
 **Try the live preview:** [baty-mu.vercel.app](https://baty-mu.vercel.app/)
 
-## What is Baty?
+## What is Baty ?
 
 Baty is a cybersecurity assistant built to help people pause, inspect, and learn when something online seems suspicious. It brings practical checks and learning tools together in one place, with a focus on keeping everyday use private and under the user's control.
 
 Baty is an early-stage project. It can offer clues and explanations, but it cannot guarantee that a message, link, or website is safe.
 
-## What does it do?
+## What does it do ?
 
 - Helps review suspicious messages and links by pointing out details that may deserve a closer look.
 - Answers cybersecurity questions and helps people learn about online safety.
@@ -18,13 +18,13 @@ Baty is an early-stage project. It can offer clues and explanations, but it cann
 
 These features are designed to support human judgment. Baty does not automatically open links, and its results should be checked before anyone acts on them.
 
-## Why was it built?
+## Why was it built ?
 
 Cybersecurity can feel difficult to approach, especially when a message or website creates urgency. Baty brings a first review, relevant learning, and reference information into one experience so people can make a more informed next decision.
 
 It is designed to work locally wherever practical. Optional connected services are clearly separate, so users can decide when a question or lookup should leave their device.
 
-## What does the project contain?
+## What does the project contain ?
 
 - A local application for message and link review, cybersecurity Q&A, image text reading, and searching public security references.
 - A personal website-notes area and an optional browser extension.
@@ -33,7 +33,7 @@ It is designed to work locally wherever practical. Optional connected services a
 
 The online preview is a smaller version of the project. The full set of local tools is available when running Baty on a Mac; some optional online features need separate setup.
 
-## Why consider Baty?
+## Why consider Baty ?
 
 - **A calmer first step:** bring a suspicious message or link somewhere you can review it before responding.
 - **Learn as you go:** get explanations alongside practical checks, rather than relying only on a warning label.
