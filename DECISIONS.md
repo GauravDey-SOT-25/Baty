@@ -182,3 +182,7 @@
 
 - Keep dependencies in `.venv` and use the project setup script on this Apple silicon machine (Python 3.14.7); do not alter system Python. Restore only the existing pinned Qwen snapshot that the project records as previously approved. Keep model files and generated runtime artifacts out of Git and keep adapters disabled by default.
 - Start the service on its enforced loopback address. A successful page/API response and one short local inference establish basic operation only; they do not validate model answer quality or security decisions.
+
+## 2026-11-26 — Skip Python installs in the Vercel static build
+
+- Keep the Vercel deployment as the existing public static preview plus its Node assistant function. Set `installCommand` to an empty string so Vercel does not try to install the macOS-only MLX runtime from the repository's local inference requirements. The Node build script uses only built-in modules; the local Python dependencies stay available in the Mac project environment.

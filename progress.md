@@ -307,3 +307,9 @@ Updated: 2026-10-17 (Asia/Kolkata)
 - Restored the previously approved pinned model with `.venv/bin/python scripts/download_model.py --confirm-model-download`: `mlx-community/Qwen2.5-1.5B-Instruct-4bit@8b403126fc14f14cfc99bb4cfa72ecbc129ea677`. The on-disk snapshot occupies 839 MiB; no adapter was enabled.
 - Started the local app with `.venv/bin/python -m src.api.server` on `127.0.0.1:8765`. The homepage, `/workspace`, `/assistant`, and `/api/health` returned HTTP 200. Health reports `model_available: true`, `model_runtime_available: true`, and `adapter_enabled: false`.
 - Ran one benign local MLX inference directly through `answer_locally(..., max_tokens=64, use_adapter=False)`; it loaded the model and returned a generated response. This is a smoke check, not a quality or safety evaluation. No project test suite was run, and no submitted URL was opened or fetched.
+
+## 2026-11-26 — Prepare Vercel static build
+
+- Imported public repository `GauravDey-SOT-25/Baty` as the `baty` project in the `Gaurav's Team` Hobby scope. Vercel project setup uses root directory `./`, preset `Other`, build command `node scripts/build-vercel.mjs`, and output directory `dist/vercel`.
+- Initial Vercel build failed during automatic dependency installation: Linux CPython 3.14.8 could not resolve macOS/Apple-silicon `mlx==0.32.4` from the local-inference `requirements.txt`. Added an empty `installCommand` in `vercel.json` to skip dependency installation for this Node-based static build; the local app dependencies remain project-local for macOS.
+- Deployment retry is pending the next push to `main`. The public preview still excludes the local backend and requires separately configured Vercel Modal credentials and Firebase authorized domain for hosted inference.

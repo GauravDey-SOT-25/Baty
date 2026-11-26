@@ -130,3 +130,7 @@
 # 2026-11-26 — Restore local app runtime
 
 - Recreated the project-local Python environment and restored the previously approved pinned Qwen model snapshot, which were absent from this checkout. The local API and main pages respond successfully, and a short base-model inference completed with no adapter enabled. See `progress.md` for exact versions, command, and verification limits.
+
+## 2026-11-26 — Prepare static Vercel build
+
+- Selected the repository root and `Other` preset for the `baty` Vercel project. Set `installCommand` to empty so the hosted static build skips local-only MLX dependencies that cannot install in Vercel's Linux builder. See `progress.md` for the initial build error and deployment limits.
