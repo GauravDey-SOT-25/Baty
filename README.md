@@ -87,7 +87,7 @@ The Modal CPU inference preview in [deploy/modal_app.py](deploy/modal_app.py) ac
 
 ### Vercel hosted preview
 
-The repository includes a limited Vercel deployment configuration in [vercel.json](vercel.json) and setup notes in [deploy/README-vercel.md](deploy/README-vercel.md). It serves the public Baty/Comfest pages and a separately authenticated Modal assistant. It does not host local MLX inference, OCR, local records or trust notes, classifiers, or Parallel research. Deployment still requires a Vercel project, server-side Modal environment variables, and the Vercel hostname in Firebase Authentication's Authorized domains; no Vercel deployment has been verified from this workspace.
+The limited public Vercel preview is live at [baty-mu.vercel.app](https://baty-mu.vercel.app). It serves the public Baty/Comfest pages and a separately authenticated Modal assistant. It does not host local MLX inference, OCR, local records or trust notes, classifiers, or Parallel research. The hosted assistant needs server-side Modal environment variables and the Vercel hostname in Firebase Authentication's Authorized domains before sign-in/inference can work. See [deploy/README-vercel.md](deploy/README-vercel.md) for setup details and deployment status.
 
 Open `http://127.0.0.1:8765` and choose **Ask local AI**, or open `http://127.0.0.1:8765/workspace` and choose **Learning assistant**. General questions go to local MLX inference by default; select **Include relevant local security records** to add local retrieval. Explicit CVE and current/product-specific questions still use local evidence or abstain. Generated answers remain unverified and require human review; this prototype is not ready for production security decisions.
 

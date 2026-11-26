@@ -25,4 +25,4 @@ This configuration deploys a **limited hosted preview**, not the laptop applicat
 
 ## Deployment status in this workspace
 
-The deploy configuration is prepared, but this workspace has no Vercel CLI session or `VERCEL_TOKEN`. Therefore no Vercel deployment has been created from here. Vercel account authentication, the two encrypted Modal environment variables, and Firebase Authorized Domains must be configured before the preview can answer questions. See [Modal deployment notes](README-modal.md) for endpoint and cost details.
+The Vercel project `baty` is deployed and ready at [https://baty-mu.vercel.app](https://baty-mu.vercel.app). It imports the root of `GauravDey-SOT-25/Baty`, uses the `Other` preset, runs `node scripts/build-vercel.mjs`, and publishes `dist/vercel`. The project-level `installCommand` is intentionally empty because this static Node build does not use the local macOS-only Python/MLX dependencies. The hosted assistant still needs `MODAL_PROXY_KEY`, `MODAL_PROXY_SECRET`, and the Vercel hostname in Firebase Authorized Domains before authenticated inference can work. See [Modal deployment notes](README-modal.md) for endpoint and cost details.

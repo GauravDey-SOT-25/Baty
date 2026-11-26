@@ -186,3 +186,4 @@
 ## 2026-11-26 — Skip Python installs in the Vercel static build
 
 - Keep the Vercel deployment as the existing public static preview plus its Node assistant function. Set `installCommand` to an empty string so Vercel does not try to install the macOS-only MLX runtime from the repository's local inference requirements. The Node build script uses only built-in modules; the local Python dependencies stay available in the Mac project environment.
+- Publish the static Baty preview on Vercel at `https://baty-mu.vercel.app`. Treat this as cross-device access to the public pages only; do not imply that localhost services or private laptop data are hosted there.

@@ -134,3 +134,4 @@
 ## 2026-11-26 — Prepare static Vercel build
 
 - Selected the repository root and `Other` preset for the `baty` Vercel project. Set `installCommand` to empty so the hosted static build skips local-only MLX dependencies that cannot install in Vercel's Linux builder. See `progress.md` for the initial build error and deployment limits.
+- Vercel production deployment `3b386f7` is ready at `https://baty-mu.vercel.app`; opened the URL and confirmed the Baty homepage renders. The hosted assistant still needs separately configured server credentials and Firebase Authorized Domains.
